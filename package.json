@@ -14,8 +14,15 @@
     "node": ">=4.4.1",
     "homebridge": ">=0.2.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JosephDuffy/homebridge-pc-volume.git"
+  },
   "keywords": [
-    "homebridge-plugin"
+    "homebridge-plugin",
+    "volume",
+    "mac",
+    "linux"
   ],
   "author": "Joseph Duffy",
   "license": "MIT"
