@@ -7,6 +7,8 @@ homebridge-pc-volume is a Homebridge plugin that adds a support for changing a c
 
 homebridge-pc-volume utilises [node-loudness](https://github.com/LinusU/node-loudness), which currently supports macOS and Linux (using ALSA).
 
+HomeKit is supported by iOS. Note that HomeKit does not support the "speaker" accessory type, so this will be shown as a lightbulb. If anyone knows how to get iOS to support a speaker, please create an issue or a PR.
+
 ##Installation
 
 First, [install Homebridge](https://github.com/nfarina/homebridge#installation).
