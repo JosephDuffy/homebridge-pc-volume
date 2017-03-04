@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "loudness": "^0.2.2"
+  },
+  "name": "homebridge-pc-volume",
+  "version": "0.0.1",
+  "description": "Control your system's volume using Apple's HomeKit",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=4.4.1",
+    "homebridge": ">=0.2.0"
+  },
+  "keywords": [
+    "homebridge-plugin"
+  ],
+  "author": "Joseph Duffy",
+  "license": "MIT"
+}
