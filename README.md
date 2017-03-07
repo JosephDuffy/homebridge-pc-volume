@@ -3,7 +3,7 @@
 
 homebridge-pc-volume is a Homebridge plugin that adds a support for changing a computer's volume using HomeKit and Siri.
 
-<img src="./.github/demo.gif" height="256" width="256" />
+<img src="https://raw.githubusercontent.com/JosephDuffy/homebridge-pc-volume/master/.github/demo.gif" height="256" width="256" />
 
 ##OS Support
 
