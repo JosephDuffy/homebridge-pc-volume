@@ -7,6 +7,7 @@
   "description": "Control your system's volume using Apple's HomeKit",
   "main": "index.js",
   "devDependencies": {},
+  "preferGlobal": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
