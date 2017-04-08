@@ -8,10 +8,10 @@ module.exports = function(homebridge) {
   Service = homebridge.hap.Service;
   Characteristic = homebridge.hap.Characteristic;
   
-  homebridge.registerAccessory("homebridge-pc-volume", "Computer", Computer);
+  homebridge.registerAccessory("homebridge-pc-volume", "ComputerSpeakers", ComComputerSpeakersputer);
 }
 
-function Computer(log, config, api) {
+function ComputerSpeakers(log, config, api) {
     const name = config["name"];
 
     this.lightService = new Service.Lightbulb(name);
@@ -27,20 +27,20 @@ function Computer(log, config, api) {
 		.on('get', this.getBrightness.bind(this));
 }
 
-Computer.prototype.getServices = function getServices() {
+ComputerSpeakers.prototype.getServices = function getServices() {
 	return [this.lightService];
 }
 
-Computer.prototype.setPowerState = function setPowerState(powerState, callback) {
+ComputerSpeakers.prototype.setPowerState = function setPowerState(powerState, callback) {
     const muted = !powerState;
     loudness.setMuted(muted, callback);
 }
 
-Computer.prototype.setBrightness = function setBrightness(volume, callback) {
+ComputerSpeakers.prototype.setBrightness = function setBrightness(volume, callback) {
     loudness.setVolume(volume, callback);
 }
 
-Computer.prototype.getPowerState = function getPowerState(callback) {
+ComputerSpeakers.prototype.getPowerState = function getPowerState(callback) {
     loudness.getMuted((error, muted) => {
          if (error !== null) {
              callback(error, null);
@@ -50,6 +50,6 @@ Computer.prototype.getPowerState = function getPowerState(callback) {
     });
 }
 
-Computer.prototype.getBrightness = function getBrightness(callback) {
+ComputerSpeakers.prototype.getBrightness = function getBrightness(callback) {
     loudness.getVolume(callback);
 }

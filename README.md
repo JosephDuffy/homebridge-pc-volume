@@ -24,10 +24,10 @@ homebridge-pc-volume will also need to be specified as an accessory in your `~/.
 ```
   "accessories": [
     {
-      "accessory": "Computer",
+      "accessory": "ComputerSpeakers",
       "name": "MacBook"
     }
   ]
 ```
 
-Note that `accessory` _must_ be "Computer", while the `name` can be any value of your choosing.
+Note that `accessory` _must_ be "ComputerSpeakers", while the `name` can be any value of your choosing.
