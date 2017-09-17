@@ -3,7 +3,7 @@
     "loudness": "^0.2.2"
   },
   "name": "homebridge-pc-volume",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Control your system's volume using Apple's HomeKit",
   "main": "index.js",
   "devDependencies": {},

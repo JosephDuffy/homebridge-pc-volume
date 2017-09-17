@@ -31,3 +31,43 @@ homebridge-pc-volume will also need to be specified as an accessory in your `~/.
 ```
 
 Note that `accessory` _must_ be "ComputerSpeakers", while the `name` can be any value of your choosing.
+
+## Configuration
+
+The `services` property can be used to decide how your computer's speaker will be exposed: as speaker, a lightbulb, or both. This is because iOS versions prior 11 did not support speakers.
+
+### Speaker Only (default)
+
+```
+  "accessories": [
+    {
+      "accessory": "ComputerSpeakers",
+      "name": "MacBook",
+      "services": ["speaker"]
+    }
+  ]
+```
+
+### Lightbulb Only (default prior to 1.1)
+
+```
+  "accessories": [
+    {
+      "accessory": "ComputerSpeakers",
+      "name": "MacBook",
+      "services": ["lightbulb"]
+    }
+  ]
+```
+
+### Lightbulb and Speaker
+
+```
+  "accessories": [
+    {
+      "accessory": "ComputerSpeakers",
+      "name": "MacBook",
+      "services": ["speaker", "lightbulb"]
+    }
+  ]
+```
