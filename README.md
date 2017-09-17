@@ -36,6 +36,8 @@ Note that `accessory` _must_ be "ComputerSpeakers", while the `name` can be any 
 
 The `services` property can be used to decide how your computer's speaker will be exposed: as speaker, a lightbulb, or both. This is because iOS versions prior 11 did not support speakers.
 
+If no services key is provided a speaker will be exposed.
+
 ### Speaker Only (default)
 
 ```
