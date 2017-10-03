@@ -34,18 +34,19 @@ Note that `accessory` _must_ be "ComputerSpeakers", while the `name` can be any 
 
 ## Configuration
 
-The `services` property can be used to decide how your computer's speaker will be exposed: as speaker, a lightbulb, or both. This is because iOS versions prior 11 did not support speakers.
+The `services` property can be used to decide how your computer's speaker will be exposed: as a lightbulb, fan, speaker, or a combination of all 3.
 
-If no services key is provided a speaker will be exposed.
+Please note that while iOS 11 supports "HomeKit speakers" this appears to actually be via AirPlay 2, so the "speaker" option is unlikely to work!
 
-### Speaker Only (default)
+If no services key is provided a lightbulb will be exposed.
+
+### Lightbulb Only (default, implicit)
 
 ```
   "accessories": [
     {
       "accessory": "ComputerSpeakers",
-      "name": "MacBook",
-      "services": ["speaker"]
+      "name": "MacBook"
     }
   ]
 ```
@@ -62,14 +63,26 @@ If no services key is provided a speaker will be exposed.
   ]
 ```
 
-### Lightbulb and Speaker
+### Fan Only
 
 ```
   "accessories": [
     {
       "accessory": "ComputerSpeakers",
       "name": "MacBook",
-      "services": ["speaker", "lightbulb"]
+      "services": ["fan"]
+    }
+  ]
+```
+
+### Speaker and Fan
+
+```
+  "accessories": [
+    {
+      "accessory": "ComputerSpeakers",
+      "name": "MacBook",
+      "services": ["speaker", "fan"]
     }
   ]
 ```

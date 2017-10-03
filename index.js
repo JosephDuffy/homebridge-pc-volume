@@ -13,7 +13,7 @@ module.exports = function(homebridge) {
 
 function ComputerSpeakers(log, config, api) {
     const name = config["name"];
-    const services = config["services"] || ["speaker"];
+    const services = config["services"] || ["lightbulb"];
 
     if (services.indexOf("speaker") > -1) {
         this.speakerService = new Service.Speaker(name);
@@ -27,6 +27,20 @@ function ComputerSpeakers(log, config, api) {
             .addCharacteristic(new Characteristic.Volume())
             .on('set', this.setVolume.bind(this))
             .on('get', this.getVolume.bind(this));
+    }
+
+    if (services.indexOf("fan") > -1) {
+        this.fanService = new Service.Fan(name);
+
+        this.fanService
+            .getCharacteristic(Characteristic.On)
+            .on('set', this.setPowerState.bind(this))
+            .on('get', this.getPowerState.bind(this));
+
+        this.fanService
+            .addCharacteristic(new Characteristic.RotationSpeed())
+            .on('set', this.setRotationSpeed.bind(this))
+            .on('get', this.getRotationSpeed.bind(this));
     }
 
     if (services.indexOf("lightbulb") > -1) {
@@ -45,7 +59,7 @@ function ComputerSpeakers(log, config, api) {
 }
 
 ComputerSpeakers.prototype.getServices = function getServices() {
-    return [this.speakerService, this.lightService].filter((service) => service !== undefined);
+    return [this.speakerService, this.lightService, this.fanService].filter((service) => !!service);
 }
 
 // Speaker
@@ -72,7 +86,7 @@ ComputerSpeakers.prototype.getVolume = function getVolume(callback) {
     loudness.getVolume(callback);
 }
 
-// Lightbulb
+// Shared
 
 ComputerSpeakers.prototype.setPowerState = function setPowerState(powerState, callback) {
     const muted = !powerState;
@@ -88,6 +102,18 @@ ComputerSpeakers.prototype.getPowerState = function getPowerState(callback) {
          }
     });
 }
+
+// Fan
+
+ComputerSpeakers.prototype.setRotationSpeed = function setRotationSpeed(volume, callback) {
+    this.setVolume(volume, callback);
+}
+
+ComputerSpeakers.prototype.getRotationSpeed = function getRotationSpeed(callback) {
+    this.getVolume(callback);
+}
+
+// Lightbulb
 
 ComputerSpeakers.prototype.setBrightness = function setBrightness(volume, callback) {
     this.setVolume(volume, callback);
