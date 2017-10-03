@@ -31,3 +31,58 @@ homebridge-pc-volume will also need to be specified as an accessory in your `~/.
 ```
 
 Note that `accessory` _must_ be "ComputerSpeakers", while the `name` can be any value of your choosing.
+
+## Configuration
+
+The `services` property can be used to decide how your computer's speaker will be exposed: as a lightbulb, fan, speaker, or a combination of all 3.
+
+Please note that while iOS 11 supports "HomeKit speakers" this appears to actually be via AirPlay 2, so the "speaker" option is unlikely to work!
+
+If no services key is provided a lightbulb will be exposed.
+
+### Lightbulb Only (default, implicit)
+
+```
+  "accessories": [
+    {
+      "accessory": "ComputerSpeakers",
+      "name": "MacBook"
+    }
+  ]
+```
+
+### Lightbulb Only (default prior to 1.1)
+
+```
+  "accessories": [
+    {
+      "accessory": "ComputerSpeakers",
+      "name": "MacBook",
+      "services": ["lightbulb"]
+    }
+  ]
+```
+
+### Fan Only
+
+```
+  "accessories": [
+    {
+      "accessory": "ComputerSpeakers",
+      "name": "MacBook",
+      "services": ["fan"]
+    }
+  ]
+```
+
+### Speaker and Fan
+
+```
+  "accessories": [
+    {
+      "accessory": "ComputerSpeakers",
+      "name": "MacBook",
+      "services": ["speaker", "fan"]
+    }
+  ]
+```
