@@ -14,6 +14,8 @@ module.exports = function(homebridge) {
 function ComputerSpeakers(log, config, api) {
     const name = config["name"];
     const services = config["services"] || ["lightbulb"];
+    const logarithmic = config["logarithmic"] || false;
+    const debug = config["debug"] || false;
 
     if (services.indexOf("speaker") > -1) {
         this.speakerService = new Service.Speaker(name);
@@ -25,8 +27,8 @@ function ComputerSpeakers(log, config, api) {
 
         this.speakerService
             .addCharacteristic(new Characteristic.Volume())
-            .on('set', this.setVolume.bind(this))
-            .on('get', this.getVolume.bind(this));
+            .on('set', this.setVolume(logarithmic, debug).bind(this))
+            .on('get', this.getVolume(logarithmic, debug).bind(this));
     }
 
     if (services.indexOf("fan") > -1) {
@@ -39,8 +41,8 @@ function ComputerSpeakers(log, config, api) {
 
         this.fanService
             .addCharacteristic(new Characteristic.RotationSpeed())
-            .on('set', this.setRotationSpeed.bind(this))
-            .on('get', this.getRotationSpeed.bind(this));
+            .on('set', this.setRotationSpeed(logarithmic, debug).bind(this))
+            .on('get', this.getRotationSpeed(logarithmic, debug).bind(this));
     }
 
     if (services.indexOf("lightbulb") > -1) {
@@ -53,8 +55,8 @@ function ComputerSpeakers(log, config, api) {
 
         this.lightService
             .addCharacteristic(new Characteristic.Brightness())
-            .on('set', this.setBrightness.bind(this))
-            .on('get', this.getBrightness.bind(this));
+            .on('set', this.setBrightness(logarithmic, debug).bind(this))
+            .on('get', this.getBrightness(logarithmic, debug).bind(this));
     }
 }
 
@@ -78,12 +80,36 @@ ComputerSpeakers.prototype.getMuted = function getMuted(callback) {
     });
 }
 
-ComputerSpeakers.prototype.setVolume = function setVolume(volume, callback) {
-    loudness.setVolume(volume, callback);
+ComputerSpeakers.prototype.setVolume = function (logarithmic, debug) {
+    return function setVolume(volume, callback) {
+        if (logarithmic) {
+            if (debug) { console.log("Setting volume: " + volume); }
+            var logvolume = Math.round(Math.log10(1 + volume) * 50);
+            if (debug) { console.log("Setting logarithmic volume: " + logvolume); }
+            loudness.setVolume(logvolume, callback);
+        } else {
+            if (debug) { console.log("Setting volume: " + volume); }
+            loudness.setVolume(volume, callback);
+        }
+    }
 }
 
-ComputerSpeakers.prototype.getVolume = function getVolume(callback) {
-    loudness.getVolume(callback);
+ComputerSpeakers.prototype.getVolume = function (logarithmic, debug) {
+    return function getVolume(callback) {
+        if (logarithmic) {
+            loudness.getVolume((error, logvolume) => {
+                if (debug) { console.log("Getting logarithmic volume: " + logvolume); }
+                var volume = Math.round(Math.pow(10, logvolume / 50) - 1);
+                if (debug) { console.log("Getting volume: " + volume); }
+                callback(error, volume);
+            });
+        } else {
+            loudness.getVolume((error, volume) => {
+                if (debug) { console.log("Getting volume: " + volume); }
+                callback(error, volume);
+            });
+        }
+    }
 }
 
 // Shared
@@ -105,20 +131,28 @@ ComputerSpeakers.prototype.getPowerState = function getPowerState(callback) {
 
 // Fan
 
-ComputerSpeakers.prototype.setRotationSpeed = function setRotationSpeed(volume, callback) {
-    this.setVolume(volume, callback);
+ComputerSpeakers.prototype.setRotationSpeed = function (logarithmic, debug) {
+    return function setRotationSpeed(volume, callback) {
+        this.setVolume(logarithmic, debug)(volume, callback);
+    }
 }
 
-ComputerSpeakers.prototype.getRotationSpeed = function getRotationSpeed(callback) {
-    this.getVolume(callback);
+ComputerSpeakers.prototype.getRotationSpeed = function (logarithmic, debug) {
+    return function getRotationSpeed(callback) {
+        this.getVolume(logarithmic, debug)(callback);
+    }
 }
 
 // Lightbulb
 
-ComputerSpeakers.prototype.setBrightness = function setBrightness(volume, callback) {
-    this.setVolume(volume, callback);
+ComputerSpeakers.prototype.setBrightness = function (logarithmic, debug) {
+    return function setBrightness(volume, callback) {
+        this.setVolume(logarithmic, debug)(volume, callback);
+    }
 }
 
-ComputerSpeakers.prototype.getBrightness = function getBrightness(callback) {
-    this.getVolume(callback);
+ComputerSpeakers.prototype.getBrightness = function (logarithmic, debug) {
+    return function getBrightness(callback) {
+        this.getVolume(logarithmic, debug)(callback);
+    }
 }
