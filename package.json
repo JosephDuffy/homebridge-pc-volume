@@ -4,17 +4,21 @@
   "description": "Control your system's volume using Apple's HomeKit",
   "author": "Joseph Duffy",
   "license": "MIT",
-  "main": "index.js",
+  "main": "build/index.js",
   "preferGlobal": true,
   "scripts": {
-    "watch": "nodemon --watch index.js --exec homebridge",
+    "prepublishOnly": "npm run build",
+    "build": "tsc",
+    "build:watch": "nodemon --watch src/index.ts --watch tsconfig.json --watch package.json --exec \"tsc && homebridge\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@types/node": "^10.12.12",
     "loudness": "^0.3.0"
   },
   "devDependencies": {
-    "nodemon": "^1.18.8"
+    "nodemon": "^1.18.8",
+    "typescript": "^3.2.2"
   },
   "engines": {
     "node": ">=4.4.1",

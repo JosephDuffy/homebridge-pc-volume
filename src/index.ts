@@ -1,6 +1,6 @@
 "use strict";
 
-const loudness = require('loudness');
+import loudness = require('loudness');
 let Service, Characteristic;
 
 module.exports = function(homebridge) {
