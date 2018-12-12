@@ -9,6 +9,10 @@ os:
   - osx
   - windows
 
+env:
+  # Fix for build timeouts on Windows: https://travis-ci.community/t/timeout-after-build-finished-and-succeeded/1336/2
+  - YARN_GPG=no
+
 cache: yarn
 
 before_install: yarn install
