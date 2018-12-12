@@ -1,21 +1,27 @@
 language: node_js
 
-node_js:
-  - "node"
-  - "lts/*"
-
-os:
-  - linux
-  - osx
-  - windows
-
-env:
-  # Fix for build timeouts on Windows: https://travis-ci.community/t/timeout-after-build-finished-and-succeeded/1336/2
-  - YARN_GPG=no
 
 cache: yarn
 
 before_install: yarn install
+
+matrix:
+  include:
+    - os: linux
+      node_js: node
+    - os: linux
+      node_js: "lts/*"
+    - os: osx
+      node_js: node
+    - os: osx
+      node_js: "lts/*"
+    - os: windows
+      # Fix for build timeouts on Windows: https://travis-ci.community/t/timeout-after-build-finished-and-succeeded/1336/2
+      env: YARN_GPG=no
+      node_js: latest
+    - os: windows
+      env: YARN_GPG=no
+      node_js: lts
 
 stages:
   - test
