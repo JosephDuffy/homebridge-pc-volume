@@ -1,15 +1,20 @@
 {
-  "dependencies": {
-    "loudness": "^0.3.0"
-  },
   "name": "homebridge-pc-volume",
   "version": "1.1.0",
   "description": "Control your system's volume using Apple's HomeKit",
+  "author": "Joseph Duffy",
+  "license": "MIT",
   "main": "index.js",
-  "devDependencies": {},
   "preferGlobal": true,
   "scripts": {
+    "watch": "nodemon --watch index.js --exec homebridge",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "loudness": "^0.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.8"
   },
   "engines": {
     "node": ">=4.4.1",
@@ -24,7 +29,5 @@
     "volume",
     "mac",
     "linux"
-  ],
-  "author": "Joseph Duffy",
-  "license": "MIT"
+  ]
 }

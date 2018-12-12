@@ -86,3 +86,15 @@ If no services key is provided a lightbulb will be exposed.
     }
   ]
 ```
+
+## Development
+
+To develop homebridge-pc-volume locally:
+
+1. Clone the project
+2. Run `yarn install`
+3. Run `npm install -g ./`
+
+This will allow homebridge to find your local version of homebridge-pc-volume.
+
+After making changes you will need to restart homebridge. You may also stop any homebridge instance you already have running and run `yarn run watch`, which will start homebridge, and automatically restart it when a source file is updated.
