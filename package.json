@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "loudness": "^0.2.2"
+    "loudness": "^0.3.0"
   },
   "name": "homebridge-pc-volume",
   "version": "1.1.0",

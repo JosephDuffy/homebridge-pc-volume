@@ -65,25 +65,27 @@ ComputerSpeakers.prototype.getServices = function getServices() {
 // Speaker
 
 ComputerSpeakers.prototype.setMuted = function setMuted(muted, callback) {
-    loudness.setMuted(muted, callback);
+    loudness.setMuted(muted).then(callback);
 }
 
 ComputerSpeakers.prototype.getMuted = function getMuted(callback) {
-    loudness.getMuted((error, muted) => {
-         if (error !== null) {
-             callback(error, null);
-         } else {
-             callback(null, muted);
-         }
+    loudness.getMuted().then((muted) => {
+        callback(null, muted);
+    }).catch((error) => {
+        callback(error, null);
     });
 }
 
 ComputerSpeakers.prototype.setVolume = function setVolume(volume, callback) {
-    loudness.setVolume(volume, callback);
+    loudness.setVolume(volume).then(callback);
 }
 
 ComputerSpeakers.prototype.getVolume = function getVolume(callback) {
-    loudness.getVolume(callback);
+    loudness.getVolume().then((volume) => {
+        callback(null, volume);
+    }).catch((error) =>  {
+        callback(error, null);
+    });
 }
 
 // Shared
