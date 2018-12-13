@@ -16,12 +16,20 @@ class ComputerSpeakers {
     private speakerService: any;
     private fanService: any;
     private lightService: any;
+    private log: {
+        debug: (...message: string[]) => void
+        info: (...message: string[]) => void
+        warn: (...message: string[]) => void
+        error: (...message: string[]) => void
+    }
 
     constructor(log, config, api) {
+        this.log = log;
         const name = config["name"];
         const services = config["services"] || ["lightbulb"];
 
         if (services.indexOf("speaker") > -1) {
+            log.debug("Creating speaker service");
             this.speakerService = new Service.Speaker(name);
 
             this.speakerService
@@ -36,6 +44,7 @@ class ComputerSpeakers {
         }
 
         if (services.indexOf("fan") > -1) {
+            log.debug("Creating fan service");
             this.fanService = new Service.Fan(name);
 
             this.fanService
@@ -50,6 +59,7 @@ class ComputerSpeakers {
         }
 
         if (services.indexOf("lightbulb") > -1) {
+            log.debug("Creating lightbulb service");
             this.lightService = new Service.Lightbulb(name);
 
             this.lightService
@@ -71,25 +81,43 @@ class ComputerSpeakers {
     // Speaker
 
     private setMuted(muted, callback) {
-        loudness.setMuted(muted).then(callback);
+        this.log.debug(`Setting muted status to ${muted}%`);
+        loudness.setMuted(muted).then(() => {
+            this.log.debug(`Set muted status to ${muted}%`);
+            callback();
+        }).catch((error) => {
+            this.log.error(`Failed to set muted status to ${muted}%: ${error}`);
+        });
     }
 
     private getMuted(callback) {
+        this.log.debug(`Getting muted status`);
         loudness.getMuted().then((muted) => {
+            this.log.debug(`Got muted status: ${muted}%`);
             callback(null, muted);
         }).catch((error) => {
+            this.log.debug(`Failed to get muted status: ${error}`);
             callback(error, null);
         });
     }
 
     private setVolume(volume, callback) {
-        loudness.setVolume(volume).then(callback);
+        this.log.debug(`Setting volume to ${volume}%`);
+        loudness.setVolume(volume).then(() => {
+            this.log.debug(`Set volume to ${volume}%`);
+            callback
+        }).catch((error) => {
+            this.log.error(`Failed to set volume to ${volume}%: ${error}`);
+        });
     }
 
     private getVolume(callback) {
+        this.log.debug(`Getting volume`);
         loudness.getVolume().then((volume) => {
+            this.log.debug(`Got volume: ${volume}%`);
             callback(null, volume);
-        }).catch((error) =>  {
+        }).catch((error) => {
+            this.log.debug(`Failed to get volume: ${error}`);
             callback(error, null);
         });
     }
