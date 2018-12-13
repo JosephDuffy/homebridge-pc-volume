@@ -13,9 +13,9 @@ module.exports = function(homebridge) {
 
 class ComputerSpeakers {
 
-    private speakerService: any;
-    private fanService: any;
-    private lightService: any;
+    private speakerService: any | undefined;
+    private fanService: any | undefined;
+    private lightService: any | undefined;
     private log: {
         debug: (...message: string[]) => void
         info: (...message: string[]) => void
@@ -75,7 +75,7 @@ class ComputerSpeakers {
     }
 
     public getServices() {
-        return [this.speakerService, this.lightService, this.fanService].filter((service) => !!service);
+        return [this.speakerService, this.lightService, this.fanService].filter((service) => service !== undefined);
     }
 
     // Speaker
