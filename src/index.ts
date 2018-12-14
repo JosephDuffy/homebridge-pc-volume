@@ -1,6 +1,7 @@
 "use strict";
 
 import loudness = require('loudness');
+import Config from './config';
 let Service, Characteristic;
 
 module.exports = function(homebridge) {
@@ -23,13 +24,13 @@ class ComputerSpeakers {
         error: (...message: string[]) => void
     }
 
-    constructor(log, config, api) {
+    constructor(log, config: Config, api) {
         this.log = log;
         const name = config["name"];
-        const services = config["services"] || ["lightbulb"];
+        const services = config["services"] || [Config.Service.Lightbulb];
         const logarithmic = config["logarithmic"] || false;
 
-        if (services.indexOf("speaker") > -1) {
+        if (services.indexOf(Config.Service.Speaker) > -1) {
             log.debug("Creating speaker service");
             this.speakerService = new Service.Speaker(name);
 
@@ -44,7 +45,7 @@ class ComputerSpeakers {
                 .on('get', this.getVolume.bind(this, logarithmic));
         }
 
-        if (services.indexOf("fan") > -1) {
+        if (services.indexOf(Config.Service.Fan) > -1) {
             log.debug("Creating fan service");
             this.fanService = new Service.Fan(name);
 
@@ -59,7 +60,7 @@ class ComputerSpeakers {
                 .on('get', this.getVolume.bind(this, logarithmic));
         }
 
-        if (services.indexOf("lightbulb") > -1) {
+        if (services.indexOf(Config.Service.Lightbulb) > -1) {
             log.debug("Creating lightbulb service");
             this.lightService = new Service.Lightbulb(name);
 
