@@ -34,6 +34,8 @@ Note that `accessory` _must_ be "ComputerSpeakers", while the `name` can be any 
 
 ## Configuration
 
+When the property `logarithmic` is set to `true`, then the volume will be scaled by means of some logarithmic function that is [visualized here](https://www.wolframalpha.com/input/?i=100*(log10(1%2Bx)%2F2)+from+x%3D0+to+100).
+
 The `services` property can be used to decide how your computer's speaker will be exposed: as a lightbulb, fan, speaker, or a combination of all 3.
 
 Please note that while iOS 11 supports "HomeKit speakers" this appears to actually be via AirPlay 2, so the "speaker" option is unlikely to work!
