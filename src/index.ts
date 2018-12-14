@@ -27,6 +27,7 @@ class ComputerSpeakers {
         this.log = log;
         const name = config["name"];
         const services = config["services"] || ["lightbulb"];
+        const logarithmic = config["logarithmic"] || false;
 
         if (services.indexOf("speaker") > -1) {
             log.debug("Creating speaker service");
@@ -39,8 +40,8 @@ class ComputerSpeakers {
 
             this.speakerService
                 .addCharacteristic(new Characteristic.Volume())
-                .on('set', this.setVolume.bind(this))
-                .on('get', this.getVolume.bind(this));
+                .on('set', this.setVolume.bind(this, logarithmic))
+                .on('get', this.getVolume.bind(this, logarithmic));
         }
 
         if (services.indexOf("fan") > -1) {
@@ -54,8 +55,8 @@ class ComputerSpeakers {
 
             this.fanService
                 .addCharacteristic(new Characteristic.RotationSpeed())
-                .on('set', this.setRotationSpeed.bind(this))
-                .on('get', this.getRotationSpeed.bind(this));
+                .on('set', this.setVolume.bind(this, logarithmic))
+                .on('get', this.getVolume.bind(this, logarithmic));
         }
 
         if (services.indexOf("lightbulb") > -1) {
@@ -69,8 +70,8 @@ class ComputerSpeakers {
 
             this.lightService
                 .addCharacteristic(new Characteristic.Brightness())
-                .on('set', this.setBrightness.bind(this))
-                .on('get', this.getBrightness.bind(this));
+                .on('set', this.setVolume.bind(this, logarithmic))
+                .on('get', this.getVolume.bind(this, logarithmic));
         }
     }
 
@@ -101,28 +102,34 @@ class ComputerSpeakers {
         });
     }
 
-    private setVolume(volume, callback) {
-        this.log.debug(`Setting volume to ${volume}%`);
+    private setVolume(logarithmic: boolean, homekitVolume, callback) {
+        const volume = logarithmic ? Math.round(Math.log10(1 + homekitVolume) * 50) : homekitVolume;
+        this.log.debug(`Being requested to set volume to ${homekitVolume}%`);
+        if (logarithmic) {
+            this.log.debug(`Converted requested volume to ${volume}%`);
+        }
         loudness.setVolume(volume).then(() => {
             this.log.debug(`Set volume to ${volume}%`);
-            callback
+            callback();
         }).catch((error) => {
             this.log.error(`Failed to set volume to ${volume}%: ${error}`);
         });
     }
 
-    private getVolume(callback) {
+    private getVolume(logarithmic: boolean, callback) {
         this.log.debug(`Getting volume`);
-        loudness.getVolume().then((volume) => {
-            this.log.debug(`Got volume: ${volume}%`);
+        loudness.getVolume().then((homekitVolume) => {
+            const volume = logarithmic ? Math.round(Math.pow(10, homekitVolume / 50) - 1) : homekitVolume;
+            this.log.debug(`Got volume: ${homekitVolume}%`);
+            if (logarithmic) {
+                this.log.debug(`Converted volume to: ${volume}%`);
+            }
             callback(null, volume);
         }).catch((error) => {
             this.log.debug(`Failed to get volume: ${error}`);
             callback(error, null);
         });
     }
-
-    // Shared
 
     private setPowerState(powerState, callback) {
         const muted = !powerState;
@@ -137,25 +144,5 @@ class ComputerSpeakers {
                 callback(null, !muted);
             }
         });
-    }
-
-    // Fan
-
-    private setRotationSpeed(volume, callback) {
-        this.setVolume(volume, callback);
-    }
-
-    private getRotationSpeed(callback) {
-        this.getVolume(callback);
-    }
-
-    // Lightbulb
-
-    private setBrightness(volume, callback) {
-        this.setVolume(volume, callback);
-    }
-
-    private getBrightness(callback) {
-        this.getVolume(callback);
     }
 }
