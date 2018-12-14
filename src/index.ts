@@ -2,21 +2,27 @@
 
 import loudness = require('loudness');
 import Config from './config';
-let Service, Characteristic;
+// hap-nodejs is used for the types, but the instances
+// provided by homebridge are used to ensure compatibility
+import 'hap-nodejs';
+let Service: HAPNodeJS.Service;
+let Characteristic: HAPNodeJS.Characteristic;
+let UUIDGen: HAPNodeJS.uuid;
 
 module.exports = function(homebridge) {
     // Service and Characteristic are from hap-nodejs
     Service = homebridge.hap.Service;
     Characteristic = homebridge.hap.Characteristic;
+    UUIDGen = homebridge.hap.uuid;
 
     homebridge.registerAccessory("homebridge-pc-volume", "ComputerSpeakers", ComputerSpeakers);
 }
 
 class ComputerSpeakers {
 
-    private speakerService: any | undefined;
-    private fanService: any | undefined;
-    private lightService: any | undefined;
+    private speakerService: HAPNodeJS.Service | undefined;
+    private fanService: HAPNodeJS.Service | undefined;
+    private lightService: HAPNodeJS.Service | undefined;
     private log: {
         debug: (...message: string[]) => void
         info: (...message: string[]) => void
@@ -30,9 +36,15 @@ class ComputerSpeakers {
         const services = config["services"] || [Config.Service.Lightbulb];
         const logarithmic = config["logarithmic"] || false;
 
+        // The same UUID is used for each of the services, but a different
+        // subsystem is used. This might not be needed because they are each
+        // different types of services, but it shouldn't do any harm
+        const uuid = UUIDGen.generate(name);
+
         if (services.indexOf(Config.Service.Speaker) > -1) {
             log.debug("Creating speaker service");
-            this.speakerService = new Service.Speaker(name);
+
+            this.speakerService = new Service.Speaker(name, uuid, Config.Service.Speaker);
 
             this.speakerService
                 .getCharacteristic(Characteristic.Mute)
@@ -40,14 +52,14 @@ class ComputerSpeakers {
                 .on('get', this.getMuted.bind(this));
 
             this.speakerService
-                .addCharacteristic(new Characteristic.Volume())
+                .addCharacteristic(Characteristic.Volume)
                 .on('set', this.setVolume.bind(this, logarithmic))
                 .on('get', this.getVolume.bind(this, logarithmic));
         }
 
         if (services.indexOf(Config.Service.Fan) > -1) {
             log.debug("Creating fan service");
-            this.fanService = new Service.Fan(name);
+            this.fanService = new Service.Fan(name, uuid, Config.Service.Fan);
 
             this.fanService
                 .getCharacteristic(Characteristic.On)
@@ -55,14 +67,14 @@ class ComputerSpeakers {
                 .on('get', this.getPowerState.bind(this));
 
             this.fanService
-                .addCharacteristic(new Characteristic.RotationSpeed())
+                .addCharacteristic(Characteristic.RotationSpeed)
                 .on('set', this.setVolume.bind(this, logarithmic))
                 .on('get', this.getVolume.bind(this, logarithmic));
         }
 
         if (services.indexOf(Config.Service.Lightbulb) > -1) {
             log.debug("Creating lightbulb service");
-            this.lightService = new Service.Lightbulb(name);
+            this.lightService = new Service.Lightbulb(name, uuid, Config.Service.Lightbulb);
 
             this.lightService
                 .getCharacteristic(Characteristic.On)
@@ -70,7 +82,7 @@ class ComputerSpeakers {
                 .on('get', this.getPowerState.bind(this));
 
             this.lightService
-                .addCharacteristic(new Characteristic.Brightness())
+                .addCharacteristic(Characteristic.Brightness)
                 .on('set', this.setVolume.bind(this, logarithmic))
                 .on('get', this.getVolume.bind(this, logarithmic));
         }

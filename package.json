@@ -17,6 +17,7 @@
     "loudness": "^0.3.0"
   },
   "devDependencies": {
+    "hap-nodejs": "^0.4.47",
     "nodemon": "^1.18.8",
     "typescript": "^3.2.2"
   },
