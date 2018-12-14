@@ -3,7 +3,7 @@ import 'hap-nodejs';
 export interface Homebridge {
     hap: HAPNodeJS.HAPNodeJS;
     log: Homebridge.Log;
-    registerAccessory(pluginName: string, accessoryName: string, constructor: Function)
+    registerAccessory(pluginName: string, accessoryName: string, constructor: Function): void
 }
 
 export namespace Homebridge {
