@@ -11,7 +11,6 @@ let Characteristic: HAPNodeJS.Characteristic;
 let UUIDGen: HAPNodeJS.uuid;
 
 module.exports = function(homebridge: Homebridge) {
-    // Service and Characteristic are from hap-nodejs
     Service = homebridge.hap.Service;
     Characteristic = homebridge.hap.Characteristic;
     UUIDGen = homebridge.hap.uuid;
