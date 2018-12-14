@@ -2,6 +2,7 @@
 
 import loudness = require('loudness');
 import Config from './config';
+import Homebridge from './homebridge';
 // hap-nodejs is used for the types, but the instances
 // provided by homebridge are used to ensure compatibility
 import 'hap-nodejs';
@@ -9,7 +10,7 @@ let Service: HAPNodeJS.Service;
 let Characteristic: HAPNodeJS.Characteristic;
 let UUIDGen: HAPNodeJS.uuid;
 
-module.exports = function(homebridge) {
+module.exports = function(homebridge: Homebridge) {
     // Service and Characteristic are from hap-nodejs
     Service = homebridge.hap.Service;
     Characteristic = homebridge.hap.Characteristic;
@@ -23,14 +24,9 @@ class ComputerSpeakers {
     private speakerService: HAPNodeJS.Service | undefined;
     private fanService: HAPNodeJS.Service | undefined;
     private lightService: HAPNodeJS.Service | undefined;
-    private log: {
-        debug: (...message: string[]) => void
-        info: (...message: string[]) => void
-        warn: (...message: string[]) => void
-        error: (...message: string[]) => void
-    }
+    private log: Homebridge.Log;
 
-    constructor(log, config: Config, api) {
+    constructor(log: Homebridge.Log, config: Config) {
         this.log = log;
         const name = config["name"];
         const services = config["services"] || [Config.Service.Lightbulb];
