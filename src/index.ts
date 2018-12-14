@@ -90,7 +90,7 @@ class ComputerSpeakers {
 
     // Speaker
 
-    private setMuted(muted, callback) {
+    private setMuted(muted: boolean, callback: () => void) {
         this.log.debug(`Setting muted status to ${muted}%`);
         loudness.setMuted(muted).then(() => {
             this.log.debug(`Set muted status to ${muted}%`);
@@ -100,7 +100,7 @@ class ComputerSpeakers {
         });
     }
 
-    private getMuted(callback) {
+    private getMuted(callback: (error: Error | null, muted: boolean | null) => void) {
         this.log.debug(`Getting muted status`);
         loudness.getMuted().then((muted) => {
             this.log.debug(`Got muted status: ${muted}%`);
@@ -111,7 +111,7 @@ class ComputerSpeakers {
         });
     }
 
-    private setVolume(logarithmic: boolean, homekitVolume, callback) {
+    private setVolume(logarithmic: boolean, homekitVolume: number, callback: () => void) {
         const volume = logarithmic ? Math.round(Math.log10(1 + homekitVolume) * 50) : homekitVolume;
         this.log.debug(`Being requested to set volume to ${homekitVolume}%`);
         if (logarithmic) {
@@ -125,7 +125,7 @@ class ComputerSpeakers {
         });
     }
 
-    private getVolume(logarithmic: boolean, callback) {
+    private getVolume(logarithmic: boolean, callback: (error: Error | null, muted: number | null) => void) {
         this.log.debug(`Getting volume`);
         loudness.getVolume().then((homekitVolume) => {
             const volume = logarithmic ? Math.round(Math.pow(10, homekitVolume / 50) - 1) : homekitVolume;
@@ -140,12 +140,12 @@ class ComputerSpeakers {
         });
     }
 
-    private setPowerState(powerState, callback) {
+    private setPowerState(powerState: boolean, callback: () => void) {
         const muted = !powerState;
         this.setMuted(muted, callback);
     }
 
-    private getPowerState(callback) {
+    private getPowerState(callback: (error: Error | null, muted: boolean | null) => void) {
         this.getMuted((error, muted) => {
             if (error !== null) {
                 callback(error, null);
