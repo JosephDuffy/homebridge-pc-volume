@@ -1,6 +1,5 @@
 language: node_js
 
-
 cache: yarn
 
 before_install: yarn install --ignore-engines
