@@ -9,7 +9,7 @@
   "scripts": {
     "prepublishOnly": "npm run build",
     "build": "tsc",
-    "build:watch": "nodemon --watch src/index.ts --watch tsconfig.json --watch package.json --exec \"tsc && homebridge --debug\"",
+    "build:watch": "nodemon -e ts,json --watch src --watch tsconfig.json --watch package.json --exec \"tsc && homebridge --debug\"",
     "test": "tsc --noEmit"
   },
   "dependencies": {
@@ -17,6 +17,7 @@
     "loudness": "^0.3.0"
   },
   "devDependencies": {
+    "hap-nodejs": "^0.4.47",
     "nodemon": "^1.18.8",
     "typescript": "^3.2.2"
   },
