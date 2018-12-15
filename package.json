@@ -14,7 +14,8 @@
     "lint": "tslint --fix --project ./tsconfig.json",
     "lint:check": "tslint --project ./tsconfig.json",
     "format": "prettier --write 'src/**/*.ts'",
-    "format:check": "prettier-check 'src/**/*.ts'"
+    "format:check": "prettier-check 'src/**/*.ts'",
+    "precommit": "lint-staged"
   },
   "dependencies": {
     "@types/node": "^10.12.12",
@@ -22,6 +23,8 @@
   },
   "devDependencies": {
     "hap-nodejs": "^0.4.47",
+    "husky": "^1.2.1",
+    "lint-staged": "^8.1.0",
     "nodemon": "^1.18.8",
     "prettier": "^1.15.3",
     "prettier-check": "^2.0.0",
@@ -42,5 +45,11 @@
     "volume",
     "mac",
     "linux"
-  ]
+  ],
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write",
+      "git add"
+    ]
+  }
 }
