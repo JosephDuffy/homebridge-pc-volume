@@ -18,10 +18,10 @@
     "precommit": "lint-staged"
   },
   "dependencies": {
-    "@types/node": "^10.12.12",
     "loudness": "^0.3.0"
   },
   "devDependencies": {
+    "@types/node": "^10.12.15",
     "hap-nodejs": "^0.4.47",
     "husky": "^1.2.1",
     "lint-staged": "^8.1.0",
