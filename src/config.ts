@@ -1,11 +1,11 @@
 export interface Config {
   name: string
   services?: Service[]
-  logarithmic: boolean
+  logarithmic?: boolean
 }
 
 export enum Service {
-  Lightbulb = "lightbuld",
+  Lightbulb = "lightbulb",
   Speaker = "speaker",
   Fan = "fan",
 }

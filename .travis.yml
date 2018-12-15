@@ -2,7 +2,11 @@ language: node_js
 
 cache: yarn
 
-before_install: yarn install --ignore-engines
+install: yarn install --ignore-engines
+
+script: yarn test:coverage && yarn lint:check && yarn format:check
+
+after_success: yarn run coveralls < ./coverage/lcov.info
 
 matrix:
   include:
@@ -17,12 +21,16 @@ matrix:
     - os: windows
       # Fix for build timeouts on Windows: https://travis-ci.community/t/timeout-after-build-finished-and-succeeded/1336/2
       env: YARN_GPG=no
-      # ignore-scripts flag stops the hap-nodejs scripts running, which fail on Windows on Travis
-      before_install: yarn install --ignore-engines --ignore-scripts
+      before_install:
+        # OpenSSL is required for hap-nodejs
+        - curl "https://slproweb.com/download/Win64OpenSSL-1_0_2q.exe" --output "/c/Win64OpenSSL-1_0_2q.exe"
+        - powershell.exe -Command "new-item -type directory -path C:\OpenSSL-Win64\lib -Force; Start-Process \"C:/Win64OpenSSL-1_0_2q.exe\" -ArgumentList \"/silent /verysilent /sp- /suppressmsgboxes\" -Wait"
       node_js: latest
     - os: windows
       env: YARN_GPG=no
-      before_install: yarn install --ignore-engines --ignore-scripts
+      before_install:
+        - curl "https://slproweb.com/download/Win64OpenSSL-1_0_2q.exe" --output "/c/Win64OpenSSL-1_0_2q.exe"
+        - powershell.exe -Command "Start-Process \"C:/Win64OpenSSL-1_0_2q.exe\" -ArgumentList \"/silent /verysilent /sp- /suppressmsgboxes\" -Wait"
       node_js: lts
 
 stages:

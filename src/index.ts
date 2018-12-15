@@ -34,19 +34,10 @@ class ComputerSpeakers implements Accessory {
     const services = config.services || [ConfigService.Lightbulb]
     const logarithmic = config.logarithmic || false
 
-    // The same UUID is used for each of the services, but a different
-    // subsystem is used. This might not be needed because they are each
-    // different types of services, but it shouldn't do any harm
-    const uuid = UUIDGen.generate(name)
-
     if (services.indexOf(ConfigService.Speaker) > -1) {
       log.debug("Creating speaker service")
 
-      this.speakerService = new Service.Speaker(
-        name,
-        uuid,
-        ConfigService.Speaker
-      )
+      this.speakerService = new Service.Speaker(name, ConfigService.Speaker)
 
       this.speakerService
         .getCharacteristic(Characteristic.Mute)
@@ -62,7 +53,7 @@ class ComputerSpeakers implements Accessory {
     if (services.indexOf(ConfigService.Fan) > -1) {
       log.debug("Creating fan service")
 
-      this.fanService = new Service.Fan(name, uuid, ConfigService.Fan)
+      this.fanService = new Service.Fan(name, ConfigService.Fan)
 
       this.fanService
         .getCharacteristic(Characteristic.On)
@@ -78,11 +69,7 @@ class ComputerSpeakers implements Accessory {
     if (services.indexOf(ConfigService.Lightbulb) > -1) {
       log.debug("Creating lightbulb service")
 
-      this.lightService = new Service.Lightbulb(
-        name,
-        uuid,
-        ConfigService.Lightbulb
-      )
+      this.lightService = new Service.Lightbulb(name, ConfigService.Lightbulb)
 
       this.lightService
         .getCharacteristic(Characteristic.On)
