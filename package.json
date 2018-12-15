@@ -13,8 +13,8 @@
     "test": "tsc --noEmit && npm run lint && npm run format",
     "lint": "tslint --fix --project ./tsconfig.json",
     "lint:check": "tslint --project ./tsconfig.json",
-    "format": "prettier --write 'src/**/*.ts'",
-    "format:check": "prettier-check 'src/**/*.ts'",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "format:check": "prettier-check \"src/**/*.ts\"",
     "precommit": "lint-staged"
   },
   "dependencies": {
