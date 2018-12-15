@@ -10,15 +10,26 @@
     "prepublishOnly": "npm run build",
     "build": "tsc",
     "build:watch": "nodemon -e ts,json --watch src --watch tsconfig.json --watch package.json --exec \"tsc && homebridge --debug\"",
-    "test": "tsc --noEmit"
+    "test": "tsc --noEmit && npm run lint && npm run format",
+    "lint": "tslint --fix --project ./tsconfig.json",
+    "lint:check": "tslint --project ./tsconfig.json",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "format:check": "prettier-check \"src/**/*.ts\"",
+    "precommit": "lint-staged"
   },
   "dependencies": {
-    "@types/node": "^10.12.12",
     "loudness": "^0.3.0"
   },
   "devDependencies": {
+    "@types/node": "^10.12.15",
     "hap-nodejs": "^0.4.47",
+    "husky": "^1.2.1",
+    "lint-staged": "^8.1.0",
     "nodemon": "^1.18.8",
+    "prettier": "^1.15.3",
+    "prettier-check": "^2.0.0",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.17.0",
     "typescript": "^3.2.2"
   },
   "engines": {
@@ -34,5 +45,11 @@
     "volume",
     "mac",
     "linux"
-  ]
+  ],
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write",
+      "git add"
+    ]
+  }
 }
