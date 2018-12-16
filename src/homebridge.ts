@@ -18,7 +18,7 @@ export interface Logger {
 }
 
 export interface Accessory {
-  getServices(): void
+  getServices(): HAPNodeJS.Service[]
 }
 
 export interface AccessoryConstructor {
