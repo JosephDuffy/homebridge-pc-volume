@@ -72,15 +72,17 @@ describe("public interface", () => {
       })
 
       it("should register a single service", () => {
-        expect(services.length === 1)
+        expect(services.length).toBe(1)
       })
 
-      it("should register a lighbulb server", () => {
-        expect(services[0].UUID === new Service.Lightbulb("test", "test").UUID)
+      it("should register a lighbulb service", () => {
+        expect(services[0].UUID).toStrictEqual(
+          new Service.Lightbulb("test", "test").UUID
+        )
       })
 
       it("should use the name provided in the config", () => {
-        expect(services[0].name === config.name)
+        expect(services[0].displayName).toStrictEqual(config.name)
       })
     })
   })
