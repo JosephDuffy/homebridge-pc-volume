@@ -1,5 +1,3 @@
-/* tslint:disable:no-empty */
-
 import "hap-nodejs"
 import * as hap from "hap-nodejs"
 import * as sinon from "sinon"
@@ -13,6 +11,7 @@ describe("public interface", () => {
     homebridge = {
       hap,
       log: {
+        /* tslint:disable:no-empty */
         debug(...message: string[]): void {},
         info(...message: string[]): void {},
         warn(...message: string[]): void {},
