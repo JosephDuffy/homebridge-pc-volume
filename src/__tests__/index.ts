@@ -57,7 +57,6 @@ describe("public interface", () => {
     })
 
     describe("with a default config", () => {
-      let Service: HAPNodeJS.Service
       let services: HAPNodeJS.Service[]
 
       beforeAll(() => {
@@ -67,7 +66,6 @@ describe("public interface", () => {
       })
 
       beforeEach(() => {
-        Service = hap.Service
         services = accessory.getServices()
       })
 
@@ -77,7 +75,7 @@ describe("public interface", () => {
 
       it("should register a lighbulb service", () => {
         expect(services[0].UUID).toStrictEqual(
-          new Service.Lightbulb("test", "test").UUID
+          new hap.Service.Lightbulb("test", "test").UUID
         )
       })
 
