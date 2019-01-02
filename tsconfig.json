@@ -4,6 +4,7 @@
       "declaration": true,
       "sourceMap": true,
       "noImplicitAny": true,
+      "alwaysStrict": true,
       "module": "commonjs",
       "target": "es6"
     },

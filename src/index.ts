@@ -1,5 +1,3 @@
-"use strict"
-
 import ComputerSpeakersAccessory from "./ComputerSpeakersAccessory"
 import Homebridge from "./homebridge"
 
