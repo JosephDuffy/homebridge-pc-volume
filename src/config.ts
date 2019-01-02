@@ -10,4 +10,9 @@ export enum Service {
   Fan = "fan",
 }
 
+export enum VolumeAlgorithm {
+  Linear = "linear",
+  Logarithmic = "logarithmic",
+}
+
 export default Config

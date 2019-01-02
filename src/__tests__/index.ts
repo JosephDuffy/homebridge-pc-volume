@@ -1,5 +1,6 @@
 import "hap-nodejs"
 import * as hap from "hap-nodejs"
+import loudness = require("loudness")
 import * as sinon from "sinon"
 import { Config, Service } from "./../config"
 import { Accessory, AccessoryConstructor, Homebridge } from "./../homebridge"
@@ -29,9 +30,7 @@ describe("public interface", () => {
     const mock = sinon.mock(homebridge)
     mock.expects("registerAccessory").once()
 
-    const defaultExport = (await import("../index")) as (
-      homebridge: Homebridge
-    ) => void
+    const defaultExport = (await import("../index")).default
     defaultExport(homebridge)
 
     mock.verify()
@@ -42,9 +41,7 @@ describe("public interface", () => {
     let config: Config
 
     beforeEach(async () => {
-      const defaultExport = (await import("../index")) as (
-        homebridge: Homebridge
-      ) => void
+      const defaultExport = (await import("../index")).default
       homebridge.registerAccessory = (
         pluginName: string,
         accessoryName: string,
@@ -197,9 +194,40 @@ describe("public interface", () => {
       it("should use the name provided in the config", () => {
         expect(services[0].displayName).toStrictEqual(config.name)
       })
+
+      describe("when the system is muted", () => {
+        let stub: sinon.SinonStub<[], Promise<boolean>>
+
+        beforeEach(() => {
+          stub = sinon.stub(loudness, "getMuted").resolves(true)
+        })
+
+        afterEach(() => {
+          stub.restore()
+        })
+
+        it("should request the muted status for node-loudness", done => {
+          services[0]
+            .getCharacteristic(hap.Characteristic.Mute)
+            .emit("get", () => {
+              expect(stub.calledOnce).toStrictEqual(true)
+              done()
+            })
+        })
+
+        it("should return `true` when the mute characteristic is requested", done => {
+          services[0]
+            .getCharacteristic(hap.Characteristic.Mute)
+            .emit("get", (error?: Error, muted?: boolean) => {
+              expect(muted).toStrictEqual(true)
+              expect(error).toBeNull()
+              done()
+            })
+        })
+      })
     })
 
-    describe("with a config defining a lightbulb and a fanservice", () => {
+    describe("with a config defining a lightbulb and a fan service", () => {
       let services: HAPNodeJS.Service[]
 
       beforeAll(() => {
@@ -297,6 +325,55 @@ describe("public interface", () => {
 
       it("should register 2 services", () => {
         expect(services.length).toBe(2)
+      })
+
+      it("should register a fan service", () => {
+        expect(services).toContainEqual(
+          expect.objectContaining({
+            UUID: new hap.Service.Fan("test", "test").UUID,
+          })
+        )
+      })
+
+      it("should register a speaker service", () => {
+        expect(services).toContainEqual(
+          expect.objectContaining({
+            UUID: new hap.Service.Speaker("test", "test").UUID,
+          })
+        )
+      })
+
+      it("should register all services with the name provided in the config", () => {
+        services.forEach(service =>
+          expect(service.displayName).toStrictEqual(config.name)
+        )
+      })
+    })
+
+    describe("with a config defining a lightbulb, a fan, and a speaker service", () => {
+      let services: HAPNodeJS.Service[]
+
+      beforeAll(() => {
+        config = {
+          name: "Test Computer Speakers",
+          services: [Service.Lightbulb, Service.Fan, Service.Speaker],
+        }
+      })
+
+      beforeEach(() => {
+        services = accessory.getServices()
+      })
+
+      it("should register 3 services", () => {
+        expect(services.length).toBe(3)
+      })
+
+      it("should register a lightbulb service", () => {
+        expect(services).toContainEqual(
+          expect.objectContaining({
+            UUID: new hap.Service.Lightbulb("test", "test").UUID,
+          })
+        )
       })
 
       it("should register a fan service", () => {
