@@ -3,16 +3,14 @@ import _loudness = require("loudness")
 import { VolumeAlgorithm } from "./config"
 import { Logger } from "./homebridge"
 
+type Loudness = typeof _loudness
+
 export default class ServiceWrapper {
   public readonly service: HAPNodeJS.Service
-  private readonly loudness: typeof _loudness
+  private readonly loudness: Loudness
   private readonly log: Logger
 
-  constructor(
-    service: HAPNodeJS.Service,
-    loudness: typeof _loudness,
-    log: Logger
-  ) {
+  constructor(service: HAPNodeJS.Service, loudness: Loudness, log: Logger) {
     this.service = service
     this.loudness = loudness
     this.log = log
