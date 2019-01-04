@@ -62,15 +62,5 @@
       "yarn lint",
       "git add"
     ]
-  },
-  "jest": {
-    "preset": "ts-jest",
-    "roots": [
-      "src/"
-    ],
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/.*/helpers/.*"
-    ]
   }
 }
