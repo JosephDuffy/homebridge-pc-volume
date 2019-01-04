@@ -6,6 +6,7 @@ import ComputerSpeakersAccessory from "../ComputerSpeakersAccessory"
 import ServiceWrapper from "../ServiceWrapper"
 import { Config, Service, VolumeAlgorithm } from "./../config"
 import { Accessory, AccessoryConstructor, Homebridge } from "./../homebridge"
+import LogStub from "./helpers/LogStub"
 
 describe("public interface", () => {
   let homebridge: Homebridge
@@ -13,13 +14,8 @@ describe("public interface", () => {
   beforeEach(() => {
     homebridge = {
       hap,
-      log: {
-        /* tslint:disable:no-empty */
-        debug(...message: string[]): void {},
-        info(...message: string[]): void {},
-        warn(...message: string[]): void {},
-        error(...message: string[]): void {},
-      },
+      log: new LogStub(),
+      /* tslint:disable:no-empty */
       registerAccessory(
         pluginName: string,
         accessoryName: string,
