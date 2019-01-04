@@ -2,7 +2,9 @@ import "hap-nodejs"
 import * as hap from "hap-nodejs"
 import loudness = require("loudness")
 import * as sinon from "sinon"
-import { Config, Service } from "./../config"
+import ComputerSpeakersAccessory from "../ComputerSpeakersAccessory"
+import ServiceWrapper from "../ServiceWrapper"
+import { Config, Service, VolumeAlgorithm } from "./../config"
 import { Accessory, AccessoryConstructor, Homebridge } from "./../homebridge"
 
 describe("public interface", () => {
@@ -37,7 +39,7 @@ describe("public interface", () => {
   })
 
   describe("registered accessory constructor", () => {
-    let accessory: Accessory
+    let accessory: ComputerSpeakersAccessory
     let config: Config
 
     beforeEach(async () => {
@@ -73,6 +75,42 @@ describe("public interface", () => {
         expect(services[0].UUID).toStrictEqual(
           new hap.Service.Lightbulb("test", "test").UUID
         )
+      })
+
+      it("should use the name provided in the config", () => {
+        expect(services[0].displayName).toStrictEqual(config.name)
+      })
+    })
+
+    describe("with a config defining a lightbulb service and using the logarithmic option", () => {
+      let services: HAPNodeJS.Service[]
+      let spy: sinon.SinonSpy
+
+      beforeAll(() => {
+        config = {
+          logarithmic: true,
+          name: "Test Computer Speakers",
+          services: [Service.Lightbulb],
+        }
+        spy = sinon.spy(ServiceWrapper.prototype, "bindCharacteristicToVolume")
+      })
+
+      beforeEach(() => {
+        services = accessory.getServices()
+      })
+
+      it("should register a single service", () => {
+        expect(services.length).toBe(1)
+      })
+
+      it("should register a lighbulb service", () => {
+        expect(services[0].UUID).toStrictEqual(
+          new hap.Service.Lightbulb("test", "test").UUID
+        )
+      })
+
+      it("should call bindCharacteristicToVolume with the logarithmic algorithm", () => {
+        expect(spy.lastCall.lastArg).toStrictEqual(VolumeAlgorithm.Logarithmic)
       })
 
       it("should use the name provided in the config", () => {
