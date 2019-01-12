@@ -4,7 +4,10 @@ cache: yarn
 
 install: yarn install --ignore-engines
 
-script: yarn test:coverage && yarn lint:check && yarn format:check
+script:
+  - yarn test:coverage
+  - yarn lint:check
+  - yarn format:check
 
 after_success: yarn run coveralls < ./coverage/lcov.info
 
