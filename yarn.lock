@@ -74,10 +74,10 @@
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.3.13.tgz#c81484b6f4ca007bb09887ed15ecb3286d58f928"
   integrity sha512-ePl4l+7dLLmCucIwgQHAgjiepY++qcI6nb8eAwGNkB6OxmTe3Z9rQU3rSpomqu42PCCnlThZbOoxsf+qylJsLA==
 
-"@types/node@^10.12.15":
-  version "10.12.21"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.21.tgz#7e8a0c34cf29f4e17a36e9bd0ea72d45ba03908e"
-  integrity sha512-CBgLNk4o3XMnqMc0rhb6lc77IwShMEglz05deDcn2lQxyXEZivfwgYJu7SMha9V5XcrP6qZuevTHV/QrN2vjKQ==
+"@types/node@^11.9.3":
+  version "11.9.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.9.3.tgz#14adbb5ab8cd563f549fbae8dbe92e0b7d6e76cc"
+  integrity sha512-DMiqG51GwES/c4ScBY0u5bDlH44+oY8AeYHjY1SGCWidD7h08o1dfHue/TGK7REmif2KiJzaUskO+Q0eaeZ2fQ==
 
 "@types/sinon@^7.0.0":
   version "7.0.5"
