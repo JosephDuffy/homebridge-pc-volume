@@ -2,7 +2,7 @@ language: node_js
 
 cache: yarn
 
-install: yarn install --ignore-engines --verbose
+install: yarn install --ignore-engines
 
 script:
   - yarn test:coverage
