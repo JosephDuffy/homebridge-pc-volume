@@ -11,6 +11,9 @@ script:
 
 after_success: yarn run coveralls < ./coverage/lcov.info
 
+stages:
+  - test
+
 matrix:
   include:
     - os: linux
@@ -64,6 +67,3 @@ matrix:
         - curl "https://slproweb.com/download/Win64OpenSSL-1_1_1b.exe" --output "/c/Win64OpenSSL.exe"
         - powershell.exe -Command "Start-Process \"C:/Win64OpenSSL.exe\" -ArgumentList \"/silent /verysilent /sp- /suppressmsgboxes\" -Wait"
       node_js: lts
-
-stages:
-  - test
