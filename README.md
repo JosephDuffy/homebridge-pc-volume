@@ -1,6 +1,6 @@
 # homebridge-pc-volume
 
-![Build Status](https://travis-ci.com/JosephDuffy/homebridge-pc-volume.svg?branch=master)](https://travis-ci.com/JosephDuffy/homebridge-pc-volume)
+[![Build Status](https://travis-ci.com/JosephDuffy/homebridge-pc-volume.svg?branch=master)](https://travis-ci.com/JosephDuffy/homebridge-pc-volume)
 [![Coverage Status](https://coveralls.io/repos/github/JosephDuffy/homebridge-pc-volume/badge.svg?branch=master)](https://coveralls.io/github/JosephDuffy/homebridge-pc-volume?branch=master)
 [![npm version](https://img.shields.io/npm/v/homebridge-pc-volume.svg)](https://www.npmjs.com/package/homebridge-pc-volume)
 [![David dependencies](https://img.shields.io/david/josephduffy/homebridge-pc-volume.svg)]()
