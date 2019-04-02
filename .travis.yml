@@ -26,14 +26,14 @@ matrix:
       env: YARN_GPG=no
       before_install:
         # OpenSSL is required for hap-nodejs
-        - curl "https://slproweb.com/download/Win64OpenSSL-1_0_2q.exe" --output "/c/Win64OpenSSL-1_0_2q.exe"
-        - powershell.exe -Command "new-item -type directory -path C:\OpenSSL-Win64\lib -Force; Start-Process \"C:/Win64OpenSSL-1_0_2q.exe\" -ArgumentList \"/silent /verysilent /sp- /suppressmsgboxes\" -Wait"
+        - curl "https://slproweb.com/download/Win64OpenSSL-1_1_1b.exe" --output "/c/Win64OpenSSL.exe"
+        - powershell.exe -Command "Start-Process \"C:/Win64OpenSSL.exe\" -ArgumentList \"/silent /verysilent /sp- /suppressmsgboxes\" -Wait"
       node_js: latest
     - os: windows
       env: YARN_GPG=no
       before_install:
-        - curl "https://slproweb.com/download/Win64OpenSSL-1_0_2q.exe" --output "/c/Win64OpenSSL-1_0_2q.exe"
-        - powershell.exe -Command "Start-Process \"C:/Win64OpenSSL-1_0_2q.exe\" -ArgumentList \"/silent /verysilent /sp- /suppressmsgboxes\" -Wait"
+        - curl "https://slproweb.com/download/Win64OpenSSL-1_1_1b.exe" --output "/c/Win64OpenSSL.exe"
+        - powershell.exe -Command "Start-Process \"C:/Win64OpenSSL.exe\" -ArgumentList \"/silent /verysilent /sp- /suppressmsgboxes\" -Wait"
       node_js: lts
 
 stages:
