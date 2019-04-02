@@ -29,7 +29,7 @@
     "@types/node": "^10.12.15",
     "@types/sinon": "^7.0.0",
     "coveralls": "^3.0.2",
-    "hap-nodejs": "https://github.com/JosephDuffy/HAP-NodeJS.git",
+    "hap-nodejs": "https://github.com/KhaosT/HAP-NodeJS.git",
     "husky": "^1.2.1",
     "jest": "^23.6.0",
     "lint-staged": "^8.1.0",
