@@ -1,9 +1,8 @@
 # homebridge-pc-volume
 
-![Build Status](https://travis-ci.org/JosephDuffy/homebridge-pc-volume.svg?branch=master)](https://travis-ci.org/JosephDuffy/homebridge-pc-volume)
+[![Build Status](https://travis-ci.com/JosephDuffy/homebridge-pc-volume.svg?branch=master)](https://travis-ci.com/JosephDuffy/homebridge-pc-volume)
 [![Coverage Status](https://coveralls.io/repos/github/JosephDuffy/homebridge-pc-volume/badge.svg?branch=master)](https://coveralls.io/github/JosephDuffy/homebridge-pc-volume?branch=master)
 [![npm version](https://img.shields.io/npm/v/homebridge-pc-volume.svg)](https://www.npmjs.com/package/homebridge-pc-volume)
-[![David dependencies](https://img.shields.io/david/josephduffy/homebridge-pc-volume.svg)]()
 
 homebridge-pc-volume is a Homebridge plugin that adds a support for changing a computer's volume using HomeKit and Siri.
 
@@ -11,9 +10,7 @@ homebridge-pc-volume is a Homebridge plugin that adds a support for changing a c
 
 ## OS Support
 
-homebridge-pc-volume utilises [node-loudness](https://github.com/LinusU/node-loudness), which currently supports macOS and Linux (using ALSA).
-
-HomeKit is supported by iOS. Note that HomeKit does not support the "speaker" accessory type, so this will be shown as a lightbulb. If anyone knows how to get iOS to support a speaker, please create an issue or a PR.
+homebridge-pc-volume utilises [node-loudness](https://github.com/LinusU/node-loudness), which currently supports macOS, Linux (using ALSA), and Windows. Windows may need OpenSSL to be installed; it is required when being run on CI, which installs the latest 64-bit not-light 1.0.2 build avialable from [https://slproweb.com/products/Win32OpenSSL.html](https://slproweb.com/products/Win32OpenSSL.html). I have not personally tested this project on Linux or Windows.
 
 ## Installation
 
@@ -38,7 +35,7 @@ Note that `accessory` _must_ be "ComputerSpeakers", while the `name` can be any 
 
 ## Configuration
 
-When the property `logarithmic` is set to `true`, then the volume will be scaled by means of some logarithmic function that is [visualized here](https://www.wolframalpha.com/input/?i=100*(log10(1%2Bx)%2F2)+from+x%3D0+to+100).
+When the property `logarithmic` is set to `true` the volume will be [scaled logarithmically](https://www.wolframalpha.com/input/?i=100*(log10(1%2Bx)%2F2)+from+x%3D0+to+100).
 
 The `services` property can be used to decide how your computer's speaker will be exposed: as a lightbulb, fan, speaker, or a combination of all 3.
 
