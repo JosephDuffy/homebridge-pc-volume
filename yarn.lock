@@ -1173,14 +1173,7 @@ debug@^3.1.0:
   dependencies:
     ms "^2.1.1"
 
-debug@^4.0.1:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-4.1.0.tgz#373687bffa678b38b1cd91f861b63850035ddc87"
-  integrity sha512-heNPJUJIqC+xB6ayLAMHaIrmN9HKa7aQO8MGqKpvCA+uJYVcvR6l5kgdrhRuwPFHU7P5/A1w0BjByPHwpfTDKg==
-  dependencies:
-    ms "^2.1.1"
-
-debug@^4.1.0, debug@^4.1.1:
+debug@^4.0.1, debug@^4.1.0, debug@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.1.1.tgz#3b72260255109c6b589cee050f1d516139664791"
   integrity sha512-pYAIzeRo8J6KPEaJ0VWOh5Pzkbw/RetuzehGM7QRRX5he4fPHx2rdKMB256ehJCkX+XRQm16eZLqLNS8RSZXZw==
@@ -1826,9 +1819,9 @@ handlebars@^4.1.0:
     uglify-js "^3.1.4"
 
 "hap-nodejs@https://github.com/KhaosT/HAP-NodeJS.git":
-  version "0.4.48"
-  uid "414cd96ca9708596b1f71304bd4e6dff5ab045fc"
-  resolved "https://github.com/KhaosT/HAP-NodeJS.git#414cd96ca9708596b1f71304bd4e6dff5ab045fc"
+  version "0.4.49"
+  uid "7c57ac610a9bd788da439b07028bf153b918410d"
+  resolved "https://github.com/KhaosT/HAP-NodeJS.git#7c57ac610a9bd788da439b07028bf153b918410d"
   dependencies:
     bonjour-hap "^3.5.1"
     buffer-shims "^1.0.0"
