@@ -1820,8 +1820,8 @@ handlebars@^4.1.0:
 
 "hap-nodejs@https://github.com/KhaosT/HAP-NodeJS.git":
   version "0.4.49"
-  uid "7c57ac610a9bd788da439b07028bf153b918410d"
-  resolved "https://github.com/KhaosT/HAP-NodeJS.git#7c57ac610a9bd788da439b07028bf153b918410d"
+  uid "0840ce52cc8015dd75fb21c098bf38cf9611ea4a"
+  resolved "https://github.com/KhaosT/HAP-NodeJS.git#0840ce52cc8015dd75fb21c098bf38cf9611ea4a"
   dependencies:
     bonjour-hap "^3.5.1"
     buffer-shims "^1.0.0"
