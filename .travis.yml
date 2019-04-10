@@ -4,36 +4,51 @@ cache: yarn
 
 install: yarn install --ignore-engines
 
-script:
-  - yarn test:coverage
-  - yarn lint:check
-  - yarn format:check
+script: yarn test:coverage
 
 after_success: yarn run coveralls < ./coverage/lcov.info
 
 stages:
-  - test
+  - "Test"
+  - "Lint"
+  - "Check Format"
 
 matrix:
   include:
-    - os: linux
+    - stage: "Test"
+      os: linux
       node_js: node
-    - os: linux
+    - stage: "Test"
+      os: linux
       node_js: "lts/*"
-    - os: osx
+    - stage: "Test"
+      os: osx
       node_js: node
-    - os: osx
+    - stage: "Test"
+      os: osx
       node_js: "lts/*"
-    - os: windows
+    - stage: "Test"
+      os: windows
       # Fix for build timeouts on Windows: https://travis-ci.community/t/timeout-after-build-finished-and-succeeded/1336/2
       env: YARN_GPG=no
       before_install:
         - ./scripts/disable-windows-defender-realtime-monitor
         - ./scripts/install-latest-openssl
       node_js: latest
-    - os: windows
+    - stage: "Test"
+      os: windows
       env: YARN_GPG=no
       before_install:
         - ./scripts/disable-windows-defender-realtime-monitor
         - ./scripts/install-latest-openssl
       node_js: lts
+    - stage: "Lint"
+      os: linux
+      node_js: "lts/*"
+      script: yarn lint:check
+      after_success: skip
+    - stage: "Check Format"
+      os: linux
+      node_js: "lts/*"
+      script: yarn format:check
+      after_success: skip
