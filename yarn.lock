@@ -1809,10 +1809,10 @@ handlebars@^4.1.0:
   optionalDependencies:
     uglify-js "^3.1.4"
 
-"hap-nodejs@https://github.com/KhaosT/HAP-NodeJS.git":
+hap-nodejs@^0.4.49:
   version "0.4.49"
-  uid "2107f07e787c3cfa9b9d77c800c37fa60c109cda"
-  resolved "https://github.com/KhaosT/HAP-NodeJS.git#2107f07e787c3cfa9b9d77c800c37fa60c109cda"
+  resolved "https://registry.yarnpkg.com/hap-nodejs/-/hap-nodejs-0.4.49.tgz#371683e095c9caaab18d1654319652198604e55b"
+  integrity sha512-ZAluLSJOYgC5osO3U1HkHBf2ddGhGKVXUDJ+JjJXtCPjJm6jAr4UMFjeFePwPcogUsIKXlQzE/uB8Pq8xwMPuA==
   dependencies:
     bonjour-hap "^3.5.1"
     buffer-shims "^1.0.0"
