@@ -1,0 +1,40 @@
+name: Tests
+
+on: ["push", "pull_request"]
+
+jobs:
+  test:
+    name: Test on node ${{ matrix.node }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+        node: [10, 12]
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup Node.js ${{ matrix.node }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node }}
+    - run: yarn install --ignore-engines
+    - run: yarn test:coverage
+    - run: yarn lint:check
+    - run: yarn format:check
+    
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.github_token }}
+        parallel: true
+
+  coveralls_finish:
+    name: Coveralls finish
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Coveralls Finished
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.github_token }}
+        parallel-finished: true
