@@ -5,9 +5,11 @@
       "sourceMap": true,
       "noImplicitAny": true,
       "module": "commonjs",
-      "target": "es6"
+      "target": "es6",
+      "esModuleInterop": true
     },
     "include": [
-      "src/**/*"
+      "src/**/*",
+      "node_modules/hap-nodejs/src/types"
     ]
 }

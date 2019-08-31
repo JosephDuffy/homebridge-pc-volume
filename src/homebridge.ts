@@ -1,7 +1,7 @@
-import "hap-nodejs"
+import { Service } from "hap-nodejs"
 
 export interface Homebridge {
-  hap: HAPNodeJS.HAPNodeJS
+  hap: typeof import("hap-nodejs")
   log: Logger
   registerAccessory(
     pluginName: string,
@@ -18,7 +18,7 @@ export interface Logger {
 }
 
 export interface Accessory {
-  getServices(): HAPNodeJS.Service[]
+  getServices(): Service[]
 }
 
 export type AccessoryConstructor = new (log: Logger, config: any) => Accessory
