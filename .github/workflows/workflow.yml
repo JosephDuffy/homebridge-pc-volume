@@ -30,6 +30,7 @@ jobs:
 
   coveralls_finish:
     name: Coveralls finish
+    needs: test
     runs-on: ubuntu-latest
     steps:
     - name: Coveralls Finished
