@@ -99,8 +99,9 @@ To develop homebridge-pc-volume locally:
 
 1. Clone the project
 2. Run `yarn install`
-3. Run `npm install -g ./`
+3. Run `yarn build`
+4. Run `npm install --global $(pwd)`
 
 This will allow homebridge to find your local version of homebridge-pc-volume.
 
-After making changes you will need to restart homebridge. You may also stop any homebridge instance you already have running and run `yarn run build:watch`, which will start homebridge, and automatically restart it when a source file is updated.
+After making changes you will need to restart homebridge. You may also stop any homebridge instance you already have running and run `yarn build:watch:debug`, which will start homebridge, and automatically restart it when a source file is updated.
