@@ -54,17 +54,5 @@
     "volume",
     "mac",
     "linux"
-  ],
-  "lint-staged": {
-    "*.ts": [
-      "prettier --write",
-      "yarn lint",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  }
+  ]
 }
