@@ -23,12 +23,15 @@ Then install homebridge-pc-volume via `npm`:
 homebridge-pc-volume will also need to be specified as an accessory in your `~/.homebridge/config.json`:
 
 ```
+{
+  // Other keys here...
   "accessories": [
     {
       "accessory": "ComputerSpeakers",
       "name": "MacBook"
     }
   ]
+}
 ```
 
 Note that `accessory` _must_ be "ComputerSpeakers", while the `name` can be any value of your choosing.
