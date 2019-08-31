@@ -1,0 +1,21 @@
+name: Push
+
+on: [push]
+
+jobs:
+  test:
+    name: Test on node ${{ matrix.node }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+        node: [10, 12]
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup Node.js ${{ matrix.node }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node }}
+    - run: yarn install --ignore-engines
+    - run: yarn test
