@@ -29,10 +29,8 @@ describe("public interface", () => {
     const mock = sinon.mock(homebridge)
     mock.expects("registerAccessory").once()
 
-    const defaultExport = (await import("../index")) as (
-      homebridge: Homebridge
-    ) => void
-    defaultExport(homebridge)
+    const indexImport = await import("../index")
+    indexImport.default(homebridge)
 
     mock.verify()
   })
@@ -42,9 +40,7 @@ describe("public interface", () => {
     let config: Config
 
     beforeEach(async () => {
-      const defaultExport = (await import("../index")) as (
-        homebridge: Homebridge
-      ) => void
+      const indexImport = await import("../index")
       homebridge.registerAccessory = (
         pluginName: string,
         accessoryName: string,
@@ -52,7 +48,7 @@ describe("public interface", () => {
       ) => {
         accessory = new constructor(homebridge.log, config)
       }
-      defaultExport(homebridge)
+      indexImport.default(homebridge)
     })
 
     describe("with a default config", () => {

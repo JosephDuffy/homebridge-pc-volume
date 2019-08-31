@@ -15,7 +15,7 @@ let Service: typeof HAPService
 let Characteristic: typeof HAPCharacteristic
 let UUIDGen: typeof HAPuuid
 
-module.exports = (homebridge: Homebridge) => {
+export default function(homebridge: Homebridge) {
   Service = homebridge.hap.Service
   Characteristic = homebridge.hap.Characteristic
   UUIDGen = homebridge.hap.uuid
