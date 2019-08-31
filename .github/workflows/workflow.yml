@@ -28,6 +28,10 @@ jobs:
         github-token: ${{ secrets.github_token }}
         parallel: true
 
+  coveralls_finish:
+    name: Coveralls finish
+    runs-on: ubuntu-latest
+    steps:
     - name: Coveralls Finished
       uses: coverallsapp/github-action@master
       with:
