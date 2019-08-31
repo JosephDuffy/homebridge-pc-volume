@@ -1,6 +1,6 @@
 # homebridge-pc-volume
 
-[![Build Status](https://travis-ci.com/JosephDuffy/homebridge-pc-volume.svg?branch=master)](https://travis-ci.com/JosephDuffy/homebridge-pc-volume)
+[![Build Status](https://github.com/JosephDuffy/homebridge-pc-volume/workflows/Tests/badge.svg)](https://launch-editor.github.com/actions?workflowID=Tests&event=push&nwo=JosephDuffy%2Fhomebridge-pc-volume)
 [![Coverage Status](https://coveralls.io/repos/github/JosephDuffy/homebridge-pc-volume/badge.svg?branch=master)](https://coveralls.io/github/JosephDuffy/homebridge-pc-volume?branch=master)
 [![npm version](https://img.shields.io/npm/v/homebridge-pc-volume.svg)](https://www.npmjs.com/package/homebridge-pc-volume)
 
@@ -23,12 +23,15 @@ Then install homebridge-pc-volume via `npm`:
 homebridge-pc-volume will also need to be specified as an accessory in your `~/.homebridge/config.json`:
 
 ```
+{
+  // Other keys here...
   "accessories": [
     {
       "accessory": "ComputerSpeakers",
       "name": "MacBook"
     }
   ]
+}
 ```
 
 Note that `accessory` _must_ be "ComputerSpeakers", while the `name` can be any value of your choosing.
@@ -96,8 +99,9 @@ To develop homebridge-pc-volume locally:
 
 1. Clone the project
 2. Run `yarn install`
-3. Run `npm install -g ./`
+3. Run `yarn build`
+4. Run `npm install --global $(pwd)`
 
 This will allow homebridge to find your local version of homebridge-pc-volume.
 
-After making changes you will need to restart homebridge. You may also stop any homebridge instance you already have running and run `yarn run build:watch`, which will start homebridge, and automatically restart it when a source file is updated.
+After making changes you will need to restart homebridge. You may also stop any homebridge instance you already have running and run `yarn build:watch:debug`, which will start homebridge, and automatically restart it when a source file is updated.

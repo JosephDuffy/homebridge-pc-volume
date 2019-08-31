@@ -18,8 +18,7 @@
     "lint": "tslint --fix --project ./tsconfig.json",
     "lint:check": "tslint --project ./tsconfig.json",
     "format": "prettier --write \"src/**/*.ts\"",
-    "format:check": "prettier-check \"src/**/*.ts\"",
-    "precommit": "lint-staged"
+    "format:check": "prettier-check \"src/**/*.ts\""
   },
   "dependencies": {
     "loudness": "^0.3.0"
@@ -68,5 +67,10 @@
     "roots": [
       "src/"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
