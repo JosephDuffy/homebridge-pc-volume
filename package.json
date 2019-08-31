@@ -28,7 +28,7 @@
     "@types/node": "^12.0.0",
     "@types/sinon": "^7.0.0",
     "coveralls": "^3.0.2",
-    "hap-nodejs": "^0.4.49",
+    "hap-nodejs": "^0.5.0",
     "husky": "^3.0.0",
     "jest": "^24.7.0",
     "lint-staged": "^9.0.0",
@@ -60,12 +60,6 @@
       "prettier --write",
       "yarn lint",
       "git add"
-    ]
-  },
-  "jest": {
-    "preset": "ts-jest",
-    "roots": [
-      "src/"
     ]
   },
   "husky": {

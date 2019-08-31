@@ -2,15 +2,20 @@
 
 // hap-nodejs is used for the types, but the instances
 // provided by homebridge are used to ensure compatibility
-import "hap-nodejs"
+import {
+  Characteristic as HAPCharacteristic,
+  CharacteristicEventTypes,
+  Service as HAPService,
+  uuid as HAPuuid,
+} from "hap-nodejs"
 import loudness = require("loudness")
 import Config, { Service as ConfigService } from "./config"
 import Homebridge, { Accessory, Logger } from "./homebridge"
-let Service: HAPNodeJS.Service
-let Characteristic: HAPNodeJS.Characteristic
-let UUIDGen: HAPNodeJS.uuid
+let Service: typeof HAPService
+let Characteristic: typeof HAPCharacteristic
+let UUIDGen: typeof HAPuuid
 
-module.exports = (homebridge: Homebridge) => {
+export default function(homebridge: Homebridge) {
   Service = homebridge.hap.Service
   Characteristic = homebridge.hap.Characteristic
   UUIDGen = homebridge.hap.uuid
@@ -23,9 +28,9 @@ module.exports = (homebridge: Homebridge) => {
 }
 
 class ComputerSpeakers implements Accessory {
-  private speakerService: HAPNodeJS.Service | undefined
-  private fanService: HAPNodeJS.Service | undefined
-  private lightService: HAPNodeJS.Service | undefined
+  private speakerService: HAPService | undefined
+  private fanService: HAPService | undefined
+  private lightService: HAPService | undefined
   private log: Logger
 
   constructor(log: Logger, config: Config) {
@@ -41,13 +46,19 @@ class ComputerSpeakers implements Accessory {
 
       this.speakerService
         .getCharacteristic(Characteristic.Mute)
-        .on("set", this.setMuted.bind(this))
-        .on("get", this.getMuted.bind(this))
+        .on(CharacteristicEventTypes.SET, this.setMuted.bind(this))
+        .on(CharacteristicEventTypes.GET, this.getMuted.bind(this))
 
       this.speakerService
         .addCharacteristic(Characteristic.Volume)
-        .on("set", this.setVolume.bind(this, logarithmic))
-        .on("get", this.getVolume.bind(this, logarithmic))
+        .on(
+          CharacteristicEventTypes.SET,
+          this.setVolume.bind(this, logarithmic)
+        )
+        .on(
+          CharacteristicEventTypes.GET,
+          this.getVolume.bind(this, logarithmic)
+        )
     }
 
     if (services.indexOf(ConfigService.Fan) > -1) {
@@ -57,13 +68,19 @@ class ComputerSpeakers implements Accessory {
 
       this.fanService
         .getCharacteristic(Characteristic.On)
-        .on("set", this.setPowerState.bind(this))
-        .on("get", this.getPowerState.bind(this))
+        .on(CharacteristicEventTypes.SET, this.setPowerState.bind(this))
+        .on(CharacteristicEventTypes.GET, this.getPowerState.bind(this))
 
       this.fanService
         .addCharacteristic(Characteristic.RotationSpeed)
-        .on("set", this.setVolume.bind(this, logarithmic))
-        .on("get", this.getVolume.bind(this, logarithmic))
+        .on(
+          CharacteristicEventTypes.SET,
+          this.setVolume.bind(this, logarithmic)
+        )
+        .on(
+          CharacteristicEventTypes.GET,
+          this.getVolume.bind(this, logarithmic)
+        )
     }
 
     if (services.indexOf(ConfigService.Lightbulb) > -1) {
@@ -73,13 +90,19 @@ class ComputerSpeakers implements Accessory {
 
       this.lightService
         .getCharacteristic(Characteristic.On)
-        .on("set", this.setPowerState.bind(this))
-        .on("get", this.getPowerState.bind(this))
+        .on(CharacteristicEventTypes.SET, this.setPowerState.bind(this))
+        .on(CharacteristicEventTypes.GET, this.getPowerState.bind(this))
 
       this.lightService
         .addCharacteristic(Characteristic.Brightness)
-        .on("set", this.setVolume.bind(this, logarithmic))
-        .on("get", this.getVolume.bind(this, logarithmic))
+        .on(
+          CharacteristicEventTypes.SET,
+          this.setVolume.bind(this, logarithmic)
+        )
+        .on(
+          CharacteristicEventTypes.GET,
+          this.getVolume.bind(this, logarithmic)
+        )
     }
   }
 
