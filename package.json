@@ -62,12 +62,6 @@
       "git add"
     ]
   },
-  "jest": {
-    "preset": "ts-jest",
-    "roots": [
-      "src/"
-    ]
-  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
