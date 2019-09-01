@@ -1,11 +1,11 @@
-import "hap-nodejs"
+import { Characteristic, CharacteristicEventTypes, Service } from "hap-nodejs"
 import * as hap from "hap-nodejs"
 import loudness = require("loudness")
 import * as sinon from "sinon"
 import ComputerSpeakersAccessory from "../ComputerSpeakersAccessory"
 import ServiceWrapper from "../ServiceWrapper"
-import { Config, Service, VolumeAlgorithm } from "./../config"
-import { Accessory, AccessoryConstructor, Homebridge } from "./../homebridge"
+import { Config, Service as ConfigService, VolumeAlgorithm } from "./../config"
+import { AccessoryConstructor, Homebridge } from "./../homebridge"
 import LogStub from "./helpers/LogStub"
 
 describe("public interface", () => {
@@ -51,7 +51,7 @@ describe("public interface", () => {
     })
 
     describe("with a default config", () => {
-      let services: HAPNodeJS.Service[]
+      let services: Service[]
 
       beforeAll(() => {
         config = {
@@ -69,7 +69,7 @@ describe("public interface", () => {
 
       it("should register a lighbulb service", () => {
         expect(services[0].UUID).toStrictEqual(
-          new hap.Service.Lightbulb("test", "test").UUID
+          new Service.Lightbulb("test", "test").UUID
         )
       })
 
@@ -79,14 +79,14 @@ describe("public interface", () => {
     })
 
     describe("with a config defining a lightbulb service and using the logarithmic option", () => {
-      let services: HAPNodeJS.Service[]
+      let services: Service[]
       let spy: sinon.SinonSpy
 
       beforeAll(() => {
         config = {
           logarithmic: true,
           name: "Test Computer Speakers",
-          services: [Service.Lightbulb],
+          services: [ConfigService.Lightbulb],
         }
         spy = sinon.spy(ServiceWrapper.prototype, "bindCharacteristicToVolume")
       })
@@ -101,7 +101,7 @@ describe("public interface", () => {
 
       it("should register a lighbulb service", () => {
         expect(services[0].UUID).toStrictEqual(
-          new hap.Service.Lightbulb("test", "test").UUID
+          new Service.Lightbulb("test", "test").UUID
         )
       })
 
@@ -115,12 +115,12 @@ describe("public interface", () => {
     })
 
     describe("with a config defining a lightbulb service", () => {
-      let services: HAPNodeJS.Service[]
+      let services: Service[]
 
       beforeAll(() => {
         config = {
           name: "Test Computer Speakers",
-          services: [Service.Lightbulb],
+          services: [ConfigService.Lightbulb],
         }
       })
 
@@ -134,7 +134,7 @@ describe("public interface", () => {
 
       it("should register a lighbulb service", () => {
         expect(services[0].UUID).toStrictEqual(
-          new hap.Service.Lightbulb("test", "test").UUID
+          new Service.Lightbulb("test", "test").UUID
         )
       })
 
@@ -144,12 +144,12 @@ describe("public interface", () => {
     })
 
     describe("with a config defining a fan service", () => {
-      let services: HAPNodeJS.Service[]
+      let services: Service[]
 
       beforeAll(() => {
         config = {
           name: "Test Computer Speakers",
-          services: [Service.Fan],
+          services: [ConfigService.Fan],
         }
       })
 
@@ -163,7 +163,7 @@ describe("public interface", () => {
 
       it("should register a fan service", () => {
         expect(services[0].UUID).toStrictEqual(
-          new hap.Service.Fan("test", "test").UUID
+          new Service.Fan("test", "test").UUID
         )
       })
 
@@ -173,12 +173,12 @@ describe("public interface", () => {
     })
 
     describe("with a config defining a speaker service", () => {
-      let services: HAPNodeJS.Service[]
+      let services: Service[]
 
       beforeAll(() => {
         config = {
           name: "Test Computer Speakers",
-          services: [Service.Speaker],
+          services: [ConfigService.Speaker],
         }
       })
 
@@ -192,7 +192,7 @@ describe("public interface", () => {
 
       it("should register a speaker service", () => {
         expect(services[0].UUID).toStrictEqual(
-          new hap.Service.Speaker("test", "test").UUID
+          new Service.Speaker("test", "test").UUID
         )
       })
 
@@ -202,12 +202,12 @@ describe("public interface", () => {
     })
 
     describe("with a config defining a speaker service", () => {
-      let services: HAPNodeJS.Service[]
+      let services: Service[]
 
       beforeAll(() => {
         config = {
           name: "Test Computer Speakers",
-          services: [Service.Speaker],
+          services: [ConfigService.Speaker],
         }
       })
 
@@ -221,7 +221,7 @@ describe("public interface", () => {
 
       it("should register a speaker service", () => {
         expect(services[0].UUID).toStrictEqual(
-          new hap.Service.Speaker("test", "test").UUID
+          new Service.Speaker("test", "test").UUID
         )
       })
 
@@ -242,8 +242,8 @@ describe("public interface", () => {
 
         it("should request the muted status for node-loudness", done => {
           services[0]
-            .getCharacteristic(hap.Characteristic.Mute)
-            .emit("get", () => {
+            .getCharacteristic(Characteristic.Mute)
+            .emit(CharacteristicEventTypes.GET, () => {
               expect(stub.calledOnce).toStrictEqual(true)
               done()
             })
@@ -251,23 +251,26 @@ describe("public interface", () => {
 
         it("should return `true` when the mute characteristic is requested", done => {
           services[0]
-            .getCharacteristic(hap.Characteristic.Mute)
-            .emit("get", (error?: Error, muted?: boolean) => {
-              expect(muted).toStrictEqual(true)
-              expect(error).toBeNull()
-              done()
-            })
+            .getCharacteristic(Characteristic.Mute)
+            .emit(
+              CharacteristicEventTypes.GET,
+              (error?: Error, muted?: boolean) => {
+                expect(muted).toStrictEqual(true)
+                expect(error).toBeNull()
+                done()
+              }
+            )
         })
       })
     })
 
     describe("with a config defining a lightbulb and a fan service", () => {
-      let services: HAPNodeJS.Service[]
+      let services: Service[]
 
       beforeAll(() => {
         config = {
           name: "Test Computer Speakers",
-          services: [Service.Lightbulb, Service.Fan],
+          services: [ConfigService.Lightbulb, ConfigService.Fan],
         }
       })
 
@@ -282,7 +285,7 @@ describe("public interface", () => {
       it("should register a lightbulb service", () => {
         expect(services).toContainEqual(
           expect.objectContaining({
-            UUID: new hap.Service.Lightbulb("test", "test").UUID,
+            UUID: new Service.Lightbulb("test", "test").UUID,
           })
         )
       })
@@ -290,7 +293,7 @@ describe("public interface", () => {
       it("should register a fan service", () => {
         expect(services).toContainEqual(
           expect.objectContaining({
-            UUID: new hap.Service.Fan("test", "test").UUID,
+            UUID: new Service.Fan("test", "test").UUID,
           })
         )
       })
@@ -303,12 +306,12 @@ describe("public interface", () => {
     })
 
     describe("with a config defining a lightbulb and a speaker service", () => {
-      let services: HAPNodeJS.Service[]
+      let services: Service[]
 
       beforeAll(() => {
         config = {
           name: "Test Computer Speakers",
-          services: [Service.Lightbulb, Service.Speaker],
+          services: [ConfigService.Lightbulb, ConfigService.Speaker],
         }
       })
 
@@ -323,7 +326,7 @@ describe("public interface", () => {
       it("should register a lightbulb service", () => {
         expect(services).toContainEqual(
           expect.objectContaining({
-            UUID: new hap.Service.Lightbulb("test", "test").UUID,
+            UUID: new Service.Lightbulb("test", "test").UUID,
           })
         )
       })
@@ -331,7 +334,7 @@ describe("public interface", () => {
       it("should register a speaker service", () => {
         expect(services).toContainEqual(
           expect.objectContaining({
-            UUID: new hap.Service.Speaker("test", "test").UUID,
+            UUID: new Service.Speaker("test", "test").UUID,
           })
         )
       })
@@ -344,12 +347,12 @@ describe("public interface", () => {
     })
 
     describe("with a config defining a fan and a speaker service", () => {
-      let services: HAPNodeJS.Service[]
+      let services: Service[]
 
       beforeAll(() => {
         config = {
           name: "Test Computer Speakers",
-          services: [Service.Fan, Service.Speaker],
+          services: [ConfigService.Fan, ConfigService.Speaker],
         }
       })
 
@@ -364,7 +367,7 @@ describe("public interface", () => {
       it("should register a fan service", () => {
         expect(services).toContainEqual(
           expect.objectContaining({
-            UUID: new hap.Service.Fan("test", "test").UUID,
+            UUID: new Service.Fan("test", "test").UUID,
           })
         )
       })
@@ -372,7 +375,7 @@ describe("public interface", () => {
       it("should register a speaker service", () => {
         expect(services).toContainEqual(
           expect.objectContaining({
-            UUID: new hap.Service.Speaker("test", "test").UUID,
+            UUID: new Service.Speaker("test", "test").UUID,
           })
         )
       })
@@ -385,12 +388,16 @@ describe("public interface", () => {
     })
 
     describe("with a config defining a lightbulb, a fan, and a speaker service", () => {
-      let services: HAPNodeJS.Service[]
+      let services: Service[]
 
       beforeAll(() => {
         config = {
           name: "Test Computer Speakers",
-          services: [Service.Lightbulb, Service.Fan, Service.Speaker],
+          services: [
+            ConfigService.Lightbulb,
+            ConfigService.Fan,
+            ConfigService.Speaker,
+          ],
         }
       })
 
@@ -405,7 +412,7 @@ describe("public interface", () => {
       it("should register a lightbulb service", () => {
         expect(services).toContainEqual(
           expect.objectContaining({
-            UUID: new hap.Service.Lightbulb("test", "test").UUID,
+            UUID: new Service.Lightbulb("test", "test").UUID,
           })
         )
       })
@@ -413,7 +420,7 @@ describe("public interface", () => {
       it("should register a fan service", () => {
         expect(services).toContainEqual(
           expect.objectContaining({
-            UUID: new hap.Service.Fan("test", "test").UUID,
+            UUID: new Service.Fan("test", "test").UUID,
           })
         )
       })
@@ -421,7 +428,7 @@ describe("public interface", () => {
       it("should register a speaker service", () => {
         expect(services).toContainEqual(
           expect.objectContaining({
-            UUID: new hap.Service.Speaker("test", "test").UUID,
+            UUID: new Service.Speaker("test", "test").UUID,
           })
         )
       })
@@ -434,12 +441,16 @@ describe("public interface", () => {
     })
 
     describe("with a config defining a lightbulb, a fan, and a speaker service", () => {
-      let services: HAPNodeJS.Service[]
+      let services: Service[]
 
       beforeAll(() => {
         config = {
           name: "Test Computer Speakers",
-          services: [Service.Lightbulb, Service.Fan, Service.Speaker],
+          services: [
+            ConfigService.Lightbulb,
+            ConfigService.Fan,
+            ConfigService.Speaker,
+          ],
         }
       })
 
@@ -454,7 +465,7 @@ describe("public interface", () => {
       it("should register a lightbulb service", () => {
         expect(services).toContainEqual(
           expect.objectContaining({
-            UUID: new hap.Service.Lightbulb("test", "test").UUID,
+            UUID: new Service.Lightbulb("test", "test").UUID,
           })
         )
       })
@@ -462,7 +473,7 @@ describe("public interface", () => {
       it("should register a fan service", () => {
         expect(services).toContainEqual(
           expect.objectContaining({
-            UUID: new hap.Service.Fan("test", "test").UUID,
+            UUID: new Service.Fan("test", "test").UUID,
           })
         )
       })
@@ -470,7 +481,7 @@ describe("public interface", () => {
       it("should register a speaker service", () => {
         expect(services).toContainEqual(
           expect.objectContaining({
-            UUID: new hap.Service.Speaker("test", "test").UUID,
+            UUID: new Service.Speaker("test", "test").UUID,
           })
         )
       })

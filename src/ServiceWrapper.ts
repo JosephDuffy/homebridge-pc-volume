@@ -1,4 +1,9 @@
-import "hap-nodejs"
+import {
+  Characteristic,
+  CharacteristicEventTypes,
+  Service,
+  WithUUID,
+} from "hap-nodejs"
 import _loudness = require("loudness")
 import { VolumeAlgorithm } from "./config"
 import { Logger } from "./homebridge"
@@ -6,11 +11,11 @@ import { Logger } from "./homebridge"
 type Loudness = typeof _loudness
 
 export default class ServiceWrapper {
-  public readonly service: HAPNodeJS.Service
+  public readonly service: Service | undefined
   private readonly loudness: Loudness
   private readonly log: Logger
 
-  constructor(service: HAPNodeJS.Service, loudness: Loudness, log: Logger) {
+  constructor(service: Service, loudness: Loudness, log: Logger) {
     this.service = service
     this.loudness = loudness
     this.log = log
@@ -21,29 +26,32 @@ export default class ServiceWrapper {
    *
    * If the `flipValue` property is `true` then all value updates and requests will be flipped. This
    * is used for some characteristics that have opposite logic to being muted, e.g. a muted speaker
-   * would be equivelent to a fan that isn't powered on.
+   * would be equivalent to a fan that isn't powered on.
    *
    * @param characteristic The characteristic to bind the muted status to
    * @param flipValue If `true` the input and output values of the characteristic will be flipped. Defaults to `false`
    */
   public bindCharacteristicToMuted(
-    characteristic: HAPNodeJS.Characteristic,
+    characteristic: WithUUID<typeof Characteristic>,
     flipValue: boolean = false
   ) {
     this.service
       .getCharacteristic(characteristic)
-      .on("set", (newValue: boolean, callback: () => void) => {
-        if (flipValue) {
-          this.log.debug(
-            `Flipping characteristic value before setting muted status to ${!newValue}`
-          )
-          this.setMuted(!newValue, callback)
-        } else {
-          this.setMuted(newValue, callback)
-        }
-      })
       .on(
-        "get",
+        CharacteristicEventTypes.SET,
+        (newValue: boolean, callback: () => void) => {
+          if (flipValue) {
+            this.log.debug(
+              `Flipping characteristic value before setting muted status to ${!newValue}`
+            )
+            this.setMuted(!newValue, callback)
+          } else {
+            this.setMuted(newValue, callback)
+          }
+        }
+      )
+      .on(
+        CharacteristicEventTypes.GET,
         (callback: (error: Error | null, muted: boolean | null) => void) => {
           this.getMuted((error, muted) => {
             if (error) {
@@ -60,25 +68,28 @@ export default class ServiceWrapper {
   }
 
   public bindCharacteristicToVolume(
-    characteristic: HAPNodeJS.Characteristic,
+    characteristic: WithUUID<typeof Characteristic>,
     algorithm: VolumeAlgorithm
   ) {
     this.service
       .addCharacteristic(characteristic)
-      .on("set", (newValue: number, callback: () => void) => {
-        switch (algorithm) {
-          case VolumeAlgorithm.Linear:
-            this.setVolume(newValue, callback)
-            break
-          case VolumeAlgorithm.Logarithmic:
-            const systemVolume = Math.round(Math.log10(1 + newValue) * 50)
-            this.log.debug(`Converted HomeKit volume to ${systemVolume}%`)
-            this.setVolume(systemVolume, callback)
-            break
-        }
-      })
       .on(
-        "get",
+        CharacteristicEventTypes.SET,
+        (newValue: number, callback: () => void) => {
+          switch (algorithm) {
+            case VolumeAlgorithm.Linear:
+              this.setVolume(newValue, callback)
+              break
+            case VolumeAlgorithm.Logarithmic:
+              const systemVolume = Math.round(Math.log10(1 + newValue) * 50)
+              this.log.debug(`Converted HomeKit volume to ${systemVolume}%`)
+              this.setVolume(systemVolume, callback)
+              break
+          }
+        }
+      )
+      .on(
+        CharacteristicEventTypes.GET,
         (callback: (error: Error | null, volume: number | null) => void) => {
           this.getVolume((error, volume) => {
             if (error) {

@@ -1,6 +1,9 @@
 // hap-nodejs is used for the types, but the instances
 // provided by homebridge are used to ensure compatibility
-import "hap-nodejs"
+import {
+  Characteristic as HAPCharacteristic,
+  Service as HAPService,
+} from "hap-nodejs"
 import loudness = require("loudness")
 import Config, { Service as ConfigService, VolumeAlgorithm } from "./config"
 import { Accessory, Logger } from "./homebridge"
@@ -12,8 +15,8 @@ export default class ComputerSpeakersAccessory implements Accessory {
   private lightService?: ServiceWrapper
 
   constructor(
-    Service: HAPNodeJS.Service,
-    Characteristic: HAPNodeJS.Characteristic,
+    Service: typeof HAPService,
+    Characteristic: typeof HAPCharacteristic,
     log: Logger,
     config: Config
   ) {

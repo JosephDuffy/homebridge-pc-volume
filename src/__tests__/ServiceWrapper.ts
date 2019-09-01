@@ -1,5 +1,4 @@
-import "hap-nodejs"
-import * as hap from "hap-nodejs"
+import { Characteristic, CharacteristicEventTypes, Service } from "hap-nodejs"
 import loudness = require("loudness")
 import * as sinon from "sinon"
 import ServiceWrapper from "../ServiceWrapper"
@@ -12,7 +11,7 @@ describe("ServiceWrapper", () => {
 
     beforeEach(() => {
       wrapper = new ServiceWrapper(
-        new hap.Service.Speaker(name, ConfigService.Speaker),
+        new Service.Speaker(name, ConfigService.Speaker),
         loudness,
         new LogStub()
       )
@@ -23,7 +22,7 @@ describe("ServiceWrapper", () => {
       let expectedError: Error
 
       beforeEach(() => {
-        wrapper.bindCharacteristicToMuted(hap.Characteristic.Mute, false)
+        wrapper.bindCharacteristicToMuted(Characteristic.Mute, false)
         expectedError = new Error("This is a test error")
         stub = sinon.stub(loudness, "getMuted").rejects(expectedError)
       })
@@ -34,12 +33,15 @@ describe("ServiceWrapper", () => {
 
       it("should return the error when the mute characteristic is requested", done => {
         wrapper.service
-          .getCharacteristic(hap.Characteristic.Mute)
-          .emit("get", (error?: Error, muted?: boolean) => {
-            expect(muted).toBeNull()
-            expect(error).toStrictEqual(expectedError)
-            done()
-          })
+          .getCharacteristic(Characteristic.Mute)
+          .emit(
+            CharacteristicEventTypes.GET,
+            (error?: Error, muted?: boolean) => {
+              expect(muted).toBeNull()
+              expect(error).toStrictEqual(expectedError)
+              done()
+            }
+          )
       })
     })
 
@@ -56,14 +58,14 @@ describe("ServiceWrapper", () => {
 
       describe("passing `false` for `flipValue`", () => {
         beforeEach(() => {
-          wrapper.bindCharacteristicToMuted(hap.Characteristic.Mute, false)
+          wrapper.bindCharacteristicToMuted(Characteristic.Mute, false)
         })
 
         describe("then requesting the value from the characteristic", () => {
           it("should request the muted status from node-loudness", done => {
             wrapper.service
-              .getCharacteristic(hap.Characteristic.Mute)
-              .emit("get", () => {
+              .getCharacteristic(Characteristic.Mute)
+              .emit(CharacteristicEventTypes.GET, () => {
                 expect(stub.calledOnce).toStrictEqual(true)
                 done()
               })
@@ -72,24 +74,30 @@ describe("ServiceWrapper", () => {
           describe("when the system is muted", () => {
             it("should return `true` when the mute characteristic is requested", done => {
               wrapper.service
-                .getCharacteristic(hap.Characteristic.Mute)
-                .emit("get", (error?: Error, muted?: boolean) => {
-                  expect(muted).toStrictEqual(true)
-                  expect(error).toBeNull()
-                  done()
-                })
+                .getCharacteristic(Characteristic.Mute)
+                .emit(
+                  CharacteristicEventTypes.GET,
+                  (error?: Error, muted?: boolean) => {
+                    expect(muted).toStrictEqual(true)
+                    expect(error).toBeNull()
+                    done()
+                  }
+                )
             })
           })
 
           describe("when the system is unmuted", () => {
             it("should return `true` when the mute characteristic is requested", done => {
               wrapper.service
-                .getCharacteristic(hap.Characteristic.Mute)
-                .emit("get", (error?: Error, muted?: boolean) => {
-                  expect(muted).toStrictEqual(true)
-                  expect(error).toBeNull()
-                  done()
-                })
+                .getCharacteristic(Characteristic.Mute)
+                .emit(
+                  CharacteristicEventTypes.GET,
+                  (error?: Error, muted?: boolean) => {
+                    expect(muted).toStrictEqual(true)
+                    expect(error).toBeNull()
+                    done()
+                  }
+                )
             })
           })
         })
@@ -97,14 +105,14 @@ describe("ServiceWrapper", () => {
 
       describe("passing `true` for `flipValue`", () => {
         beforeEach(() => {
-          wrapper.bindCharacteristicToMuted(hap.Characteristic.Mute, true)
+          wrapper.bindCharacteristicToMuted(Characteristic.Mute, true)
         })
 
         describe("then requesting the value from the characteristic", () => {
           it("should request the muted status from node-loudness", done => {
             wrapper.service
-              .getCharacteristic(hap.Characteristic.Mute)
-              .emit("get", () => {
+              .getCharacteristic(Characteristic.Mute)
+              .emit(CharacteristicEventTypes.GET, () => {
                 expect(stub.calledOnce).toStrictEqual(true)
                 done()
               })
@@ -113,24 +121,30 @@ describe("ServiceWrapper", () => {
           describe("when the system is muted", () => {
             it("should return `false` when the mute characteristic is requested", done => {
               wrapper.service
-                .getCharacteristic(hap.Characteristic.Mute)
-                .emit("get", (error?: Error, muted?: boolean) => {
-                  expect(muted).toStrictEqual(false)
-                  expect(error).toBeNull()
-                  done()
-                })
+                .getCharacteristic(Characteristic.Mute)
+                .emit(
+                  CharacteristicEventTypes.GET,
+                  (error?: Error, muted?: boolean) => {
+                    expect(muted).toStrictEqual(false)
+                    expect(error).toBeNull()
+                    done()
+                  }
+                )
             })
           })
 
           describe("when the system is unmuted", () => {
             it("should return `false` when the mute characteristic is requested", done => {
               wrapper.service
-                .getCharacteristic(hap.Characteristic.Mute)
-                .emit("get", (error?: Error, muted?: boolean) => {
-                  expect(muted).toStrictEqual(false)
-                  expect(error).toBeNull()
-                  done()
-                })
+                .getCharacteristic(Characteristic.Mute)
+                .emit(
+                  CharacteristicEventTypes.GET,
+                  (error?: Error, muted?: boolean) => {
+                    expect(muted).toStrictEqual(false)
+                    expect(error).toBeNull()
+                    done()
+                  }
+                )
             })
           })
         })
