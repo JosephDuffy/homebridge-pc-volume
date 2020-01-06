@@ -4299,9 +4299,9 @@ signal-exit@^3.0.0, signal-exit@^3.0.2:
   integrity sha1-tf3AjxKH6hF4Yo5BXiUTK3NkbG0=
 
 sinon@^8.0.0:
-  version "8.0.2"
-  resolved "https://registry.yarnpkg.com/sinon/-/sinon-8.0.2.tgz#cc5f6daa9cc351b86b03faaca1e9c3650a04ae11"
-  integrity sha512-8W1S7BnCyvk7SK+Xi15B1QAVLuS81G/NGmWefPb31+ly6xI3fXaug/g5oUdfc8+7ruC4Ay51AxuLlYm8diq6kA==
+  version "8.0.3"
+  resolved "https://registry.yarnpkg.com/sinon/-/sinon-8.0.3.tgz#c29d8d2bc8ad3a482f45f3dd4d87692183177f25"
+  integrity sha512-t8B8cerCx7IsYW8S2cYLueFlOWQ1JisBgEpE+8VRECV24JZJmuJQKNopSHsCCiGrw3yI2/5aCFxZNoebY0ZGHQ==
   dependencies:
     "@sinonjs/commons" "^1.7.0"
     "@sinonjs/formatio" "^4.0.1"
