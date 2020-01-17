@@ -872,11 +872,6 @@ buffer-indexof@^1.0.0:
   resolved "https://registry.yarnpkg.com/buffer-indexof/-/buffer-indexof-1.1.1.tgz#52fabcc6a606d1a00302802648ef68f639da268c"
   integrity sha512-4/rOEg86jivtPTeOUUT61jJO1Ya1TrR/OkqCSZDyq84WJh3LuuiphBYJN+fm5xufIk4XAFcEwte/8WzC8If/1g==
 
-buffer-shims@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/buffer-shims/-/buffer-shims-1.0.0.tgz#9978ce317388c649ad8793028c3477ef044a8b51"
-  integrity sha1-mXjOMXOIxkmth5MCjDR37wRKi1E=
-
 builtin-modules@^1.0.0, builtin-modules@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/builtin-modules/-/builtin-modules-1.1.1.tgz#270f076c5a72c02f5b65a47df94c5fe3a278892f"
@@ -1939,12 +1934,11 @@ handlebars@^4.1.2:
     uglify-js "^3.1.4"
 
 hap-nodejs@^0.5.0:
-  version "0.5.5"
-  resolved "https://registry.yarnpkg.com/hap-nodejs/-/hap-nodejs-0.5.5.tgz#45813decc6687c60c74bfaabee7b15f4ee95d05e"
-  integrity sha512-7a3FszMNC1wIu5Nf9aHnzkRKJeMEQfTDK8ewbKPu1fT8HJ6EVol/WKbV6YR0ueyqq+l8kGQ3e55KRwL277bWWA==
+  version "0.5.6"
+  resolved "https://registry.yarnpkg.com/hap-nodejs/-/hap-nodejs-0.5.6.tgz#39423a62bfbd759d70adcfeca6f143e1b76c16e6"
+  integrity sha512-hK6HaRUKhO948roA/SF9+5t61qyAWsTCj9SeR3qTt9uQIyIWUpKIAiJlNQADMTb4LcJwC0yaVexw8cU5z2wxNw==
   dependencies:
     bonjour-hap "^3.5.1"
-    buffer-shims "^1.0.0"
     debug "^2.2.0"
     decimal.js "^7.2.3"
     fast-srp-hap "^1.0.1"
