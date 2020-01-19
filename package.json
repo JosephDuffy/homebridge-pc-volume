@@ -31,7 +31,7 @@
     "hap-nodejs": "^0.5.0",
     "husky": "^4.0.0",
     "jest": "^24.7.0",
-    "lint-staged": "^9.0.0",
+    "lint-staged": "^10.0.0",
     "nodemon": "^2.0.1",
     "prettier": "^1.15.3",
     "prettier-check": "^2.0.0",
