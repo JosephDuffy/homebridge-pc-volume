@@ -41,12 +41,12 @@ class ComputerSpeakers implements Accessory {
     this.log = log
     const name = config.name
     const services = config.services || [ConfigService.Lightbulb]
-    const initialVolume = config["initialVolume"] || null
-    const initiallyMuted = config["initiallyMuted"] || null
+    const initialVolume = config.initialVolume || null
+    const initiallyMuted = config.initiallyMuted || null
     const logarithmic = config.logarithmic || false
-    const delta = config["delta"] || undefined
-    const delay = config["delay"] || 200
-    this.cached = logarithmic && (config["cached"] || false)
+    const delta = config.delta || undefined
+    const delay = config.delay || 200
+    this.cached = logarithmic && (config.cached || false)
     this.currentVolume = 0
 
     if (services.indexOf(ConfigService.Speaker) > -1) {
@@ -147,7 +147,7 @@ class ComputerSpeakers implements Accessory {
 
     if (initialVolume != null) {
       log.debug("Setting initial volume")
-      this.setVolume(logarithmic, initialVolume, () => {})
+      this.setVolume(logarithmic, initialVolume, () => { /* do nothing */ })
     } else if (this.cached) {
       log.debug("Using cached volume without initial value and thus reading current system volume")
       loudness.getVolume().then((homekitVolume) => {
@@ -156,7 +156,7 @@ class ComputerSpeakers implements Accessory {
     }
     if (initiallyMuted != null) {
       log.debug("Setting initial mute status")
-      this.setMuted(initiallyMuted, () => {})
+      this.setMuted(initiallyMuted, () => { /* do nothing */ })
     }
 
     setTimeout(function() {
@@ -303,7 +303,7 @@ class ComputerSpeakers implements Accessory {
 
       this.getSystemVolume()
         .then((homekitVolume) => {
-          var volume = logarithmic
+          let volume = logarithmic
             ? Math.pow(10, homekitVolume / (100 / Math.log10(101))) - 1
             : homekitVolume
           this.log.debug(`Got current volume: ${homekitVolume}%`)
@@ -322,7 +322,7 @@ class ComputerSpeakers implements Accessory {
           volume = logarithmic
             ? Math.log10(1 + volume) * (100 / Math.log10(101))
             : volume
-          if (!this.cached && volume == homekitVolume) {
+          if (!this.cached && volume === homekitVolume) {
             if (volume < 100 && delta > 0) { volume++ }
             else if (volume > 0 && delta < 0) { volume-- }
           }
