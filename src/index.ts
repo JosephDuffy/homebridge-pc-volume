@@ -15,7 +15,7 @@ let Service: typeof HAPService
 let Characteristic: typeof HAPCharacteristic
 let UUIDGen: typeof HAPuuid
 
-export default function(homebridge: Homebridge) {
+export default function (homebridge: Homebridge) {
   Service = homebridge.hap.Service
   Characteristic = homebridge.hap.Characteristic
   UUIDGen = homebridge.hap.uuid
@@ -108,7 +108,7 @@ class ComputerSpeakers implements Accessory {
 
   public getServices() {
     return [this.speakerService, this.lightService, this.fanService].filter(
-      service => service !== undefined
+      (service) => service !== undefined
     )
   }
 
@@ -123,7 +123,7 @@ class ComputerSpeakers implements Accessory {
         this.log.debug(`Set muted status to ${muted}%`)
         callback()
       })
-      .catch(error => {
+      .catch((error) => {
         this.log.error(`Failed to set muted status to ${muted}%: ${error}`)
       })
   }
@@ -135,11 +135,11 @@ class ComputerSpeakers implements Accessory {
 
     loudness
       .getMuted()
-      .then(muted => {
+      .then((muted) => {
         this.log.debug(`Got muted status: ${muted}%`)
         callback(null, muted)
       })
-      .catch(error => {
+      .catch((error) => {
         this.log.debug(`Failed to get muted status: ${error}`)
         callback(error, null)
       })
@@ -166,7 +166,7 @@ class ComputerSpeakers implements Accessory {
         this.log.debug(`Set volume to ${volume}%`)
         callback()
       })
-      .catch(error => {
+      .catch((error) => {
         this.log.error(`Failed to set volume to ${volume}%: ${error}`)
       })
   }
@@ -179,7 +179,7 @@ class ComputerSpeakers implements Accessory {
 
     loudness
       .getVolume()
-      .then(homekitVolume => {
+      .then((homekitVolume) => {
         const volume = logarithmic
           ? Math.round(Math.pow(10, homekitVolume / 50) - 1)
           : homekitVolume
@@ -189,7 +189,7 @@ class ComputerSpeakers implements Accessory {
         }
         callback(null, volume)
       })
-      .catch(error => {
+      .catch((error) => {
         this.log.debug(`Failed to get volume: ${error}`)
         callback(error, null)
       })
