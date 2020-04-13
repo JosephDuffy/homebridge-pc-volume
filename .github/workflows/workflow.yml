@@ -7,21 +7,25 @@ jobs:
     name: Test on node ${{ matrix.node }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macOS-latest]
         node: [10, 12]
-    
+
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
+
     - name: Setup Node.js ${{ matrix.node }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node }}
-    - run: yarn install --ignore-engines
-    - run: yarn test:coverage
-    - run: yarn lint:check
-    - run: yarn format:check
-    
+
+    - name: yarn install
+      run: yarn install --ignore-engines
+
+    - name: Run tests
+      run: yarn --ignore-engines test:coverage
+
     - name: Coveralls
       uses: coverallsapp/github-action@master
       with:
@@ -38,3 +42,41 @@ jobs:
       with:
         github-token: ${{ secrets.github_token }}
         parallel-finished: true
+
+  check_lint:
+    name: Check for linting errors using node ${{ matrix.node }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [12]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Node.js ${{ matrix.node }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node }}
+    - name: yarn install
+      run: yarn install --ignore-engines
+    - name: Check for linting errors
+      run: yarn --ignore-engines lint:check
+
+  check_format:
+    name: Check for formatting errors using node ${{ matrix.node }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [12]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Node.js ${{ matrix.node }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node }}
+    - name: yarn install
+      run: yarn install --ignore-engines
+    - name: Check code format
+      run: yarn --ignore-engines format:check
