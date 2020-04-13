@@ -1,5 +1,4 @@
 {
     "parser": "typescript",
-    "semi": false,
-    "trailingComma": "es5"
+    "semi": false
 }

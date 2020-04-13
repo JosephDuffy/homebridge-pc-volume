@@ -230,7 +230,7 @@ describe("public interface", () => {
       })
 
       it("should register all services with the name provided in the config", () => {
-        services.forEach(service =>
+        services.forEach((service) =>
           expect(service.displayName).toStrictEqual(config.name)
         )
       })
@@ -271,7 +271,7 @@ describe("public interface", () => {
       })
 
       it("should register all services with the name provided in the config", () => {
-        services.forEach(service =>
+        services.forEach((service) =>
           expect(service.displayName).toStrictEqual(config.name)
         )
       })
@@ -312,7 +312,7 @@ describe("public interface", () => {
       })
 
       it("should register all services with the name provided in the config", () => {
-        services.forEach(service =>
+        services.forEach((service) =>
           expect(service.displayName).toStrictEqual(config.name)
         )
       })
@@ -365,7 +365,7 @@ describe("public interface", () => {
       })
 
       it("should register all services with the name provided in the config", () => {
-        services.forEach(service =>
+        services.forEach((service) =>
           expect(service.displayName).toStrictEqual(config.name)
         )
       })
