@@ -26,22 +26,10 @@ jobs:
     - name: Run tests
       run: yarn --ignore-engines test:coverage
 
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
       with:
-        github-token: ${{ secrets.github_token }}
-        parallel: true
-
-  coveralls_finish:
-    name: Coveralls finish
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-    - name: Coveralls Finished
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.github_token }}
-        parallel-finished: true
+        fail_ci_if_error: true
 
   check_lint:
     name: Check for linting errors using node ${{ matrix.node }} on ${{ matrix.os }}
