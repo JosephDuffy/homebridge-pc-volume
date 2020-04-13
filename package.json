@@ -17,8 +17,8 @@
     "test:coverage": "npm run test -- --coverage",
     "lint": "tslint --fix --project ./tsconfig.json",
     "lint:check": "tslint --project ./tsconfig.json",
-    "format": "prettier --write \"./**/*.(j|t)s\"",
-    "format:check": "prettier-check \"./**/*.(j|t)s\""
+    "format": "prettier --write \"src/**/*.ts\" jest.config.js",
+    "format:check": "prettier-check \"src/**/*.ts\" jest.config.js"
   },
   "dependencies": {
     "loudness": "^0.3.0"
