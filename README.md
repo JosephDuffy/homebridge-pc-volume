@@ -1,7 +1,7 @@
 # homebridge-pc-volume
 
 [![Build Status](https://github.com/JosephDuffy/homebridge-pc-volume/workflows/Tests/badge.svg)](https://launch-editor.github.com/actions?workflowID=Tests&event=push&nwo=JosephDuffy%2Fhomebridge-pc-volume)
-[![Coverage Status](https://coveralls.io/repos/github/JosephDuffy/homebridge-pc-volume/badge.svg?branch=master)](https://coveralls.io/github/JosephDuffy/homebridge-pc-volume?branch=master)
+[![codecov](https://codecov.io/gh/JosephDuffy/homebridge-pc-volume/branch/master/graph/badge.svg)](https://codecov.io/gh/JosephDuffy/homebridge-pc-volume)
 [![npm version](https://img.shields.io/npm/v/homebridge-pc-volume.svg)](https://www.npmjs.com/package/homebridge-pc-volume)
 
 homebridge-pc-volume is a Homebridge plugin that adds a support for changing a computer's volume using HomeKit and Siri.
