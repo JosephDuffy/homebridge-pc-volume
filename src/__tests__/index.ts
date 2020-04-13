@@ -240,7 +240,7 @@ describe("public interface", () => {
           stub.restore()
         })
 
-        it("should request the muted status for node-loudness", done => {
+        it("should request the muted status for node-loudness", (done) => {
           services[0]
             .getCharacteristic(Characteristic.Mute)
             .emit(CharacteristicEventTypes.GET, () => {
@@ -249,7 +249,7 @@ describe("public interface", () => {
             })
         })
 
-        it("should return `true` when the mute characteristic is requested", done => {
+        it("should return `true` when the mute characteristic is requested", (done) => {
           services[0]
             .getCharacteristic(Characteristic.Mute)
             .emit(
@@ -299,7 +299,7 @@ describe("public interface", () => {
       })
 
       it("should register all services with the name provided in the config", () => {
-        services.forEach(service =>
+        services.forEach((service) =>
           expect(service.displayName).toStrictEqual(config.name)
         )
       })
@@ -340,7 +340,7 @@ describe("public interface", () => {
       })
 
       it("should register all services with the name provided in the config", () => {
-        services.forEach(service =>
+        services.forEach((service) =>
           expect(service.displayName).toStrictEqual(config.name)
         )
       })
@@ -381,7 +381,7 @@ describe("public interface", () => {
       })
 
       it("should register all services with the name provided in the config", () => {
-        services.forEach(service =>
+        services.forEach((service) =>
           expect(service.displayName).toStrictEqual(config.name)
         )
       })
@@ -434,7 +434,7 @@ describe("public interface", () => {
       })
 
       it("should register all services with the name provided in the config", () => {
-        services.forEach(service =>
+        services.forEach((service) =>
           expect(service.displayName).toStrictEqual(config.name)
         )
       })
@@ -487,7 +487,7 @@ describe("public interface", () => {
       })
 
       it("should register all services with the name provided in the config", () => {
-        services.forEach(service =>
+        services.forEach((service) =>
           expect(service.displayName).toStrictEqual(config.name)
         )
       })

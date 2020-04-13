@@ -122,7 +122,7 @@ export default class ServiceWrapper {
         this.log.debug(`Set muted status to ${newValue}`)
         callback()
       })
-      .catch(error => {
+      .catch((error) => {
         this.log.error(`Failed to set muted status to ${newValue}: ${error}`)
       })
   }
@@ -134,11 +134,11 @@ export default class ServiceWrapper {
 
     this.loudness
       .getMuted()
-      .then(muted => {
+      .then((muted) => {
         this.log.debug(`Got muted status: ${muted}`)
         callback(null, muted)
       })
-      .catch(error => {
+      .catch((error) => {
         this.log.debug(`Failed to get muted status: ${error}`)
         callback(error, null)
       })
@@ -153,7 +153,7 @@ export default class ServiceWrapper {
         this.log.debug(`Set volume to ${volume}%`)
         callback()
       })
-      .catch(error => {
+      .catch((error) => {
         this.log.error(`Failed to set volume to ${volume}%: ${error}`)
       })
   }
@@ -165,11 +165,11 @@ export default class ServiceWrapper {
 
     this.loudness
       .getVolume()
-      .then(volume => {
+      .then((volume) => {
         this.log.debug(`Got volume: ${volume}%`)
         callback(null, volume)
       })
-      .catch(error => {
+      .catch((error) => {
         this.log.debug(`Failed to get volume: ${error}`)
         callback(error, null)
       })

@@ -78,7 +78,7 @@ export default class ComputerSpeakersAccessory implements Accessory {
 
   public getServices() {
     return [this.speakerService, this.lightService, this.fanService]
-      .filter(wrapper => wrapper !== undefined)
-      .map(wrapper => wrapper.service)
+      .filter((wrapper) => wrapper !== undefined)
+      .map((wrapper) => wrapper.service)
   }
 }

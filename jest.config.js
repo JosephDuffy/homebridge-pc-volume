@@ -1,10 +1,6 @@
 module.exports = {
-  "preset": "ts-jest",
-  "roots": [
-    "src/",
-  ],
-  "testPathIgnorePatterns": [
-    "/node_modules/",
-    "/src/__tests__/helpers/.*",
-  ],
+  preset: "ts-jest",
+  roots: ["src/"],
+  testPathIgnorePatterns: ["/src/__tests__/helpers/"],
+  collectCoverageFrom: ["src/{!(__tests___),}.ts"]
 }

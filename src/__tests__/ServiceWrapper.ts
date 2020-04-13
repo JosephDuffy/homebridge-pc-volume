@@ -31,7 +31,7 @@ describe("ServiceWrapper", () => {
         stub.restore()
       })
 
-      it("should return the error when the mute characteristic is requested", done => {
+      it("should return the error when the mute characteristic is requested", (done) => {
         wrapper.service
           .getCharacteristic(Characteristic.Mute)
           .emit(
@@ -62,7 +62,7 @@ describe("ServiceWrapper", () => {
         })
 
         describe("then requesting the value from the characteristic", () => {
-          it("should request the muted status from node-loudness", done => {
+          it("should request the muted status from node-loudness", (done) => {
             wrapper.service
               .getCharacteristic(Characteristic.Mute)
               .emit(CharacteristicEventTypes.GET, () => {
@@ -72,7 +72,7 @@ describe("ServiceWrapper", () => {
           })
 
           describe("when the system is muted", () => {
-            it("should return `true` when the mute characteristic is requested", done => {
+            it("should return `true` when the mute characteristic is requested", (done) => {
               wrapper.service
                 .getCharacteristic(Characteristic.Mute)
                 .emit(
@@ -87,7 +87,7 @@ describe("ServiceWrapper", () => {
           })
 
           describe("when the system is unmuted", () => {
-            it("should return `true` when the mute characteristic is requested", done => {
+            it("should return `true` when the mute characteristic is requested", (done) => {
               wrapper.service
                 .getCharacteristic(Characteristic.Mute)
                 .emit(
@@ -109,7 +109,7 @@ describe("ServiceWrapper", () => {
         })
 
         describe("then requesting the value from the characteristic", () => {
-          it("should request the muted status from node-loudness", done => {
+          it("should request the muted status from node-loudness", (done) => {
             wrapper.service
               .getCharacteristic(Characteristic.Mute)
               .emit(CharacteristicEventTypes.GET, () => {
@@ -119,7 +119,7 @@ describe("ServiceWrapper", () => {
           })
 
           describe("when the system is muted", () => {
-            it("should return `false` when the mute characteristic is requested", done => {
+            it("should return `false` when the mute characteristic is requested", (done) => {
               wrapper.service
                 .getCharacteristic(Characteristic.Mute)
                 .emit(
@@ -134,7 +134,7 @@ describe("ServiceWrapper", () => {
           })
 
           describe("when the system is unmuted", () => {
-            it("should return `false` when the mute characteristic is requested", done => {
+            it("should return `false` when the mute characteristic is requested", (done) => {
               wrapper.service
                 .getCharacteristic(Characteristic.Mute)
                 .emit(
