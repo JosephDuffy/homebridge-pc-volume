@@ -965,16 +965,16 @@ binary-extensions@^2.0.0:
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.0.0.tgz#23c0df14f6a88077f5f986c0d167ec03c3d5537c"
   integrity sha512-Phlt0plgpIIBOGTT/ehfFnbNlfsDEiqmzE2KRXoX1bLIlir4X/MR+zSyBEkL05ffWgnRSf/DXv+WrUAVr93/ow==
 
-bonjour-hap@^3.5.1:
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/bonjour-hap/-/bonjour-hap-3.5.1.tgz#2519201bd0b302e0d399f9d6619015d7d6d6443e"
-  integrity sha512-JqJXX5+i1NRGt8GyIPb+nBNjwrHbWe5Pb+HSuRMG/B62tPRHQ4Jyv3yX7hy1pHfRrV2OhnWpd+ljBtMb24R5rA==
+bonjour-hap@3.5.4:
+  version "3.5.4"
+  resolved "https://registry.yarnpkg.com/bonjour-hap/-/bonjour-hap-3.5.4.tgz#ba7d2e6220000cdb50bb80078a72ccdbcefa1c6f"
+  integrity sha512-MgU27SEZYQ09Skm71Xa7SZoAg259V4IlAJNWaloFVMlYDn1OjJy3nkwSixRHnDzrcLWocVI84f9exI1ObZChBw==
   dependencies:
     array-flatten "^2.1.0"
     deep-equal "^1.0.1"
     dns-equal "^1.0.0"
     dns-txt "^2.0.2"
-    multicast-dns "^6.0.1"
+    multicast-dns "^7.2.0"
     multicast-dns-service-types "^1.1.0"
 
 boxen@^4.2.0:
@@ -1549,13 +1549,13 @@ dns-equal@^1.0.0:
   resolved "https://registry.yarnpkg.com/dns-equal/-/dns-equal-1.0.0.tgz#b39e7f1da6eb0a75ba9c17324b34753c47e0654d"
   integrity sha1-s55/HabrCnW6nBcySzR1PEfgZU0=
 
-dns-packet@^1.3.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/dns-packet/-/dns-packet-1.3.1.tgz#12aa426981075be500b910eedcd0b47dd7deda5a"
-  integrity sha512-0UxfQkMhYAUaZI+xrNZOz/as5KgDU0M/fQ9b6SpkyLbk3GEswDi6PADJVaYJradtRVsRIlF1zLyOodbcTCDzUg==
+dns-packet@^4.0.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/dns-packet/-/dns-packet-4.2.0.tgz#3fd6f5ff5a4ec3194ed0b15312693ffe8776b343"
+  integrity sha512-bn1AKpfkFbm0MIioOMHZ5qJzl2uypdBwI4nYNsqvhjsegBhcKJUlCrMPWLx6JEezRjxZmxhtIz/FkBEur2l8Cw==
   dependencies:
-    ip "^1.1.0"
-    safe-buffer "^5.0.1"
+    ip "^1.1.5"
+    safe-buffer "^5.1.1"
 
 dns-txt@^2.0.2:
   version "2.0.2"
@@ -1793,10 +1793,10 @@ fast-levenshtein@~2.0.4:
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
 
-fast-srp-hap@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/fast-srp-hap/-/fast-srp-hap-1.0.1.tgz#377124d196bc6a5157aae5b37bf5fa35bb4ad2d9"
-  integrity sha1-N3Ek0Za8alFXquWze/X6NbtK0tk=
+fast-srp-hap@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/fast-srp-hap/-/fast-srp-hap-2.0.1.tgz#00cbd4f92cbd031ca6437b64ae81bab6d3aeb4f8"
+  integrity sha512-dClwnyfRd3BZxu3KAdhvAayozq7fLazXGlDc4HAHJV1M+olqGKAT52pygXQu5UiDSHxz/WB3KRvsojqQ5zmXOA==
 
 fb-watchman@^2.0.0:
   version "2.0.0"
@@ -1997,15 +1997,15 @@ growly@^1.3.0:
   resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
   integrity sha1-8QdIy+dq+WS3yWyTxrzCivEgwIE=
 
-hap-nodejs@^0.5.0:
-  version "0.5.11"
-  resolved "https://registry.yarnpkg.com/hap-nodejs/-/hap-nodejs-0.5.11.tgz#8b9bd71c889061be238bd84db8e818cefc375684"
-  integrity sha512-l6jSuiN3IrTn7wEKg8GrUDoslUJDkP1dhmGpkBTRCLE9bA5V1RlBtVL4Sg9rHlPYbwIwUlq3qXa8gDiVVNCOwA==
+hap-nodejs@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/hap-nodejs/-/hap-nodejs-0.6.0.tgz#e50df4ecfcb2f17561d28986c5e741a7fd880a37"
+  integrity sha512-MtT0Rs/uZ5kk0PI7saJ3X+N62o+ZROlPLR/GeEFdVpcIcX+PmpviFgNMAlHSMke322Cob/eVbWAbEG6Ml7Q4ag==
   dependencies:
-    bonjour-hap "^3.5.1"
+    bonjour-hap "3.5.4"
     debug "^4.1.1"
     decimal.js "^10.2.0"
-    fast-srp-hap "^1.0.1"
+    fast-srp-hap "2.0.1"
     ip "^1.1.3"
     node-persist "^0.0.11"
     tweetnacl "^1.0.3"
@@ -2189,7 +2189,7 @@ ip-regex@^2.1.0:
   resolved "https://registry.yarnpkg.com/ip-regex/-/ip-regex-2.1.0.tgz#fa78bf5d2e6913c911ce9f819ee5146bb6d844e9"
   integrity sha1-+ni/XS5pE8kRzp+BnuUUa7bYROk=
 
-ip@^1.1.0, ip@^1.1.3:
+ip@^1.1.3, ip@^1.1.5:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/ip/-/ip-1.1.5.tgz#bdded70114290828c0a039e72ef25f5aaec4354a"
   integrity sha1-vd7XARQpCCjAoDnnLvJfWq7ENUo=
@@ -3292,12 +3292,12 @@ multicast-dns-service-types@^1.1.0:
   resolved "https://registry.yarnpkg.com/multicast-dns-service-types/-/multicast-dns-service-types-1.1.0.tgz#899f11d9686e5e05cb91b35d5f0e63b773cfc901"
   integrity sha1-iZ8R2WhuXgXLkbNdXw5jt3PPyQE=
 
-multicast-dns@^6.0.1:
-  version "6.2.3"
-  resolved "https://registry.yarnpkg.com/multicast-dns/-/multicast-dns-6.2.3.tgz#a0ec7bd9055c4282f790c3c82f4e28db3b31b229"
-  integrity sha512-ji6J5enbMyGRHIAkAOu3WdV8nggqviKCEKtXcOqfphZZtQrmHKycfynJ2V7eVPUA4NhJ6V7Wf4TmGbTwKE9B6g==
+multicast-dns@^7.2.0:
+  version "7.2.2"
+  resolved "https://registry.yarnpkg.com/multicast-dns/-/multicast-dns-7.2.2.tgz#5731da04f47d1e435ac457e5ac7b4b39d866a5a1"
+  integrity sha512-XqSMeO8EWV/nOXOpPV8ztIpNweVfE1dSpz6SQvDPp71HD74lMXjt4m/mWB1YBMG0kHtOodxRWc5WOb/UNN1A5g==
   dependencies:
-    dns-packet "^1.3.1"
+    dns-packet "^4.0.0"
     thunky "^1.0.2"
 
 nanomatch@^1.2.9:
@@ -3960,6 +3960,11 @@ safe-buffer@^5.0.1, safe-buffer@^5.1.2, safe-buffer@~5.1.1:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
   integrity sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==
+
+safe-buffer@^5.1.1:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.2.0.tgz#b74daec49b1148f88c64b68d49b1e815c1f2f519"
+  integrity sha512-fZEwUGbVl7kouZs1jCdMLdt95hdIv0ZeHg6L7qPeciMZhZ+/gdesW4wgTARkrFWEpspjEATAzUGPG8N2jJiwbg==
 
 safe-regex@^1.1.0:
   version "1.1.0"
