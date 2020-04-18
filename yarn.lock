@@ -1998,9 +1998,9 @@ growly@^1.3.0:
   integrity sha1-8QdIy+dq+WS3yWyTxrzCivEgwIE=
 
 hap-nodejs@^0.6.0:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/hap-nodejs/-/hap-nodejs-0.6.2.tgz#82a1eedf4e16f40b1b088ba418dfaebe6f9e5b99"
-  integrity sha512-/LlRaYCtcwC4jBUKRJeBUdUfKEp8w/NK3PNYXaAOngQL9uVnqsvQ0Gce/mUhSXPhsxfdnxbHVT870W9OEnV6+A==
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/hap-nodejs/-/hap-nodejs-0.6.3.tgz#926e41e04c7ab18df38a5ae05918bed0065bf3a1"
+  integrity sha512-FH5cEBJDz1e/IzqYbGEO4PdydXrZN+vqZcvKexyRqZlP1DbPjjeboI2TbqGfftUsyZu2jz5y/NRYlS9HzEijcQ==
   dependencies:
     bonjour-hap "3.5.4"
     debug "^4.1.1"
