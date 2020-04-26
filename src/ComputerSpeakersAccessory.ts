@@ -2,8 +2,7 @@
 // provided by homebridge are used to ensure compatibility
 import {
   Characteristic as HAPCharacteristic,
-  Service as HAPService,
-  Characteristic,
+  Service as HAPService
 } from "hap-nodejs"
 import loudness from "loudness"
 import Config, { Service as ConfigService, VolumeAlgorithm } from "./config"
@@ -12,6 +11,7 @@ import ServiceWrapper from "./ServiceWrapper"
 import ComputerSpeakers from "./ComputerSpeakers"
 
 export default class ComputerSpeakersAccessory implements Accessory {
+  private Characteristic: typeof HAPCharacteristic
   private computerSpeakers: ComputerSpeakers
   private speakerService?: ServiceWrapper
   private fanService?: ServiceWrapper
@@ -25,6 +25,7 @@ export default class ComputerSpeakersAccessory implements Accessory {
     log: Logger,
     config: Config
   ) {
+    this.Characteristic = Characteristic
     this.computerSpeakers = new ComputerSpeakers(log, loudness)
     const name = config.name
     const services = config.services || [ConfigService.Lightbulb]
@@ -258,25 +259,25 @@ export default class ComputerSpeakersAccessory implements Accessory {
 
   private notifyServicesOfVolume(volume: number) {
     if (this.speakerService) {
-      this.speakerService.service.getCharacteristic(Characteristic.Volume).updateValue(volume)
+      this.speakerService.service.getCharacteristic(this.Characteristic.Volume).updateValue(volume)
     }
     if (this.fanService) {
-      this.fanService.service.getCharacteristic(Characteristic.RotationSpeed).updateValue(volume)
+      this.fanService.service.getCharacteristic(this.Characteristic.RotationSpeed).updateValue(volume)
     }
     if (this.lightService) {
-      this.lightService.service.getCharacteristic(Characteristic.Brightness).updateValue(volume)
+      this.lightService.service.getCharacteristic(this.Characteristic.Brightness).updateValue(volume)
     }
   }
 
   private notifyServicesOfMuteStatus(isMuted: boolean) {
     if (this.speakerService) {
-      this.speakerService.service.getCharacteristic(Characteristic.Mute).updateValue(isMuted)
+      this.speakerService.service.getCharacteristic(this.Characteristic.Mute).updateValue(isMuted)
     }
     if (this.fanService) {
-      this.fanService.service.getCharacteristic(Characteristic.On).updateValue(isMuted)
+      this.fanService.service.getCharacteristic(this.Characteristic.On).updateValue(isMuted)
     }
     if (this.lightService) {
-      this.lightService.service.getCharacteristic(Characteristic.On).updateValue(isMuted)
+      this.lightService.service.getCharacteristic(this.Characteristic.On).updateValue(isMuted)
     }
   }
 
