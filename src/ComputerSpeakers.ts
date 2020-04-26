@@ -41,7 +41,10 @@ export default class ComputerSpeakers {
     })
   }
 
-  public setVolume(volume: number, algorithm: VolumeAlgorithm): Promise<number> {
+  public setVolume(
+    volume: number,
+    algorithm: VolumeAlgorithm
+  ): Promise<number> {
     return new Promise((resolve, reject) => {
       const systemVolume = (() => {
         switch (algorithm) {

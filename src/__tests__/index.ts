@@ -8,7 +8,10 @@ import { Config, Service as ConfigService, VolumeAlgorithm } from "./../config"
 import { AccessoryConstructor, Homebridge } from "./../homebridge"
 import LogStub from "./helpers/LogStub"
 
-function registerAccessory(homebridge: Homebridge, config: Config): Promise<ComputerSpeakersAccessory> {
+function registerAccessory(
+  homebridge: Homebridge,
+  config: Config
+): Promise<ComputerSpeakersAccessory> {
   return new Promise(async (resolve, reject) => {
     const defaultExport = (await import("../index")).default
     homebridge = {
@@ -19,7 +22,10 @@ function registerAccessory(homebridge: Homebridge, config: Config): Promise<Comp
         accessoryName: string,
         constructor: AccessoryConstructor
       ) {
-        const accessory = new constructor(homebridge.log, config) as ComputerSpeakersAccessory
+        const accessory = new constructor(
+          homebridge.log,
+          config
+        ) as ComputerSpeakersAccessory
         resolve(accessory)
       },
     }
@@ -63,7 +69,10 @@ describe("public interface", () => {
         accessoryName: string,
         constructor: AccessoryConstructor
       ) => {
-        accessory = new constructor(homebridge.log, config) as ComputerSpeakersAccessory
+        accessory = new constructor(
+          homebridge.log,
+          config
+        ) as ComputerSpeakersAccessory
       }
       defaultExport(homebridge)
     })

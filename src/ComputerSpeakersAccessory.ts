@@ -2,7 +2,7 @@
 // provided by homebridge are used to ensure compatibility
 import {
   Characteristic as HAPCharacteristic,
-  Service as HAPService
+  Service as HAPService,
 } from "hap-nodejs"
 import loudness from "loudness"
 import Config, { Service as ConfigService, VolumeAlgorithm } from "./config"
@@ -54,9 +54,9 @@ export default class ComputerSpeakersAccessory implements Accessory {
         },
         (isMuted: boolean, callback: () => void) => {
           this.computerSpeakers
-          .setMuted(isMuted)
-          .then(this.notifyServicesOfMuteStatus.bind(this, isMuted))
-          .finally(callback)
+            .setMuted(isMuted)
+            .then(this.notifyServicesOfMuteStatus.bind(this, isMuted))
+            .finally(callback)
         }
       )
       this.speakerService.bindNumberCharacteristic(
@@ -94,8 +94,10 @@ export default class ComputerSpeakersAccessory implements Accessory {
           log.debug(
             `Flipping system muted value from ${isMuted} to ${!isMuted} before returning fan on value`
           )
-          this.computerSpeakers.setMuted(!isMuted)
-          .then(this.notifyServicesOfMuteStatus.bind(this, !isMuted)).finally(callback)
+          this.computerSpeakers
+            .setMuted(!isMuted)
+            .then(this.notifyServicesOfMuteStatus.bind(this, !isMuted))
+            .finally(callback)
         }
       )
       this.fanService.bindNumberCharacteristic(
@@ -133,8 +135,10 @@ export default class ComputerSpeakersAccessory implements Accessory {
           log.debug(
             `Flipping system muted value from ${isMuted} to ${!isMuted} before returning light on value`
           )
-          this.computerSpeakers.setMuted(!isMuted)
-          .then(this.notifyServicesOfMuteStatus.bind(this, !isMuted)).finally(callback)
+          this.computerSpeakers
+            .setMuted(!isMuted)
+            .then(this.notifyServicesOfMuteStatus.bind(this, !isMuted))
+            .finally(callback)
         }
       )
       this.lightService.bindNumberCharacteristic(
@@ -179,7 +183,10 @@ export default class ComputerSpeakersAccessory implements Accessory {
 
                 setTimeout(() => {
                   log.debug("Setting volume up button back to off")
-                  this.volumeUpButtonService.service.updateCharacteristic(Characteristic.On, false)
+                  this.volumeUpButtonService.service.updateCharacteristic(
+                    Characteristic.On,
+                    false
+                  )
                 }, switchDelay)
               })
           } else {
@@ -216,7 +223,10 @@ export default class ComputerSpeakersAccessory implements Accessory {
 
                 setTimeout(() => {
                   log.debug("Setting volume up button back to off")
-                  this.volumeDownService.service.updateCharacteristic(Characteristic.On, false)
+                  this.volumeDownService.service.updateCharacteristic(
+                    Characteristic.On,
+                    false
+                  )
                 }, switchDelay)
               })
           } else {
@@ -259,26 +269,37 @@ export default class ComputerSpeakersAccessory implements Accessory {
 
   private notifyServicesOfVolume(volume: number) {
     if (this.speakerService) {
-      this.speakerService.service.getCharacteristic(this.Characteristic.Volume).updateValue(volume)
+      this.speakerService.service
+        .getCharacteristic(this.Characteristic.Volume)
+        .updateValue(volume)
     }
     if (this.fanService) {
-      this.fanService.service.getCharacteristic(this.Characteristic.RotationSpeed).updateValue(volume)
+      this.fanService.service
+        .getCharacteristic(this.Characteristic.RotationSpeed)
+        .updateValue(volume)
     }
     if (this.lightService) {
-      this.lightService.service.getCharacteristic(this.Characteristic.Brightness).updateValue(volume)
+      this.lightService.service
+        .getCharacteristic(this.Characteristic.Brightness)
+        .updateValue(volume)
     }
   }
 
   private notifyServicesOfMuteStatus(isMuted: boolean) {
     if (this.speakerService) {
-      this.speakerService.service.getCharacteristic(this.Characteristic.Mute).updateValue(isMuted)
+      this.speakerService.service
+        .getCharacteristic(this.Characteristic.Mute)
+        .updateValue(isMuted)
     }
     if (this.fanService) {
-      this.fanService.service.getCharacteristic(this.Characteristic.On).updateValue(isMuted)
+      this.fanService.service
+        .getCharacteristic(this.Characteristic.On)
+        .updateValue(isMuted)
     }
     if (this.lightService) {
-      this.lightService.service.getCharacteristic(this.Characteristic.On).updateValue(isMuted)
+      this.lightService.service
+        .getCharacteristic(this.Characteristic.On)
+        .updateValue(isMuted)
     }
   }
-
 }

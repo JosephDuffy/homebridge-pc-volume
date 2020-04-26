@@ -25,7 +25,7 @@ describe("ComputerSpeakersAccessory", () => {
 
     beforeEach(async () => {
       config = {
-        name: "Test Accessory"
+        name: "Test Accessory",
       }
       createAccessory(config)
     })
@@ -193,7 +193,8 @@ describe("ComputerSpeakersAccessory", () => {
       })
 
       it("should request the muted status for node-loudness", (done) => {
-        accessory.getServices()[0]
+        accessory
+          .getServices()[0]
           .getCharacteristic(Characteristic.Mute)
           .emit(CharacteristicEventTypes.GET, () => {
             expect(stub.calledOnce).toStrictEqual(true)
@@ -202,7 +203,8 @@ describe("ComputerSpeakersAccessory", () => {
       })
 
       it("should return `true` when the mute characteristic is requested", (done) => {
-        accessory.getServices()[0]
+        accessory
+          .getServices()[0]
           .getCharacteristic(Characteristic.Mute)
           .emit(
             CharacteristicEventTypes.GET,
@@ -248,9 +250,11 @@ describe("ComputerSpeakersAccessory", () => {
     })
 
     it("should register all services with the name provided in the config", () => {
-      accessory.getServices().forEach((service) =>
-        expect(service.displayName).toStrictEqual(config.name)
-      )
+      accessory
+        .getServices()
+        .forEach((service) =>
+          expect(service.displayName).toStrictEqual(config.name)
+        )
     })
   })
 
@@ -286,9 +290,11 @@ describe("ComputerSpeakersAccessory", () => {
     })
 
     it("should register all services with the name provided in the config", () => {
-      accessory.getServices().forEach((service) =>
-        expect(service.displayName).toStrictEqual(config.name)
-      )
+      accessory
+        .getServices()
+        .forEach((service) =>
+          expect(service.displayName).toStrictEqual(config.name)
+        )
     })
   })
 
@@ -324,9 +330,11 @@ describe("ComputerSpeakersAccessory", () => {
     })
 
     it("should register all services with the name provided in the config", () => {
-      accessory.getServices().forEach((service) =>
-        expect(service.displayName).toStrictEqual(config.name)
-      )
+      accessory
+        .getServices()
+        .forEach((service) =>
+          expect(service.displayName).toStrictEqual(config.name)
+        )
     })
   })
 
@@ -374,9 +382,11 @@ describe("ComputerSpeakersAccessory", () => {
     })
 
     it("should register all services with the name provided in the config", () => {
-      accessory.getServices().forEach((service) =>
-        expect(service.displayName).toStrictEqual(config.name)
-      )
+      accessory
+        .getServices()
+        .forEach((service) =>
+          expect(service.displayName).toStrictEqual(config.name)
+        )
     })
   })
 
@@ -424,9 +434,11 @@ describe("ComputerSpeakersAccessory", () => {
     })
 
     it("should register all services with the name provided in the config", () => {
-      accessory.getServices().forEach((service) =>
-        expect(service.displayName).toStrictEqual(config.name)
-      )
+      accessory
+        .getServices()
+        .forEach((service) =>
+          expect(service.displayName).toStrictEqual(config.name)
+        )
     })
   })
 })
