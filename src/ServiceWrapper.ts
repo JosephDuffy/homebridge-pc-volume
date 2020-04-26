@@ -13,12 +13,12 @@ export default class ServiceWrapper {
   }
 
   public bindBooleanCharacteristic(
-    characteristic: WithUUID<typeof Characteristic>,
+    characteristic: WithUUID<new () => Characteristic>,
     getValue: () => Promise<boolean>,
     setValue: (isMuted: boolean, callback: () => void) => void
   ) {
     this.service
-      .addCharacteristic(characteristic)
+      .getCharacteristic(characteristic)
       .on(
         CharacteristicEventTypes.GET,
         (callback: (error: Error | null, muted: boolean | null) => void) => {
