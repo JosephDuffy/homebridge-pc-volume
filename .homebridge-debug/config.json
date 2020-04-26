@@ -1,0 +1,17 @@
+{
+  "bridge": {
+    "name": "homebridge-pc-volume debugging",
+    "username": "CC:22:3D:E3:CE:31",
+    "pin": "031-45-155"
+  },
+
+  "description": "This is an example configuration file that can be used to debug homebridge-pc-volume.",
+  "accessories": [
+    {
+      "accessory": "ComputerSpeakers",
+      "name": "Development Computer",
+      "services": ["speaker", "fan", "lightbulb", "increase-button", "decrease-button"],
+      "switchVolumeDelta": 10
+    }
+  ]
+}
