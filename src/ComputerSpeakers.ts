@@ -41,7 +41,7 @@ export default class ComputerSpeakers {
     })
   }
 
-  public setVolume(volume: number, algorithm: VolumeAlgorithm): Promise<void> {
+  public setVolume(volume: number, algorithm: VolumeAlgorithm): Promise<number> {
     return new Promise((resolve, reject) => {
       const systemVolume = (() => {
         switch (algorithm) {
@@ -62,7 +62,7 @@ export default class ComputerSpeakers {
         .setVolume(systemVolume)
         .then(() => {
           this.log.debug(`Set volume to ${systemVolume}%`)
-          resolve()
+          resolve(volume)
         })
         .catch((error) => {
           this.log.error(`Failed to set volume to ${systemVolume}%: ${error}`)
@@ -106,15 +106,15 @@ export default class ComputerSpeakers {
   public modifyVolume(
     delta: number,
     algorithm: VolumeAlgorithm
-  ): Promise<void> {
+  ): Promise<number> {
     return new Promise((resolve, reject) => {
       this.log.debug(`Modifying volume by ${delta}%`)
 
       this.getVolume(algorithm)
         .then((homekitVolume) => {
-          this.setVolume(homekitVolume, algorithm)
+          this.setVolume(homekitVolume + delta, algorithm)
             .then(() => {
-              resolve()
+              resolve(homekitVolume + delta)
             })
             .catch((error) => {
               reject(error)
