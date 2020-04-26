@@ -18,7 +18,7 @@ export default class ServiceWrapper {
     setValue: (isMuted: boolean, callback: () => void) => void
   ) {
     this.service
-      .getCharacteristic(characteristic)
+      .addCharacteristic(characteristic)
       .on(
         CharacteristicEventTypes.GET,
         (callback: (error: Error | null, muted: boolean | null) => void) => {
