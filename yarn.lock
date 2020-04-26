@@ -2168,9 +2168,9 @@ hap-nodejs@0.4.51:
     tweetnacl "^1.0.1"
 
 hap-nodejs@^0.6.0:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/hap-nodejs/-/hap-nodejs-0.6.2.tgz#82a1eedf4e16f40b1b088ba418dfaebe6f9e5b99"
-  integrity sha512-/LlRaYCtcwC4jBUKRJeBUdUfKEp8w/NK3PNYXaAOngQL9uVnqsvQ0Gce/mUhSXPhsxfdnxbHVT870W9OEnV6+A==
+  version "0.6.4"
+  resolved "https://registry.yarnpkg.com/hap-nodejs/-/hap-nodejs-0.6.4.tgz#3270d0879898059757cf41ee9d9be0655778af58"
+  integrity sha512-pUv1J5mnRPhc84XDlieaH5/F12zGLWW5dagSmhVKCq3GQggtLhtmPCUY5rFRE1Y308OGKNPkb/WQKv9ENhYung==
   dependencies:
     bonjour-hap "3.5.4"
     debug "^4.1.1"
