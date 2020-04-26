@@ -109,6 +109,21 @@ Buttons can be exposed that will increase or decrease the system volume by a set
   ]
 ```
 
+### Initial Values
+
+If you wish to set some initial values when the plugin starts you can set the `initialVolume` and `initiallyMuted` properties:
+
+```
+  "accessories": [
+    {
+      "accessory": "ComputerSpeakers",
+      "name": "MacBook",
+      "initialVolume": 70,
+      "initiallyMuted": true
+    }
+  ]
+```
+
 ## Development
 
 To develop homebridge-pc-volume locally:
