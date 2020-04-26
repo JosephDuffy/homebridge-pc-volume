@@ -6,7 +6,6 @@ export interface Config {
   logarithmic?: boolean
   switchVolumeDelta?: number
   switchDelay?: number
-  cacheVolume?: boolean
 }
 
 export enum Service {
