@@ -6,7 +6,7 @@ import {
 } from "hap-nodejs"
 
 export default class ServiceWrapper {
-  public readonly service: Service | undefined
+  public readonly service: Service
 
   constructor(service: Service) {
     this.service = service
