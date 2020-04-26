@@ -16,7 +16,7 @@ export default class ComputerSpeakers {
   public async getMuted(): Promise<boolean> {
     this.log.debug(`Getting muted status`)
     try {
-      const isMuted = this.loudness.getMuted()
+      const isMuted = await this.loudness.getMuted()
       this.log.debug(`Got muted status: ${isMuted}`)
       return isMuted
     } catch (error) {
