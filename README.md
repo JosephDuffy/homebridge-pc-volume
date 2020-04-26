@@ -93,6 +93,22 @@ If no services key is provided a lightbulb will be exposed.
   ]
 ```
 
+### Volume Buttons
+
+Buttons can be exposed that will increase or decrease the system volume by a set percentage. These services are called `increase-button` and `decrease-button`. `switchVolumeDelta` can be provided to change the default percentage change of 5%. `switchDelay` controls the delay in ms between the switch being turned on and turned back off. Without a delay the Home app will not display the change. Defaults to `10`.
+
+```
+  "accessories": [
+    {
+      "accessory": "ComputerSpeakers",
+      "name": "MacBook",
+      "services": ["fan", "increase-button", "decrease-button"],
+      "switchVolumeDelta": 10,
+      "switchDelay": 100
+    }
+  ]
+```
+
 ## Development
 
 To develop homebridge-pc-volume locally:
@@ -102,6 +118,6 @@ To develop homebridge-pc-volume locally:
 3. Run `yarn build`
 4. Run `npm install --global $(pwd)`
 
-This will allow homebridge to find your local version of homebridge-pc-volume.
+This will allow homebridge to find your local version of homebridge-pc-volume. After making changes you will need to restart homebridge.
 
-After making changes you will need to restart homebridge. You may also stop any homebridge instance you already have running and run `yarn build:watch:debug`, which will start homebridge, and automatically restart it when a source file is updated.
+You may also stop any homebridge instance you already have running and run `yarn build:watch:debug`, which will start homebridge, and automatically restart it when a source file is updated. This instance of homebridge uses the `.homebridge-debug/config.json` config file.
