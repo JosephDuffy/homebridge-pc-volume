@@ -2108,9 +2108,9 @@ has-yarn@^2.1.0:
   integrity sha512-UqBRqi4ju7T+TqGNdqAO0PaSVGsDGJUBQvk9eUWNGRY1CFGDzYhLWoM7JQEemnlvVcv/YEmc2wNW8BC24EnUsw==
 
 homebridge@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/homebridge/-/homebridge-1.0.0.tgz#6ef2d895059bbfc35b5915ff8b10038266c52024"
-  integrity sha512-LxKXMk4qz6xw7verWGnQuGl0TABvORQYZcrNbDJLOOJgQogfelWRb9b+tRA/pqOpX+JEMBIJRZ2wy+OTgWXnFw==
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/homebridge/-/homebridge-1.0.1.tgz#58679d1b5820402b089ce236747fc163eb7dac28"
+  integrity sha512-Q7N/AqPM0JCDRMeAg90714iCmEgoe8k2XinA4W1S6WH1wjN1txG84FN7Eff77f47BYMO4qnQoVqiVzDnuSW+3w==
   dependencies:
     chalk "^3.0.0"
     commander "5.0.0"
