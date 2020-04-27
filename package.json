@@ -30,7 +30,7 @@
     "@types/sinon": "^9.0.0",
     "coveralls": "^3.0.2",
     "hap-nodejs": "^0.6.0",
-    "homebridge": "^0.4.53",
+    "homebridge": "^1.0.0",
     "husky": "^4.0.0",
     "jest": "^25.1.0",
     "lint-staged": "^10.0.1",
