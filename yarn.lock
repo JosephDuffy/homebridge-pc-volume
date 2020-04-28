@@ -1005,13 +1005,14 @@ bonjour-hap@3.5.4:
     multicast-dns "^7.2.0"
     multicast-dns-service-types "^1.1.0"
 
-bonjour-hap@3.5.6:
-  version "3.5.6"
-  resolved "https://registry.yarnpkg.com/bonjour-hap/-/bonjour-hap-3.5.6.tgz#279a305b7e07d6d1dd6b50636f94ed0e5c4b1587"
-  integrity sha512-CvplTZdbkghTzl29SCqw2bAlkJZAgGQ1cz7/WeorMNmTZkeSf1HOL+deL48Vx6O+50VMCgFldVBEM3fZZT3Sjw==
+bonjour-hap@3.5.7:
+  version "3.5.7"
+  resolved "https://registry.yarnpkg.com/bonjour-hap/-/bonjour-hap-3.5.7.tgz#d9c176a43b84c82077708b64de02635ac75fffd7"
+  integrity sha512-pWRH68oWPelu9Exo5DtbBe1mHOH9v9I9Az+MlXbwrNqX/b5sddxKNGCv9eL56VofHAV1N2R2pKhyAo7VwUITqA==
   dependencies:
     array-flatten "^2.1.2"
     deep-equal "^2.0.2"
+    ip "^1.1.5"
     multicast-dns "^7.2.2"
     multicast-dns-service-types "^1.1.0"
 
@@ -2140,11 +2141,11 @@ hap-nodejs@0.6.4:
     tweetnacl "^1.0.3"
 
 hap-nodejs@^0.6.0:
-  version "0.6.5"
-  resolved "https://registry.yarnpkg.com/hap-nodejs/-/hap-nodejs-0.6.5.tgz#5ec45ef6d31a439ab4d8b5b5335d9e3094f282be"
-  integrity sha512-+/9YbOK39W5z+9Z/UOnbdRyo0+AuEq2rvsehrvMdLYcn5jZulGOqXJBdIc2RkbUrsWTDH2OcgNdC7V+vmCMohw==
+  version "0.6.7"
+  resolved "https://registry.yarnpkg.com/hap-nodejs/-/hap-nodejs-0.6.7.tgz#0a70433dc0484ec5410d939132c147715a82acac"
+  integrity sha512-RQhKnOIchphZBqEkmEWNDsKvsa7SC0VzsPv41IElMpVrqwowMVLWnLCsCBrSKPR9GknxX7681DZgJa61e22HcQ==
   dependencies:
-    bonjour-hap "3.5.6"
+    bonjour-hap "3.5.7"
     debug "^4.1.1"
     decimal.js "^10.2.0"
     fast-srp-hap "2.0.1"
