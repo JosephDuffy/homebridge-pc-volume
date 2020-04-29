@@ -1,8 +1,7 @@
-import _loudness from "loudness"
 import { VolumeAlgorithm } from "./config"
 import { Logging } from "homebridge"
 
-type Loudness = typeof _loudness
+type Loudness = typeof import("loudness")
 
 export default class ComputerSpeakers {
   private log: Logging
