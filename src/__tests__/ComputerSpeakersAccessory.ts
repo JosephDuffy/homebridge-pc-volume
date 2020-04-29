@@ -3,17 +3,14 @@ import loudness from "loudness"
 import * as sinon from "sinon"
 import ComputerSpeakersAccessory from "../ComputerSpeakersAccessory"
 import ServiceWrapper from "../ServiceWrapper"
-import { Config, Service as ConfigService, } from "../config"
+import { Config, Service as ConfigService } from "../config"
 import { Logger, Logging } from "homebridge"
 
 describe("ComputerSpeakersAccessory", () => {
   let accessory: ComputerSpeakersAccessory
 
   function createAccessory(config: Config) {
-    accessory = new ComputerSpeakersAccessory(
-      new Logger() as Logging,
-      config
-    )
+    accessory = new ComputerSpeakersAccessory(new Logger() as Logging, config)
   }
 
   describe("with a default config", () => {

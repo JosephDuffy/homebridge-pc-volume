@@ -1,7 +1,7 @@
 import ComputerSpeakersAccessory from "./ComputerSpeakersAccessory"
 import { API, PluginInitializer } from "homebridge"
 
-const initialise: PluginInitializer = function initialise(api: API) {
+const initialise: PluginInitializer = (api: API) => {
   api.registerAccessory(
     "homebridge-pc-volume",
     "ComputerSpeakers",
