@@ -5,12 +5,17 @@ import ComputerSpeakersAccessory from "../ComputerSpeakersAccessory"
 import ServiceWrapper from "../ServiceWrapper"
 import { Config, Service as ConfigService } from "../config"
 import { Logger, Logging } from "homebridge"
+import { HomebridgeAPI } from "homebridge/lib/api"
 
 describe("ComputerSpeakersAccessory", () => {
   let accessory: ComputerSpeakersAccessory
 
   function createAccessory(config: Config) {
-    accessory = new ComputerSpeakersAccessory(new Logger() as Logging, config)
+    accessory = new ComputerSpeakersAccessory(
+      new Logger() as Logging,
+      config,
+      new HomebridgeAPI()
+    )
   }
 
   describe("with a default config", () => {
