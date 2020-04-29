@@ -39,11 +39,7 @@ export default class ComputerSpeakersAccessory implements AccessoryPlugin {
       this.speakerService.bindBooleanCharacteristic(
         Characteristic.Mute,
         async () => {
-          const isMuted = await this.computerSpeakers.getMuted()
-          logger.debug(
-            `Flipping characteristic value before setting muted status to ${!isMuted}`
-          )
-          return !isMuted
+          return this.computerSpeakers.getMuted()
         },
         (isMuted: boolean, callback: () => void) => {
           this.computerSpeakers
