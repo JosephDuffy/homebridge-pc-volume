@@ -7,7 +7,7 @@
   "main": "build/index.js",
   "preferGlobal": true,
   "scripts": {
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "rm -rf build && npm run build",
     "build": "tsc",
     "build:watch": "nodemon -e ts,json --watch src --watch tsconfig.json --watch package.json --exec \"tsc\"",
     "build:watch:debug": "nodemon -e ts,json --watch src --watch tsconfig.json --watch package.json --watch .homebridge-debug/config.json --exec \"tsc && homebridge --debug --user-storage-path .homebridge-debug --plugin-path .\"",
