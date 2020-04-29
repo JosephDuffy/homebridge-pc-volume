@@ -1,16 +1,13 @@
-import { Characteristic, CharacteristicEventTypes, Service } from "hap-nodejs"
-import loudness = require("loudness")
+import loudness from "loudness"
 import * as sinon from "sinon"
-import ServiceWrapper from "../ServiceWrapper"
 import ComputerSpeakers from "../ComputerSpeakers"
-import { Service as ConfigService } from "../config"
-import LogStub from "./helpers/LogStub"
+import { Logger, Logging } from "homebridge"
 
 describe("ComputerSpeakers", () => {
   let wrapper: ComputerSpeakers
 
   beforeEach(() => {
-    wrapper = new ComputerSpeakers(new LogStub(), loudness)
+    wrapper = new ComputerSpeakers(new Logger() as Logging, loudness)
   })
 
   describe("#getMuted", () => {

@@ -1,5 +1,6 @@
-export interface Config {
-  name: string
+import { AccessoryConfig } from "homebridge"
+
+export interface Config extends AccessoryConfig {
   services?: Service[]
   initialVolume?: number
   initiallyMuted?: boolean

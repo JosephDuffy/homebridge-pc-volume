@@ -1,14 +1,14 @@
 import _loudness from "loudness"
 import { VolumeAlgorithm } from "./config"
-import { Logger } from "./homebridge"
+import { Logging } from "homebridge"
 
 type Loudness = typeof _loudness
 
 export default class ComputerSpeakers {
-  private log: Logger
+  private log: Logging
   private loudness: Loudness
 
-  constructor(log: Logger, loudness: Loudness) {
+  constructor(log: Logging, loudness: Loudness) {
     this.log = log
     this.loudness = loudness
   }
