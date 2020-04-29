@@ -31,6 +31,29 @@ jobs:
       with:
         fail_ci_if_error: true
 
+  e2e_tests:
+    name: End-to-end tests
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        node: [12]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup Node.js ${{ matrix.node }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node }}
+
+    - name: yarn install
+      run: yarn install --ignore-engines
+
+    - name: Run end-to-end tests
+      run: ./e2e-tests/test.sh
+
   check_lint:
     name: Check for linting errors using node ${{ matrix.node }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
