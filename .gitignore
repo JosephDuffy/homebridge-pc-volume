@@ -3,3 +3,6 @@ node_modules
 /coverage
 /.vscode
 .homebridge-debug
+/e2e-tests/package
+/e2e-tests/config.json
+homebridge-pc-volume-*.tgz
