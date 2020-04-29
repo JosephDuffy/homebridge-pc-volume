@@ -1,14 +1,12 @@
 import ComputerSpeakersAccessory from "./ComputerSpeakersAccessory"
-import Homebridge from "./homebridge"
+import { API, PluginInitializer } from "homebridge"
 
-export default function initialise(homebridge: Homebridge): void {
-  homebridge.registerAccessory(
+const initialise: PluginInitializer = function initialise(api: API) {
+  api.registerAccessory(
     "homebridge-pc-volume",
     "ComputerSpeakers",
-    ComputerSpeakersAccessory.bind(
-      ComputerSpeakersAccessory,
-      homebridge.hap.Service,
-      homebridge.hap.Characteristic
-    )
+    ComputerSpeakersAccessory
   )
 }
+
+export default initialise

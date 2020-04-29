@@ -1,21 +1,17 @@
 import { Characteristic, CharacteristicEventTypes, Service } from "hap-nodejs"
-import * as hap from "hap-nodejs"
-import loudness = require("loudness")
+import loudness from "loudness"
 import * as sinon from "sinon"
 import ComputerSpeakersAccessory from "../ComputerSpeakersAccessory"
 import ServiceWrapper from "../ServiceWrapper"
-import { Config, Service as ConfigService, VolumeAlgorithm } from "../config"
-import { Homebridge } from "../homebridge"
-import LogStub from "./helpers/LogStub"
+import { Config, Service as ConfigService, } from "../config"
+import { Logger, Logging } from "homebridge"
 
 describe("ComputerSpeakersAccessory", () => {
   let accessory: ComputerSpeakersAccessory
 
   function createAccessory(config: Config) {
     accessory = new ComputerSpeakersAccessory(
-      hap.Service,
-      hap.Characteristic,
-      new LogStub(),
+      new Logger() as Logging,
       config
     )
   }
@@ -26,6 +22,7 @@ describe("ComputerSpeakersAccessory", () => {
     beforeEach(async () => {
       config = {
         name: "Test Accessory",
+        accessory: "Test Accessory",
       }
       createAccessory(config)
     })
@@ -51,8 +48,9 @@ describe("ComputerSpeakersAccessory", () => {
 
     beforeEach(() => {
       config = {
-        logarithmic: true,
         name: "Test Computer Speakers",
+        accessory: "Test Accessory",
+        logarithmic: true,
         services: [ConfigService.Lightbulb],
       }
       spy = sinon.spy(ServiceWrapper.prototype, "bindNumberCharacteristic")
@@ -84,6 +82,7 @@ describe("ComputerSpeakersAccessory", () => {
     beforeEach(() => {
       config = {
         name: "Test Computer Speakers",
+        accessory: "Test Accessory",
         services: [ConfigService.Lightbulb],
       }
       createAccessory(config)
@@ -110,6 +109,7 @@ describe("ComputerSpeakersAccessory", () => {
     beforeEach(() => {
       config = {
         name: "Test Computer Speakers",
+        accessory: "Test Accessory",
         services: [ConfigService.Fan],
       }
       createAccessory(config)
@@ -136,6 +136,7 @@ describe("ComputerSpeakersAccessory", () => {
     beforeEach(() => {
       config = {
         name: "Test Computer Speakers",
+        accessory: "Test Accessory",
         services: [ConfigService.Speaker],
       }
       createAccessory(config)
@@ -162,6 +163,7 @@ describe("ComputerSpeakersAccessory", () => {
     beforeEach(() => {
       config = {
         name: "Test Computer Speakers",
+        accessory: "Test Accessory",
         services: [ConfigService.Speaker],
       }
       createAccessory(config)
@@ -209,7 +211,7 @@ describe("ComputerSpeakersAccessory", () => {
           .emit(
             CharacteristicEventTypes.GET,
             (error?: Error, muted?: boolean) => {
-              // expect(muted).toStrictEqual(true)
+              expect(muted).toStrictEqual(true)
               expect(error).toBeNull()
               done()
             }
@@ -224,6 +226,7 @@ describe("ComputerSpeakersAccessory", () => {
     beforeEach(() => {
       config = {
         name: "Test Computer Speakers",
+        accessory: "Test Accessory",
         services: [ConfigService.Lightbulb, ConfigService.Fan],
       }
       createAccessory(config)
@@ -264,6 +267,7 @@ describe("ComputerSpeakersAccessory", () => {
     beforeEach(() => {
       config = {
         name: "Test Computer Speakers",
+        accessory: "Test Accessory",
         services: [ConfigService.Lightbulb, ConfigService.Speaker],
       }
       createAccessory(config)
@@ -304,6 +308,7 @@ describe("ComputerSpeakersAccessory", () => {
     beforeEach(() => {
       config = {
         name: "Test Computer Speakers",
+        accessory: "Test Accessory",
         services: [ConfigService.Fan, ConfigService.Speaker],
       }
       createAccessory(config)
@@ -344,6 +349,7 @@ describe("ComputerSpeakersAccessory", () => {
     beforeEach(() => {
       config = {
         name: "Test Computer Speakers",
+        accessory: "Test Accessory",
         services: [
           ConfigService.Lightbulb,
           ConfigService.Fan,
@@ -396,6 +402,7 @@ describe("ComputerSpeakersAccessory", () => {
     beforeEach(() => {
       config = {
         name: "Test Computer Speakers",
+        accessory: "Test Accessory",
         services: [
           ConfigService.Lightbulb,
           ConfigService.Fan,

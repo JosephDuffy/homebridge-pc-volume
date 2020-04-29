@@ -3,7 +3,7 @@ import {
   CharacteristicEventTypes,
   Service,
   WithUUID,
-} from "hap-nodejs"
+} from "homebridge"
 
 export default class ServiceWrapper {
   public readonly service: Service
