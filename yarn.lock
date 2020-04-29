@@ -895,7 +895,7 @@ array-filter@^1.0.0:
   resolved "https://registry.yarnpkg.com/array-filter/-/array-filter-1.0.0.tgz#baf79e62e6ef4c2a4c0b831232daffec251f9d83"
   integrity sha1-uveeYubvTCpMC4MSMtr/7CUfnYM=
 
-array-flatten@^2.1.0, array-flatten@^2.1.2:
+array-flatten@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/array-flatten/-/array-flatten-2.1.2.tgz#24ef80a28c1a893617e2149b0c6d0d788293b099"
   integrity sha512-hNfzcOV8W4NdualtqBFPyVO+54DSJuZGY9qT4pRroB6S9e3iiido2ISIC5h9R2sPJ8H3FHCIiEnsv1lPXO3KtQ==
@@ -1047,18 +1047,6 @@ binary-extensions@^2.0.0:
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.0.0.tgz#23c0df14f6a88077f5f986c0d167ec03c3d5537c"
   integrity sha512-Phlt0plgpIIBOGTT/ehfFnbNlfsDEiqmzE2KRXoX1bLIlir4X/MR+zSyBEkL05ffWgnRSf/DXv+WrUAVr93/ow==
 
-bonjour-hap@3.5.4:
-  version "3.5.4"
-  resolved "https://registry.yarnpkg.com/bonjour-hap/-/bonjour-hap-3.5.4.tgz#ba7d2e6220000cdb50bb80078a72ccdbcefa1c6f"
-  integrity sha512-MgU27SEZYQ09Skm71Xa7SZoAg259V4IlAJNWaloFVMlYDn1OjJy3nkwSixRHnDzrcLWocVI84f9exI1ObZChBw==
-  dependencies:
-    array-flatten "^2.1.0"
-    deep-equal "^1.0.1"
-    dns-equal "^1.0.0"
-    dns-txt "^2.0.2"
-    multicast-dns "^7.2.0"
-    multicast-dns-service-types "^1.1.0"
-
 bonjour-hap@3.5.7:
   version "3.5.7"
   resolved "https://registry.yarnpkg.com/bonjour-hap/-/bonjour-hap-3.5.7.tgz#d9c176a43b84c82077708b64de02635ac75fffd7"
@@ -1145,11 +1133,6 @@ buffer-from@1.x, buffer-from@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.1.tgz#32713bc028f75c02fdb710d7c7bcec1f2c6070ef"
   integrity sha512-MQcXEUbCKtEo7bhqEs6560Hyd4XaovZlO/k9V3hjVUF/zwW7KBVdSK4gIt/bzwS9MbR5qob+F5jusZsb0YQK2A==
-
-buffer-indexof@^1.0.0:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/buffer-indexof/-/buffer-indexof-1.1.1.tgz#52fabcc6a606d1a00302802648ef68f639da268c"
-  integrity sha512-4/rOEg86jivtPTeOUUT61jJO1Ya1TrR/OkqCSZDyq84WJh3LuuiphBYJN+fm5xufIk4XAFcEwte/8WzC8If/1g==
 
 builtin-modules@^1.1.1:
   version "1.1.1"
@@ -1559,11 +1542,6 @@ dedent@^0.7.0:
   resolved "https://registry.yarnpkg.com/dedent/-/dedent-0.7.0.tgz#2495ddbaf6eb874abb0e1be9df22d2e5a544326c"
   integrity sha1-JJXduvbrh0q7Dhvp3yLS5aVEMmw=
 
-deep-equal@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/deep-equal/-/deep-equal-1.0.1.tgz#f5d260292b660e084eff4cdbc9f08ad3247448b5"
-  integrity sha1-9dJgKStmDghO/0zbyfCK0yR0SLU=
-
 deep-equal@^2.0.2:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/deep-equal/-/deep-equal-2.0.3.tgz#cad1c15277ad78a5c01c49c2dee0f54de8a6a7b0"
@@ -1660,11 +1638,6 @@ diff@^4.0.1, diff@^4.0.2:
   resolved "https://registry.yarnpkg.com/diff/-/diff-4.0.2.tgz#60f3aecb89d5fae520c11aa19efc2bb982aade7d"
   integrity sha512-58lmxKSA4BNyLz+HHMUzlOEpg09FV+ev6ZMe3vJihgdxzgcwZ8VoEEPmALCZG9LmqfVoNMMKpttIYTVG6uDY7A==
 
-dns-equal@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/dns-equal/-/dns-equal-1.0.0.tgz#b39e7f1da6eb0a75ba9c17324b34753c47e0654d"
-  integrity sha1-s55/HabrCnW6nBcySzR1PEfgZU0=
-
 dns-packet@^4.0.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/dns-packet/-/dns-packet-4.2.0.tgz#3fd6f5ff5a4ec3194ed0b15312693ffe8776b343"
@@ -1672,13 +1645,6 @@ dns-packet@^4.0.0:
   dependencies:
     ip "^1.1.5"
     safe-buffer "^5.1.1"
-
-dns-txt@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/dns-txt/-/dns-txt-2.0.2.tgz#b91d806f5d27188e4ab3e7d107d881a1cc4642b6"
-  integrity sha1-uR2Ab10nGI5Ks+fRB9iBocxGQrY=
-  dependencies:
-    buffer-indexof "^1.0.0"
 
 domexception@^1.0.1:
   version "1.0.1"
@@ -2176,23 +2142,10 @@ growly@^1.3.0:
   resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
   integrity sha1-8QdIy+dq+WS3yWyTxrzCivEgwIE=
 
-hap-nodejs@0.6.4:
-  version "0.6.4"
-  resolved "https://registry.yarnpkg.com/hap-nodejs/-/hap-nodejs-0.6.4.tgz#3270d0879898059757cf41ee9d9be0655778af58"
-  integrity sha512-pUv1J5mnRPhc84XDlieaH5/F12zGLWW5dagSmhVKCq3GQggtLhtmPCUY5rFRE1Y308OGKNPkb/WQKv9ENhYung==
-  dependencies:
-    bonjour-hap "3.5.4"
-    debug "^4.1.1"
-    decimal.js "^10.2.0"
-    fast-srp-hap "2.0.1"
-    ip "^1.1.3"
-    node-persist "^0.0.11"
-    tweetnacl "^1.0.3"
-
-hap-nodejs@^0.6.0:
-  version "0.6.8"
-  resolved "https://registry.yarnpkg.com/hap-nodejs/-/hap-nodejs-0.6.8.tgz#e615c3218ee0ab4b183355de698acd21da821db1"
-  integrity sha512-bxySLydx5h2Jc6T+/LTaMpMU5hvyMe6/S/R/MPNAzmXVIMeI2IkmaNyJsZXCgy+0WtlZBgcQc1YrETpNuIijSg==
+hap-nodejs@0.6.9, hap-nodejs@^0.6.0:
+  version "0.6.9"
+  resolved "https://registry.yarnpkg.com/hap-nodejs/-/hap-nodejs-0.6.9.tgz#b98f71a681bfc23d6541cc32e9a12612763066a4"
+  integrity sha512-sMkSQnM4JKVLHTK2BJiQ9wbSp+iK3aj/iHAtY/CIPLnrmMgR6b1qIrSXMoITR8z49rxdsLyhU9nreWV040A3jg==
   dependencies:
     bonjour-hap "3.5.7"
     debug "^4.1.1"
@@ -2274,13 +2227,13 @@ has@^1.0.3:
     function-bind "^1.1.1"
 
 homebridge@^1.0.0:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/homebridge/-/homebridge-1.0.2.tgz#6638117e9de11c97c7c9bb085d91f7b14672d574"
-  integrity sha512-XfNY1pE57UYwc/qAw+bGOhKQeCRtDFnPb1q6Ivfottc9i8oKQwW6ZxncVVcBp2RKPQ2K1WA7g4nYdP1giE1VHg==
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/homebridge/-/homebridge-1.0.3.tgz#a0f22d4bb8ded5deead98c9151f12c548b8985ff"
+  integrity sha512-Ca4lxbQSkNJMOTqkwz2/IGUoJIyiTvY4kiD6YEfwXo6rKFYWkcQCKy5LpKfK4vuJSZcHuUprdb7Pyq4+UR3EnQ==
   dependencies:
     chalk "^3.0.0"
     commander "5.0.0"
-    hap-nodejs "0.6.4"
+    hap-nodejs "0.6.9"
     node-persist "^0.0.11"
     qrcode-terminal "^0.12.0"
     semver "^7.1.3"
@@ -3559,7 +3512,7 @@ multicast-dns-service-types@^1.1.0:
   resolved "https://registry.yarnpkg.com/multicast-dns-service-types/-/multicast-dns-service-types-1.1.0.tgz#899f11d9686e5e05cb91b35d5f0e63b773cfc901"
   integrity sha1-iZ8R2WhuXgXLkbNdXw5jt3PPyQE=
 
-multicast-dns@^7.2.0, multicast-dns@^7.2.2:
+multicast-dns@^7.2.2:
   version "7.2.2"
   resolved "https://registry.yarnpkg.com/multicast-dns/-/multicast-dns-7.2.2.tgz#5731da04f47d1e435ac457e5ac7b4b39d866a5a1"
   integrity sha512-XqSMeO8EWV/nOXOpPV8ztIpNweVfE1dSpz6SQvDPp71HD74lMXjt4m/mWB1YBMG0kHtOodxRWc5WOb/UNN1A5g==
