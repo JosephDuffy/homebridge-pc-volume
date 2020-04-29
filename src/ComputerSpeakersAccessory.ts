@@ -1,16 +1,18 @@
 import loudness from "loudness"
 import Config, { Service as ConfigService, VolumeAlgorithm } from "./config"
 import {
-  AccessoryPlugin,
   API,
-  Characteristic,
-  Service,
+  AccessoryPlugin,
+  Characteristic as HAPCharacteristic,
+  Service as HAPService,
   Logging,
 } from "homebridge"
 import ServiceWrapper from "./ServiceWrapper"
 import ComputerSpeakers from "./ComputerSpeakers"
 
 export default class ComputerSpeakersAccessory implements AccessoryPlugin {
+  private Service: typeof HAPService
+  private Characteristic: typeof HAPCharacteristic
   private computerSpeakers: ComputerSpeakers
   private speakerService?: ServiceWrapper
   private fanService?: ServiceWrapper
@@ -18,7 +20,9 @@ export default class ComputerSpeakersAccessory implements AccessoryPlugin {
   private volumeUpButtonService?: ServiceWrapper
   private volumeDownService?: ServiceWrapper
 
-  constructor(logger: Logging, config: Config) {
+  constructor(logger: Logging, config: Config, api: API) {
+    this.Service = api.hap.Service
+    this.Characteristic = api.hap.Characteristic
     this.computerSpeakers = new ComputerSpeakers(logger, loudness)
     const name = config.name
     const services = config.services || [ConfigService.Lightbulb]
@@ -33,11 +37,11 @@ export default class ComputerSpeakersAccessory implements AccessoryPlugin {
       logger.debug("Creating speaker service")
 
       this.speakerService = new ServiceWrapper(
-        new Service.Speaker(name, ConfigService.Speaker)
+        new this.Service.Speaker(name, ConfigService.Speaker)
       )
 
       this.speakerService.bindBooleanCharacteristic(
-        Characteristic.Mute,
+        this.Characteristic.Mute,
         async () => {
           return this.computerSpeakers.getMuted()
         },
@@ -49,7 +53,7 @@ export default class ComputerSpeakersAccessory implements AccessoryPlugin {
         }
       )
       this.speakerService.bindNumberCharacteristic(
-        Characteristic.Volume,
+        this.Characteristic.Volume,
         this.computerSpeakers.getVolume.bind(
           this.computerSpeakers,
           volumeAlgorithm
@@ -67,11 +71,11 @@ export default class ComputerSpeakersAccessory implements AccessoryPlugin {
       logger.debug("Creating fan service")
 
       this.fanService = new ServiceWrapper(
-        new Service.Fan(name, ConfigService.Fan)
+        new this.Service.Fan(name, ConfigService.Fan)
       )
 
       this.fanService.bindBooleanCharacteristic(
-        Characteristic.On,
+        this.Characteristic.On,
         async () => {
           const isOn = await this.computerSpeakers.getMuted()
           logger.debug(
@@ -90,7 +94,7 @@ export default class ComputerSpeakersAccessory implements AccessoryPlugin {
         }
       )
       this.fanService.bindNumberCharacteristic(
-        Characteristic.RotationSpeed,
+        this.Characteristic.RotationSpeed,
         this.computerSpeakers.getVolume.bind(
           this.computerSpeakers,
           volumeAlgorithm
@@ -108,11 +112,11 @@ export default class ComputerSpeakersAccessory implements AccessoryPlugin {
       logger.debug("Creating lightbulb service")
 
       this.lightService = new ServiceWrapper(
-        new Service.Lightbulb(name, ConfigService.Lightbulb)
+        new this.Service.Lightbulb(name, ConfigService.Lightbulb)
       )
 
       this.lightService.bindBooleanCharacteristic(
-        Characteristic.On,
+        this.Characteristic.On,
         async () => {
           const isOn = await this.computerSpeakers.getMuted()
           logger.debug(
@@ -131,7 +135,7 @@ export default class ComputerSpeakersAccessory implements AccessoryPlugin {
         }
       )
       this.lightService.bindNumberCharacteristic(
-        Characteristic.Brightness,
+        this.Characteristic.Brightness,
         this.computerSpeakers.getVolume.bind(
           this.computerSpeakers,
           volumeAlgorithm
@@ -149,14 +153,14 @@ export default class ComputerSpeakersAccessory implements AccessoryPlugin {
       logger.debug("Creating increase volume service")
 
       this.volumeUpButtonService = new ServiceWrapper(
-        new Service.Switch(
+        new this.Service.Switch(
           name + " +" + switchVolumeDelta + "%",
           ConfigService.IncreaseVolumeButton
         )
       )
 
       this.volumeUpButtonService.bindBooleanCharacteristic(
-        Characteristic.On,
+        this.Characteristic.On,
         async () => {
           return false
         },
@@ -173,7 +177,7 @@ export default class ComputerSpeakersAccessory implements AccessoryPlugin {
                 setTimeout(() => {
                   logger.debug("Setting volume up button back to off")
                   this.volumeUpButtonService.service.updateCharacteristic(
-                    Characteristic.On,
+                    this.Characteristic.On,
                     false
                   )
                 }, switchDelay)
@@ -189,14 +193,14 @@ export default class ComputerSpeakersAccessory implements AccessoryPlugin {
       logger.debug("Creating decrease volume service")
 
       this.volumeDownService = new ServiceWrapper(
-        new Service.Switch(
+        new this.Service.Switch(
           name + " -" + switchVolumeDelta + "%",
           ConfigService.DecreaseVolumeButton
         )
       )
 
       this.volumeDownService.bindBooleanCharacteristic(
-        Characteristic.On,
+        this.Characteristic.On,
         async () => {
           return false
         },
@@ -213,7 +217,7 @@ export default class ComputerSpeakersAccessory implements AccessoryPlugin {
                 setTimeout(() => {
                   logger.debug("Setting volume up button back to off")
                   this.volumeDownService.service.updateCharacteristic(
-                    Characteristic.On,
+                    this.Characteristic.On,
                     false
                   )
                 }, switchDelay)
@@ -259,17 +263,17 @@ export default class ComputerSpeakersAccessory implements AccessoryPlugin {
   private notifyServicesOfVolume(volume: number) {
     if (this.speakerService) {
       this.speakerService.service
-        .getCharacteristic(Characteristic.Volume)
+        .getCharacteristic(this.Characteristic.Volume)
         .updateValue(volume)
     }
     if (this.fanService) {
       this.fanService.service
-        .getCharacteristic(Characteristic.RotationSpeed)
+        .getCharacteristic(this.Characteristic.RotationSpeed)
         .updateValue(volume)
     }
     if (this.lightService) {
       this.lightService.service
-        .getCharacteristic(Characteristic.Brightness)
+        .getCharacteristic(this.Characteristic.Brightness)
         .updateValue(volume)
     }
   }
@@ -277,17 +281,17 @@ export default class ComputerSpeakersAccessory implements AccessoryPlugin {
   private notifyServicesOfMuteStatus(isMuted: boolean) {
     if (this.speakerService) {
       this.speakerService.service
-        .getCharacteristic(Characteristic.Mute)
+        .getCharacteristic(this.Characteristic.Mute)
         .updateValue(isMuted)
     }
     if (this.fanService) {
       this.fanService.service
-        .getCharacteristic(Characteristic.On)
+        .getCharacteristic(this.Characteristic.On)
         .updateValue(isMuted)
     }
     if (this.lightService) {
       this.lightService.service
-        .getCharacteristic(Characteristic.On)
+        .getCharacteristic(this.Characteristic.On)
         .updateValue(isMuted)
     }
   }
