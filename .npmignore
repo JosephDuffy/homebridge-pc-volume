@@ -1,13 +1,2 @@
-.github/
-.homebridge-debug/
-scripts/
-src/
-.codecov.yml
-.gitignore
-.huskyrc
-.lintstagedrc
-.npmignore
-.prettierrc
-jest.config.js
-tsconfig.json
-tslint.json
+*
+!build/*
