@@ -1,0 +1,58 @@
+{
+    "pluginAlias": "ComputerSpeakers",
+    "pluginType": "accessory",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "services": {
+          "title": "Services",
+          "type": "array",
+          "uniqueItems": true,
+          "default": ["lightbulb"],
+          "items": {
+            "title": "Service",
+            "type": "string",
+            "enum": [
+              "lightbulb",
+              "fan",
+              "speaker",
+              "increase-button",
+              "decrease-button"
+            ]
+          }
+        },
+        "initialVolume": {
+            "title": "Initial Volume",
+            "description": "The system volume to set when the plugin starts.",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+        },
+        "initiallyMuted": {
+            "title": "Initially Muted",
+            "description": "The muted status to set when the plugin starts.",
+            "type": "boolean"
+        },
+        "switchVolumeDelta": {
+            "title": "Switch Volume Delta",
+            "description": "The percent difference to apply when a switch is turned on.",
+            "type": "integer",
+            "default": 5,
+            "minimum": 1,
+            "maximum": 100
+        },
+        "switchDelay": {
+            "title": "Switch Delay",
+            "description": "The delay (in ms) between a switch being turned on and turned back off.",
+            "type": "integer",
+            "default": 10,
+            "minimum": 0
+        },
+        "logarithmic": {
+            "title": "Logarithmic",
+            "description": "If true, use a logarithmic scale for the volume.",
+            "type": "boolean"
+        }
+      }
+    }
+  }
