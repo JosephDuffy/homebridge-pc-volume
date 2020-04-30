@@ -24,7 +24,7 @@ describe("ComputerSpeakersAccessory", () => {
     beforeEach(async () => {
       config = {
         name: "Test Accessory",
-        accessory: "Test Accessory",
+        accessory: "ComputerSpeakers",
       }
       createAccessory(config)
     })
@@ -51,7 +51,7 @@ describe("ComputerSpeakersAccessory", () => {
     beforeEach(() => {
       config = {
         name: "Test Computer Speakers",
-        accessory: "Test Accessory",
+        accessory: "ComputerSpeakers",
         logarithmic: true,
         services: [ConfigService.Lightbulb],
       }
@@ -84,7 +84,7 @@ describe("ComputerSpeakersAccessory", () => {
     beforeEach(() => {
       config = {
         name: "Test Computer Speakers",
-        accessory: "Test Accessory",
+        accessory: "ComputerSpeakers",
         services: [ConfigService.Lightbulb],
       }
       createAccessory(config)
@@ -111,7 +111,7 @@ describe("ComputerSpeakersAccessory", () => {
     beforeEach(() => {
       config = {
         name: "Test Computer Speakers",
-        accessory: "Test Accessory",
+        accessory: "ComputerSpeakers",
         services: [ConfigService.Fan],
       }
       createAccessory(config)
@@ -138,7 +138,7 @@ describe("ComputerSpeakersAccessory", () => {
     beforeEach(() => {
       config = {
         name: "Test Computer Speakers",
-        accessory: "Test Accessory",
+        accessory: "ComputerSpeakers",
         services: [ConfigService.Speaker],
       }
       createAccessory(config)
@@ -165,7 +165,7 @@ describe("ComputerSpeakersAccessory", () => {
     beforeEach(() => {
       config = {
         name: "Test Computer Speakers",
-        accessory: "Test Accessory",
+        accessory: "ComputerSpeakers",
         services: [ConfigService.Speaker],
       }
       createAccessory(config)
@@ -228,7 +228,7 @@ describe("ComputerSpeakersAccessory", () => {
     beforeEach(() => {
       config = {
         name: "Test Computer Speakers",
-        accessory: "Test Accessory",
+        accessory: "ComputerSpeakers",
         services: [ConfigService.Lightbulb, ConfigService.Fan],
       }
       createAccessory(config)
@@ -269,7 +269,7 @@ describe("ComputerSpeakersAccessory", () => {
     beforeEach(() => {
       config = {
         name: "Test Computer Speakers",
-        accessory: "Test Accessory",
+        accessory: "ComputerSpeakers",
         services: [ConfigService.Lightbulb, ConfigService.Speaker],
       }
       createAccessory(config)
@@ -310,7 +310,7 @@ describe("ComputerSpeakersAccessory", () => {
     beforeEach(() => {
       config = {
         name: "Test Computer Speakers",
-        accessory: "Test Accessory",
+        accessory: "ComputerSpeakers",
         services: [ConfigService.Fan, ConfigService.Speaker],
       }
       createAccessory(config)
@@ -351,7 +351,7 @@ describe("ComputerSpeakersAccessory", () => {
     beforeEach(() => {
       config = {
         name: "Test Computer Speakers",
-        accessory: "Test Accessory",
+        accessory: "ComputerSpeakers",
         services: [
           ConfigService.Lightbulb,
           ConfigService.Fan,
@@ -404,7 +404,7 @@ describe("ComputerSpeakersAccessory", () => {
     beforeEach(() => {
       config = {
         name: "Test Computer Speakers",
-        accessory: "Test Accessory",
+        accessory: "ComputerSpeakers",
         services: [
           ConfigService.Lightbulb,
           ConfigService.Fan,
