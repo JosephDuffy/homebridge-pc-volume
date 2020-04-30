@@ -4,6 +4,13 @@
     "schema": {
       "type": "object",
       "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string",
+          "required": true,
+          "default": "Computer Speakers",
+          "description": "Plugin name as displayed in the Homebridge log"
+        },
         "services": {
           "title": "Services",
           "type": "array",
