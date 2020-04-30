@@ -1,6 +1,6 @@
 {
   "name": "homebridge-pc-volume",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Control your system's volume using Apple's HomeKit",
   "author": "Joseph Duffy",
   "license": "MIT",
