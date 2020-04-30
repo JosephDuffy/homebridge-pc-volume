@@ -2,9 +2,9 @@
   "bridge": {
     "name": "homebridge-pc-volume debugging",
     "username": "CC:22:3D:E3:CE:31",
-    "pin": "031-45-155"
+    "pin": "031-45-155",
+    "port": 51826
   },
-
   "description": "This is an example configuration file that can be used to debug homebridge-pc-volume.",
   "accessories": [
     {
@@ -13,5 +13,15 @@
       "services": ["speaker", "fan", "lightbulb", "increase-button", "decrease-button"],
       "switchVolumeDelta": 10
     }
-  ]
+  ],
+  "platforms": [
+    {
+      "platform": "config",
+      "name": "Config",
+      "port": 8080,
+      "sudo": false,
+      "auth": "none",
+      "homebridgePackagePath": "/Users/josephduffy/Projects/homebridge-pc-volume"
+    }
+]
 }
