@@ -1,5 +1,6 @@
 # homebridge-pc-volume
 
+[![Verified by Homebridge](https://badgen.net/badge/homebridge/verified/purple)](https://github.com/homebridge/homebridge/wiki/Verified-Plugins)
 [![Tests Status](https://github.com/JosephDuffy/homebridge-pc-volume/workflows/Tests/badge.svg)](https://github.com/JosephDuffy/homebridge-pc-volume/actions?query=workflow%3ATests)
 [![codecov](https://codecov.io/gh/JosephDuffy/homebridge-pc-volume/branch/master/graph/badge.svg)](https://codecov.io/gh/JosephDuffy/homebridge-pc-volume)
 [![npm version](https://img.shields.io/npm/v/homebridge-pc-volume.svg)](https://www.npmjs.com/package/homebridge-pc-volume)
