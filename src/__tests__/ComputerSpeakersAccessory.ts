@@ -4,7 +4,8 @@ import * as sinon from "sinon"
 import ComputerSpeakersAccessory from "../ComputerSpeakersAccessory"
 import ServiceWrapper from "../ServiceWrapper"
 import { Config, Service as ConfigService } from "../config"
-import { Logger, Logging } from "homebridge"
+import { Logging } from "homebridge"
+import MockLogging from "./mocks/MockLogging"
 import { HomebridgeAPI } from "homebridge/lib/api"
 
 describe("ComputerSpeakersAccessory", () => {
@@ -12,7 +13,7 @@ describe("ComputerSpeakersAccessory", () => {
 
   function createAccessory(config: Config) {
     accessory = new ComputerSpeakersAccessory(
-      new Logger() as Logging,
+      new MockLogging() as Logging,
       config,
       new HomebridgeAPI()
     )

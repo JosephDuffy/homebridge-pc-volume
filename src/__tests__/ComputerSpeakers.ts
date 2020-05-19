@@ -1,13 +1,14 @@
 import loudness from "loudness"
 import * as sinon from "sinon"
 import ComputerSpeakers from "../ComputerSpeakers"
-import { Logger, Logging } from "homebridge"
+import MockLogging from "./mocks/MockLogging"
+import { Logging } from "homebridge"
 
 describe("ComputerSpeakers", () => {
   let wrapper: ComputerSpeakers
 
   beforeEach(() => {
-    wrapper = new ComputerSpeakers(new Logger() as Logging, loudness)
+    wrapper = new ComputerSpeakers(new MockLogging() as Logging, loudness)
   })
 
   describe("#getMuted", () => {
