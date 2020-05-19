@@ -11,7 +11,7 @@ import { HomebridgeAPI } from "homebridge/lib/api"
 describe("ComputerSpeakersAccessory", () => {
   let accessory: ComputerSpeakersAccessory
 
-  function createAccessory(config: Config) {
+  function createAccessory(config: Config): void {
     accessory = new ComputerSpeakersAccessory(
       new MockLogging() as Logging,
       config,

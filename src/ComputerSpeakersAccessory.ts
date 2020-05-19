@@ -248,7 +248,7 @@ export default class ComputerSpeakersAccessory implements AccessoryPlugin {
     }
   }
 
-  public getServices() {
+  public getServices(): HAPService[] {
     return [
       this.speakerService,
       this.fanService,
@@ -260,7 +260,7 @@ export default class ComputerSpeakersAccessory implements AccessoryPlugin {
       .map((wrapper) => wrapper.service)
   }
 
-  private notifyServicesOfVolume(volume: number) {
+  private notifyServicesOfVolume(volume: number): void {
     if (this.speakerService) {
       this.speakerService.service
         .getCharacteristic(this.Characteristic.Volume)
@@ -278,7 +278,7 @@ export default class ComputerSpeakersAccessory implements AccessoryPlugin {
     }
   }
 
-  private notifyServicesOfMuteStatus(isMuted: boolean) {
+  private notifyServicesOfMuteStatus(isMuted: boolean): void {
     if (this.speakerService) {
       this.speakerService.service
         .getCharacteristic(this.Characteristic.Mute)
