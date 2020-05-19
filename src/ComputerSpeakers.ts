@@ -45,18 +45,19 @@ export default class ComputerSpeakers {
     algorithm: VolumeAlgorithm
   ): Promise<number> {
     return new Promise((resolve, reject) => {
-      const systemVolume = (() => {
+      const systemVolume = ((): number => {
         switch (algorithm) {
           case VolumeAlgorithm.Linear:
             this.log.debug(`Setting volume to ${volume}%`)
             return volume
-          case VolumeAlgorithm.Logarithmic:
+          case VolumeAlgorithm.Logarithmic: {
             const logarithmicVolume =
               Math.pow(10, volume / (100 / Math.log10(101))) - 1
             this.log.debug(
               `Converted HomeKit volume ${volume}% to ${logarithmicVolume} due to logarithmic volume algorithm`
             )
             return logarithmicVolume
+          }
         }
       })()
 
@@ -85,7 +86,7 @@ export default class ComputerSpeakers {
               this.log.debug(`Got system volume: ${volume}%`)
               resolve(volume)
               break
-            case VolumeAlgorithm.Logarithmic:
+            case VolumeAlgorithm.Logarithmic: {
               const homekitVolume = Math.round(
                 Math.pow(10, volume / (100 / Math.log10(101))) - 1
               )
@@ -96,6 +97,7 @@ export default class ComputerSpeakers {
 
               resolve(volume)
               break
+            }
           }
         })
         .catch((error) => {

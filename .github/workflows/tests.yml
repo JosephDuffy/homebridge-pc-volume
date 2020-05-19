@@ -82,7 +82,7 @@ jobs:
       run: yarn install --ignore-engines
 
     - name: Check for linting errors
-      run: yarn --ignore-engines lint:check
+      run: yarn --ignore-engines lint
 
   check_format:
     name: Check for formatting errors using node ${{ matrix.node }} on ${{ matrix.os }}

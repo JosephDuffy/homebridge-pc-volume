@@ -16,7 +16,7 @@ export default class ServiceWrapper {
     characteristic: WithUUID<new () => Characteristic>,
     getValue: () => Promise<boolean>,
     setValue: (isMuted: boolean, callback: () => void) => void
-  ) {
+  ): void {
     this.service
       .getCharacteristic(characteristic)
       .on(
@@ -38,7 +38,7 @@ export default class ServiceWrapper {
     characteristic: WithUUID<typeof Characteristic>,
     getValue: () => Promise<number>,
     setValue: (systemVolume: number, callback: () => void) => void
-  ) {
+  ): void {
     this.service
       .addCharacteristic(characteristic)
       .on(
