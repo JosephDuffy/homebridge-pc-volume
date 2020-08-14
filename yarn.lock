@@ -1833,10 +1833,10 @@ execa@^3.2.0:
     signal-exit "^3.0.2"
     strip-final-newline "^2.0.0"
 
-execa@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/execa/-/execa-4.0.1.tgz#988488781f1f0238cd156f7aaede11c3e853b4c1"
-  integrity sha512-SCjM/zlBdOK8Q5TIjOn6iEHZaPHFsMoTxXQ2nvUvtPnuohz3H2dIozSg+etNR98dGoYUp2ENSKLL/XaMmbxVgw==
+execa@^4.0.1, execa@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/execa/-/execa-4.0.3.tgz#0a34dabbad6d66100bd6f2c576c8669403f317f2"
+  integrity sha512-WFDXGHckXPWZX19t1kCsXzOpqX9LWYNqn4C+HqZlk/V0imTkzJZqf87ZBhvpHaftERYknpk0fjSylnXVlVgI0A==
   dependencies:
     cross-spawn "^7.0.0"
     get-stream "^5.0.0"
@@ -3403,12 +3403,12 @@ lolex@^5.0.0:
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-loudness@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/loudness/-/loudness-0.3.0.tgz#b73b27722e18d2da6c6547e0f59873078daad233"
-  integrity sha512-vLq01GHgb/nwVujGsyFK/AJAN+wfxIj3zAqGt8JoXKTIDKm+lhJ8sO7vMit2Yhq/W8qAUw7v790pDRTxwY9oUQ==
+loudness@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/loudness/-/loudness-0.4.1.tgz#4954aad2429f109a0d208fc1c7a682d583e0d2ab"
+  integrity sha512-C1teJRtoewGZTMzqfncaKQbWl6++KeCOtVOyf6IzWCFmICGJzCXTP86jTkOwwhyXOJBM39gpI8bLXE0Dg66uSQ==
   dependencies:
-    execa "^1.0.0"
+    execa "^4.0.3"
 
 lowercase-keys@^1.0.0, lowercase-keys@^1.0.1:
   version "1.0.1"

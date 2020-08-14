@@ -22,7 +22,7 @@
     "format:check": "prettier-check \"src/**/*.ts\" jest.config.js"
   },
   "dependencies": {
-    "loudness": "^0.3.0"
+    "loudness": "^0.4.1"
   },
   "devDependencies": {
     "@types/jest": "^26.0.0",
