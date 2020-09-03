@@ -992,10 +992,10 @@ binary-extensions@^2.0.0:
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.0.0.tgz#23c0df14f6a88077f5f986c0d167ec03c3d5537c"
   integrity sha512-Phlt0plgpIIBOGTT/ehfFnbNlfsDEiqmzE2KRXoX1bLIlir4X/MR+zSyBEkL05ffWgnRSf/DXv+WrUAVr93/ow==
 
-bonjour-hap@~3.5.10:
-  version "3.5.10"
-  resolved "https://registry.yarnpkg.com/bonjour-hap/-/bonjour-hap-3.5.10.tgz#a9cd35dabf8eb75e9bfc54871d19d0c4ee41ed4e"
-  integrity sha512-vaqa4uUST8K5rj9QGe6GaSJ+6rQ24KzgkjdyZvoTpbKBti5xL/m8H9Dp9VmPdo434OAetqU5PKAn5izucrKEBA==
+bonjour-hap@~3.5.11:
+  version "3.5.11"
+  resolved "https://registry.yarnpkg.com/bonjour-hap/-/bonjour-hap-3.5.11.tgz#318db8d0169cc20a77e769075749f9ac87f807c1"
+  integrity sha512-pSYWWxjx3t2vh3sMkBMxQ0QaCqFgqWFz9he9U1JSQ6Lvwev5W19J+nBQWFj55dzUOcH0rPtZh/A+k/MvI5etQw==
   dependencies:
     array-flatten "^2.1.2"
     deep-equal "^2.0.2"
@@ -1274,15 +1274,10 @@ combined-stream@^1.0.6, combined-stream@~1.0.6:
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-5.1.0.tgz#46abbd1652f8e059bddaef99bbdcb2ad9cf179ae"
-  integrity sha512-P0CysNDQ7rtVw4QIQtm+MRxV66vKFSvlsQvGYXZWR3qFU0jlMKHZZZgw8e+8DSah4UDKMqnknRDQz+xuQXQ/Zg==
-
-commander@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-6.0.0.tgz#2b270da94f8fb9014455312f829a1129dbf8887e"
-  integrity sha512-s7EA+hDtTYNhuXkTlhqew4txMZVdszBmKWSPEMxGr8ru8JXR7bLUFIAtPhcSuFdJQ0ILMxnJi8GkQL0yvDy/YA==
+commander@6.1.0, commander@^6.0.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-6.1.0.tgz#f8d722b78103141006b66f4c7ba1e97315ba75bc"
+  integrity sha512-wl7PNrYWd2y5mp1OK/LhTlv8Ff4kQJQRXXAvF+uU/TPNiVJUxZLRYGj/B0y/lPGAVcSbJqH2Za/cvHmrPMC8mA==
 
 compare-versions@^3.6.0:
   version "3.6.0"
@@ -2219,17 +2214,16 @@ growly@^1.3.0:
   resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
   integrity sha1-8QdIy+dq+WS3yWyTxrzCivEgwIE=
 
-hap-nodejs@^0.7.4:
-  version "0.7.4"
-  resolved "https://registry.yarnpkg.com/hap-nodejs/-/hap-nodejs-0.7.4.tgz#7ddd91a7a76651f40062ab7e2101aebe62c48804"
-  integrity sha512-6Caxx3yfRXHKJCtNe71QwThGUqRjr27tNiwd/SK8LEUX0+A0a9Su8NWQOyFJVp/e3d3UqTsBHrxPEeRhj8oKtQ==
+hap-nodejs@^0.7.9:
+  version "0.7.9"
+  resolved "https://registry.yarnpkg.com/hap-nodejs/-/hap-nodejs-0.7.9.tgz#24fd617f309f3e26846c5f13c4bac95601f38e6d"
+  integrity sha512-ic0H0iajNKKq8O2a5HJgZPaxwhgt0PjXZ/rZFGdGhtM+ivfi9LykkC1FZufjHljUhMTvWe1GYXQaF06UVWhyHA==
   dependencies:
-    bonjour-hap "~3.5.10"
+    bonjour-hap "~3.5.11"
     debug "^4.1.1"
     decimal.js "^10.2.0"
     fast-srp-hap "2.0.2"
     futoin-hkdf "~1.3.2"
-    ip "^1.1.3"
     node-persist "^0.0.11"
     tweetnacl "^1.0.3"
 
@@ -2305,13 +2299,13 @@ has@^1.0.3:
     function-bind "^1.1.1"
 
 homebridge@^1.0.0:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/homebridge/-/homebridge-1.1.2.tgz#ffc00927ffa12aa74c1c688b9aad97f83291473a"
-  integrity sha512-Ckcdh5wfarCODV4jr1APHYHS5CDl8cCvLXco01rcoEAx6ytjufSlmX6kyo7mtQGMoF8vaKyBy5K1FBwVi+C46A==
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/homebridge/-/homebridge-1.1.3.tgz#64cd2fcdea84e0c12a3e95136431db19230bc484"
+  integrity sha512-3EhYev3oMWhJ5/UfWZiLeesJXGeZxTer247fnSxo3etFs4BngjKFIvjaKzrJOY0SbpKg0UM2gBRH4s26EdN+TA==
   dependencies:
     chalk "^4.1.0"
-    commander "5.1.0"
-    hap-nodejs "^0.7.4"
+    commander "6.1.0"
+    hap-nodejs "^0.7.9"
     node-persist "^0.0.11"
     qrcode-terminal "^0.12.0"
     semver "^7.3.2"
@@ -2440,7 +2434,7 @@ ip-regex@^2.1.0:
   resolved "https://registry.yarnpkg.com/ip-regex/-/ip-regex-2.1.0.tgz#fa78bf5d2e6913c911ce9f819ee5146bb6d844e9"
   integrity sha1-+ni/XS5pE8kRzp+BnuUUa7bYROk=
 
-ip@^1.1.3, ip@^1.1.5:
+ip@^1.1.5:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/ip/-/ip-1.1.5.tgz#bdded70114290828c0a039e72ef25f5aaec4354a"
   integrity sha1-vd7XARQpCCjAoDnnLvJfWq7ENUo=
