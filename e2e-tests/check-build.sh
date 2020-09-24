@@ -5,5 +5,5 @@ set timeout 600
 spawn docker run homebridge-pc-volume-e2e
 expect {
     "ERROR LOADING PLUGIN" {exit 1}
-    "Homebridge is running"
+    -re {Homebridge\ v[0-9.]*\ is\ running}
 }
