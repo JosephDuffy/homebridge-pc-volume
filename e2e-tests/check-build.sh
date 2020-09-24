@@ -1,6 +1,7 @@
 #!/usr/bin/expect -f
 
-set timeout -1
+ # 10 minutes
+set timeout 600
 spawn docker run homebridge-pc-volume-e2e
 expect {
     "ERROR LOADING PLUGIN" {exit 1}
