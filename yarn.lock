@@ -281,13 +281,15 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@homebridge/ciao@~1.0.5":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@homebridge/ciao/-/ciao-1.0.6.tgz#41f7aca40683c7c20bdfabab5fe420bbed01a126"
-  integrity sha512-fwBhF08++kF7y+R4ljPCvbWZ14At18X5z/DG+u6OTYkiRIlP6I5N3H9cKujKUktsSigoDEctwx5jNtOPheEyrw==
+"@homebridge/ciao@~1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@homebridge/ciao/-/ciao-1.1.0.tgz#a8086df1621df85600a74a5d1b53b1951d20359f"
+  integrity sha512-fpFUy/1PQ5eMPiTdRewoA/gnFCLBkBlNsFJpHO8/Wk/p1fQM0YLMDdyvR956CF0QdArhz2SBB3VeGmgVkOrLFw==
   dependencies:
-    debug "^4.1.1"
+    debug "^4.3.1"
     fast-deep-equal "^3.1.3"
+    source-map-support "^0.5.19"
+    tslib "^2.0.3"
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.0.0"
@@ -1436,6 +1438,13 @@ debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.2.0:
   dependencies:
     ms "2.1.2"
 
+debug@^4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.1.tgz#f0d229c505e0c6d8c49ac553d1b13dc183f6b2ee"
+  integrity sha512-doEwdvm4PCeK4K3RQN2ZC2BYUBaxwLARCqZmMjtF8a51J2Rb0xpVloFRnCODwqjpwnAoao4pelN8l3RJdv3gRQ==
+  dependencies:
+    ms "2.1.2"
+
 decamelize@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
@@ -2134,12 +2143,12 @@ growly@^1.3.0:
   resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
   integrity sha1-8QdIy+dq+WS3yWyTxrzCivEgwIE=
 
-hap-nodejs@~0.8.2:
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/hap-nodejs/-/hap-nodejs-0.8.2.tgz#4005d638537f0e155a91ced0527b6bb61fe1d84d"
-  integrity sha512-OVy+wtcC3uXl5V0Ba3f4MtOYVOUS5J3kIB69AV4zvlo02kS41d9ZYKE3rvcTce8kj8ih0YBpYVWRL4a7uHEbjw==
+hap-nodejs@~0.8.3:
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/hap-nodejs/-/hap-nodejs-0.8.3.tgz#d487132259532ecdde59a62d45a305be7ec6d596"
+  integrity sha512-1bX0UPmIfthYgF43M0rhNsyLayPVXAPvqgwUBfTUNSw4XuesepfbZFnhT8eYZqqClQorKaZr6FeHWw785FQ1Tg==
   dependencies:
-    "@homebridge/ciao" "~1.0.5"
+    "@homebridge/ciao" "~1.1.0"
     debug "^4.1.1"
     decimal.js "^10.2.0"
     fast-srp-hap "2.0.2"
@@ -2208,13 +2217,13 @@ has-yarn@^2.1.0:
   integrity sha512-UqBRqi4ju7T+TqGNdqAO0PaSVGsDGJUBQvk9eUWNGRY1CFGDzYhLWoM7JQEemnlvVcv/YEmc2wNW8BC24EnUsw==
 
 homebridge@^1.0.0:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/homebridge/-/homebridge-1.2.3.tgz#fbaf1fe72ed30d813b06ee6bae4a63871a8d0d4d"
-  integrity sha512-i0ERhvEqbry7UPntvdwDevQjdrMORhnZnspoOQI4a0fcvX1M8woffHCJj1E2bBgG+dn2glUWajBtmhqIFIyCKQ==
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/homebridge/-/homebridge-1.2.4.tgz#8d46dc7f1972587162acf0d608a8bebbd676c25e"
+  integrity sha512-uyhLgJumhivAQrauoH5EfxKC2hcX2r8fC2ckAScBx3M7/+XuobHVNYF7yNND69mlg+Jd/KBfaF5zS3ckVl807g==
   dependencies:
     chalk "^4.1.0"
     commander "5.1.0"
-    hap-nodejs "~0.8.2"
+    hap-nodejs "~0.8.3"
     node-persist "^0.0.11"
     qrcode-terminal "^0.12.0"
     semver "^7.3.2"
@@ -4686,6 +4695,11 @@ tslib@^1.8.1, tslib@^1.9.0:
   version "1.13.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.13.0.tgz#c881e13cc7015894ed914862d276436fa9a47043"
   integrity sha512-i/6DQjL8Xf3be4K/E6Wgpekn5Qasl1usyw++dAA35Ue5orEn65VIxOA+YvNNl9HV3qv70T7CNwjODHZrLwvd1Q==
+
+tslib@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.0.3.tgz#8e0741ac45fc0c226e58a17bfc3e64b9bc6ca61c"
+  integrity sha512-uZtkfKblCEQtZKBF6EBXVZeQNl82yqtDQdv+eck8u7tdPxjLu2/lp5/uPW+um2tpuxINHWy3GhiccY7QgEaVHQ==
 
 tsutils@^3.17.1:
   version "3.17.1"
