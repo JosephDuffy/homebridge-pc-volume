@@ -281,10 +281,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@homebridge/ciao@~1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@homebridge/ciao/-/ciao-1.1.0.tgz#a8086df1621df85600a74a5d1b53b1951d20359f"
-  integrity sha512-fpFUy/1PQ5eMPiTdRewoA/gnFCLBkBlNsFJpHO8/Wk/p1fQM0YLMDdyvR956CF0QdArhz2SBB3VeGmgVkOrLFw==
+"@homebridge/ciao@~1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@homebridge/ciao/-/ciao-1.1.2.tgz#996acbe167c7d4108462d68af9af9de745d5cf33"
+  integrity sha512-31IfDKMqxfT+uVNXj0/TmYMou57gP8CUrh0vABzsc5QMsoCQ4Oo5uYQp0oJJyzxTBkF2pFvjR3XlWAapl0VyCg==
   dependencies:
     debug "^4.3.1"
     fast-deep-equal "^3.1.3"
@@ -2136,12 +2136,12 @@ growly@^1.3.0:
   resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
   integrity sha1-8QdIy+dq+WS3yWyTxrzCivEgwIE=
 
-hap-nodejs@~0.8.3:
-  version "0.8.3"
-  resolved "https://registry.yarnpkg.com/hap-nodejs/-/hap-nodejs-0.8.3.tgz#d487132259532ecdde59a62d45a305be7ec6d596"
-  integrity sha512-1bX0UPmIfthYgF43M0rhNsyLayPVXAPvqgwUBfTUNSw4XuesepfbZFnhT8eYZqqClQorKaZr6FeHWw785FQ1Tg==
+hap-nodejs@~0.8.5:
+  version "0.8.5"
+  resolved "https://registry.yarnpkg.com/hap-nodejs/-/hap-nodejs-0.8.5.tgz#ab0845f2dcd07b8ef92ed690d3271c78b4c8d6fc"
+  integrity sha512-4OnIc3oYXHSmafsuBuY1sBbQaMy8n2uRnEPS9ZnD032cOvaVz2IZA3/rE5LEHsxgDvo+oiLxcdqXz0ho38Odxw==
   dependencies:
-    "@homebridge/ciao" "~1.1.0"
+    "@homebridge/ciao" "~1.1.2"
     debug "^4.1.1"
     decimal.js "^10.2.0"
     fast-srp-hap "2.0.2"
@@ -2210,13 +2210,13 @@ has-yarn@^2.1.0:
   integrity sha512-UqBRqi4ju7T+TqGNdqAO0PaSVGsDGJUBQvk9eUWNGRY1CFGDzYhLWoM7JQEemnlvVcv/YEmc2wNW8BC24EnUsw==
 
 homebridge@^1.0.0:
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/homebridge/-/homebridge-1.2.4.tgz#8d46dc7f1972587162acf0d608a8bebbd676c25e"
-  integrity sha512-uyhLgJumhivAQrauoH5EfxKC2hcX2r8fC2ckAScBx3M7/+XuobHVNYF7yNND69mlg+Jd/KBfaF5zS3ckVl807g==
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/homebridge/-/homebridge-1.2.5.tgz#773e90132b6a111e0a48a4b0cf2f21d09e6eeec0"
+  integrity sha512-tiJi31Ereo75pPhXz9DVLM8lXW8bopXo5aEmBU8elwvfkyTXlGc2dToz9dnc+Vt8ls7jsQAIEl6MkGWrQ7XqtA==
   dependencies:
     chalk "^4.1.0"
     commander "5.1.0"
-    hap-nodejs "~0.8.3"
+    hap-nodejs "~0.8.5"
     node-persist "^0.0.11"
     qrcode-terminal "^0.12.0"
     semver "^7.3.2"
