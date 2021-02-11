@@ -130,8 +130,8 @@ If you wish to set some initial values when the plugin starts you can set the `i
 To develop homebridge-pc-volume locally:
 
 1. Clone the project
-2. Run `yarn install`
-3. Run `yarn build`
+2. Run `npm install`
+3. Run `npm run build`
 4. Run `npm install --global $(pwd)`
 
 This will allow homebridge to find your local version of homebridge-pc-volume. After making changes you will need to restart homebridge.

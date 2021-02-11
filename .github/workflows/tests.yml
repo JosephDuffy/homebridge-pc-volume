@@ -23,11 +23,11 @@ jobs:
       with:
         node-version: "${{ steps.node-version.outputs.node-version }}"
 
-    - name: yarn install
-      run: yarn install --ignore-engines
+    - name: npm install
+      run: npm install
 
     - name: Run tests
-      run: yarn --ignore-engines test:coverage
+      run: npm run test:coverage
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
@@ -52,8 +52,8 @@ jobs:
         nvm install
         nvm use
 
-    - name: yarn install
-      run: yarn install --ignore-engines
+    - name: npm install
+      run: npm install
 
     - name: Install expect
       run: sudo apt-get install expect
@@ -79,11 +79,11 @@ jobs:
         nvm install
         nvm use
 
-    - name: yarn install
-      run: yarn install --ignore-engines
+    - name: npm install
+      run: npm install
 
     - name: Check for linting errors
-      run: yarn --ignore-engines lint
+      run: npm lint
 
   check_format:
     name: Check for formatting errors using node ${{ matrix.node }} on ${{ matrix.os }}
@@ -102,8 +102,8 @@ jobs:
         nvm install
         nvm use
 
-    - name: yarn install
-      run: yarn install --ignore-engines
+    - name: npm install
+      run: npm install
 
     - name: Check code format
-      run: yarn --ignore-engines format:check
+      run: npm run format:check

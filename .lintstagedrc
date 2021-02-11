@@ -1,7 +1,7 @@
 {
   "*.ts": [
     "prettier --write",
-    "yarn lint",
+    "npm run lint",
     "git add"
   ]
 }
