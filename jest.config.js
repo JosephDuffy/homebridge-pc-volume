@@ -5,5 +5,5 @@ module.exports = {
   testEnvironment: "node",
   roots: ["src/"],
   testPathIgnorePatterns: ["/src/__tests__/mocks/"],
-  collectCoverageFrom: ["src/{!(__tests___),}.ts"],
+  collectCoverageFrom: ["src/**/*.ts", "!src/__tests__/*"],
 }
