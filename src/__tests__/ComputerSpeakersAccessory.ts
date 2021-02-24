@@ -201,10 +201,14 @@ describe("ComputerSpeakersAccessory", () => {
         accessory
           .getServices()[0]
           .getCharacteristic(Characteristic.Mute)
-          .emit(CharacteristicEventTypes.GET, () => {
-            expect(stub.calledOnce).toStrictEqual(true)
-            done()
-          })
+          .emit(
+            CharacteristicEventTypes.GET,
+            () => {
+              expect(stub.calledOnce).toStrictEqual(true)
+              done()
+            },
+            {}
+          )
       })
 
       it("should return `true` when the mute characteristic is requested", (done) => {
@@ -217,7 +221,8 @@ describe("ComputerSpeakersAccessory", () => {
               expect(muted).toStrictEqual(true)
               expect(error).toBeNull()
               done()
-            }
+            },
+            {}
           )
       })
     })

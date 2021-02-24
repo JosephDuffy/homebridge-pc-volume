@@ -8,3 +8,4 @@ cp ../.homebridge-debug/config.json ./
 cp ../package-lock.json ./
 docker build . -t homebridge-pc-volume-e2e
 ./check-build.sh
+docker container stop "$(docker container ls -q --filter ancestor=homebridge-pc-volume-e2e)"
