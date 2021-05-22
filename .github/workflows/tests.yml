@@ -4,24 +4,21 @@ on: [pull_request]
 
 jobs:
   test:
-    name: Tests on ${{ matrix.os }}
+    name: Tests on ${{ matrix.os }}, Node.js v${{ matrix.node }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macOS-latest]
+        node: [12, 14, 16]
 
     steps:
     - uses: actions/checkout@v2
 
-    - name: Read .node-version
-      run: echo "##[set-output name=node-version;]$(cat .node-version)"
-      id: node-version
-
     - name: Install node
       uses: actions/setup-node@v2
       with:
-        node-version: "${{ steps.node-version.outputs.node-version }}"
+        node-version: ${{ matrix.node }}
 
     - name: npm install
       run: npm install
