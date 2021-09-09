@@ -82,7 +82,7 @@ jobs:
       run: npm install
 
     - name: Check for linting errors
-      run: npm run lint
+      run: npm run lint -- --max-warnings=0
 
   check_format:
     name: Check for formatting errors using node ${{ matrix.node }} on ${{ matrix.os }}
