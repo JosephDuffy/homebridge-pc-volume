@@ -19,7 +19,8 @@
     "lint": "eslint . --ext .js,.ts",
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write \"src/**/*.ts\" jest.config.js",
-    "format:check": "prettier --check \"src/**/*.ts\" jest.config.js"
+    "format:check": "prettier --check \"src/**/*.ts\" jest.config.js",
+    "prepare": "husky install"
   },
   "dependencies": {
     "loudness": "^0.4.1"
@@ -33,7 +34,7 @@
     "eslint": "^7.0.0",
     "eslint-config-prettier": "^8.1.0",
     "homebridge": "^1.1.7",
-    "husky": "^6.0.0",
+    "husky": "^7.0.2",
     "jest": "^26.6.3",
     "lint-staged": "^11.0.0",
     "nodemon": "^2.0.7",
