@@ -62,7 +62,7 @@ jobs:
       timeout-minutes: 5
 
   check_lint:
-    name: Check for linting errors using node ${{ matrix.node }} on ${{ matrix.os }}
+    name: Check for linting issues
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -87,7 +87,7 @@ jobs:
       run: npm run lint -- --max-warnings=0
 
   check_format:
-    name: Check for formatting errors using node ${{ matrix.node }} on ${{ matrix.os }}
+    name: Check for formatting issues
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
