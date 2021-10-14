@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
         node: [12, 14, 16]
 
     steps:
@@ -27,7 +27,7 @@ jobs:
       run: npm run test:coverage
 
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v1
+      uses: codecov/codecov-action@v2
       with:
         fail_ci_if_error: true
 
@@ -42,12 +42,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Install node version from .node-version
-      shell: bash -l {0}
-      run: |
-        cp .node-version .nvmrc
-        nvm install
-        nvm use
+    - name: Read .node-version
+      run: echo "##[set-output name=node-version;]$(cat '.node-version')"
+      id: node-version
+
+    - name: Install node
+      uses: actions/setup-node@v2
+      with:
+        node-version: "${{ steps.node-version.outputs.node-version }}"
 
     - name: npm install
       run: npm install
@@ -60,7 +62,7 @@ jobs:
       timeout-minutes: 5
 
   check_lint:
-    name: Check for linting errors using node ${{ matrix.node }} on ${{ matrix.os }}
+    name: Check for linting issues
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -85,7 +87,7 @@ jobs:
       run: npm run lint -- --max-warnings=0
 
   check_format:
-    name: Check for formatting errors using node ${{ matrix.node }} on ${{ matrix.os }}
+    name: Check for formatting issues
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
