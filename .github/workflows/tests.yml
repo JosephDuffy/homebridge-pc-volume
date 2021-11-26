@@ -18,6 +18,7 @@ jobs:
     - name: Install node
       uses: actions/setup-node@v2
       with:
+        cache: "npm"
         node-version: ${{ matrix.node }}
 
     - name: npm install
@@ -49,6 +50,7 @@ jobs:
     - name: Install node
       uses: actions/setup-node@v2
       with:
+        cache: "npm"
         node-version: "${{ steps.node-version.outputs.node-version }}"
 
     - name: npm install
@@ -78,6 +80,7 @@ jobs:
     - name: Install node
       uses: actions/setup-node@v2
       with:
+        cache: "npm"
         node-version: "${{ steps.node-version.outputs.node-version }}"
 
     - name: npm install
@@ -103,6 +106,7 @@ jobs:
     - name: Install node
       uses: actions/setup-node@v2
       with:
+        cache: "npm"
         node-version: "${{ steps.node-version.outputs.node-version }}"
 
     - name: npm install
@@ -128,6 +132,7 @@ jobs:
     - name: Install node
       uses: actions/setup-node@v2
       with:
+        cache: "npm"
         node-version: "${{ steps.node-version.outputs.node-version }}"
 
     - name: npm install
