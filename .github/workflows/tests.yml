@@ -110,3 +110,28 @@ jobs:
 
     - name: Check code format
       run: npm run format:check
+
+  check_lint-staged:
+    name: Check lint-staged config
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Read .node-version
+      run: echo "##[set-output name=node-version;]$(cat .node-version)"
+      id: node-version
+
+    - name: Install node
+      uses: actions/setup-node@v2
+      with:
+        node-version: "${{ steps.node-version.outputs.node-version }}"
+
+    - name: npm install
+      run: npm install
+
+    - name: Check lint-staged functions
+      run: npx lint-staged
