@@ -13,10 +13,10 @@ jobs:
         node: [12, 14, 16]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v2.4.0
 
     - name: Install node
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3.0.0
       with:
         cache: "npm"
         node-version: ${{ matrix.node }}
@@ -28,7 +28,7 @@ jobs:
       run: npm run test:coverage
 
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v2
+      uses: codecov/codecov-action@v2.1.0
       with:
         fail_ci_if_error: true
 
@@ -41,14 +41,14 @@ jobs:
         os: [ubuntu-latest]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v2.4.0
 
     - name: Read .node-version
       run: echo "##[set-output name=node-version;]$(cat '.node-version')"
       id: node-version
 
     - name: Install node
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3.0.0
       with:
         cache: "npm"
         node-version: "${{ steps.node-version.outputs.node-version }}"
@@ -71,14 +71,14 @@ jobs:
         os: [ubuntu-latest]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v2.4.0
 
     - name: Read .node-version
       run: echo "##[set-output name=node-version;]$(cat .node-version)"
       id: node-version
 
     - name: Install node
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3.0.0
       with:
         cache: "npm"
         node-version: "${{ steps.node-version.outputs.node-version }}"
@@ -97,14 +97,14 @@ jobs:
         os: [ubuntu-latest]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v2.4.0
 
     - name: Read .node-version
       run: echo "##[set-output name=node-version;]$(cat .node-version)"
       id: node-version
 
     - name: Install node
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3.0.0
       with:
         cache: "npm"
         node-version: "${{ steps.node-version.outputs.node-version }}"
@@ -123,14 +123,14 @@ jobs:
         os: [ubuntu-latest]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v2.4.0
 
     - name: Read .node-version
       run: echo "##[set-output name=node-version;]$(cat .node-version)"
       id: node-version
 
     - name: Install node
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3.0.0
       with:
         cache: "npm"
         node-version: "${{ steps.node-version.outputs.node-version }}"
