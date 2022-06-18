@@ -18,8 +18,9 @@
     "test:coverage:watch": "npm run test -- --coverage --watch",
     "lint": "eslint . --ext .js,.ts",
     "lint:fix": "npm run lint -- --fix",
-    "format": "prettier --write \"src/**/*.ts\" jest.config.js",
-    "format:check": "prettier --check \"src/**/*.ts\" jest.config.js",
+    "lint-staged": "lint-staged",
+    "format": "prettier --cache --write \"src/**/*.ts\" jest.config.js",
+    "format:check": "prettier --cache --check \"src/**/*.ts\" jest.config.js",
     "prepare": "husky install"
   },
   "dependencies": {
