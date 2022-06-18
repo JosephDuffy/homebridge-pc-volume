@@ -20,6 +20,7 @@
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write \"src/**/*.ts\" jest.config.js",
     "format:check": "prettier --check \"src/**/*.ts\" jest.config.js",
+    "lint-staged": "lint-staged",
     "prepare": "husky install"
   },
   "dependencies": {
